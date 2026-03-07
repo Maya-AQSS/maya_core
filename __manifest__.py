@@ -42,6 +42,8 @@
         # 'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
+        # datos de modelos
+        'data/companies.xml', # Los tipos de estudios impartidos en el centro
     ],
     # only loaded in demonstration mode
     'demo': [
