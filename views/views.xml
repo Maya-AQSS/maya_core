@@ -1,60 +1,97 @@
 <odoo>
   <data>
-    <!-- explicit list view definition -->
-<!--
-    <record model="ir.ui.view" id="maya_core.list">
-      <field name="name">maya_core list</field>
-      <field name="model">maya_core.maya_core</field>
+  <record model="ir.ui.view" id="maya_core.employee_tree">
+      <field name="name">Lista de empleados</field>
+      <field name="model">maya_core.employee</field>
       <field name="arch" type="xml">
         <list>
+          <field name="surname" />
           <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
+          <field name="phone_extension"/>
+          <field name="work_email"/>
+          <field name="employee_type"/>
+          <!-- <field name="departament_ids" widget="many2many_tags" />
+          <field name="roles_ids" widget="many2many_tags" /> -->
         </list>
       </field>
     </record>
--->
 
-    <!-- actions opening views on models -->
-<!--
-    <record model="ir.actions.act_window" id="maya_core.action_window">
-      <field name="name">maya_core window</field>
-      <field name="res_model">maya_core.maya_core</field>
-      <field name="view_mode">list,form</field>
-    </record>
--->
-
-    <!-- server action to the one above -->
-<!--
-    <record model="ir.actions.server" id="maya_core.action_server">
-      <field name="name">maya_core server</field>
-      <field name="model_id" ref="model_maya_core_maya_core"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "list,form",
-          "res_model": model._name,
-        }
+    <record model="ir.ui.view" id="maya_core.employee_form">
+      <field name="name">Gestión de empleados</field>
+      <field name="model">maya_core.employee</field>
+      <field name="arch" type="xml">
+        <form>
+          <group col="2">
+            <group>
+              <field name="user_id" />
+              <field name="dni"/>
+              <field name="surname" />
+              <field name="name"/>
+            </group>
+            <group>
+              <field name="phone_extension" />
+              <field name="work_email"/>
+              <field name="employee_type"/>
+              <field name="active"/>
+            </group>  
+          </group>
+          <notebook>
+           <!--  <page string='Departamentos'>
+              <group>
+                <field name="departament_ids"/>
+              </group>
+            </page> -->
+            <!-- <page string='Módulos'>
+              <group>
+                <field name="subjects_ids">
+                  <tree>
+                    <field name="subject_id" string="Módulo"/>
+                    <field name="course_id" string="Ciclo"/> 
+                  </tree>
+                </field>
+              </group>
+            </page>" -->
+            <page string = "Situación administrativa">
+              <group>
+                <field name="position_type"/>
+              </group>
+            </page>
+            <page string = "Administración interna">
+              <group col="2">
+                <group>
+                  <field name="car_registration_number_1" placeholder="1234ABC"/>
+                  <field name="car_registration_number_2" placeholder="1234ABC"/>
+                  <field name="car_registration_number_3" placeholder="1234ABC"/>
+                </group>
+              </group>
+            </page>
+            <page string = "Sustituciones">
+              <group>
+                <field name="sick_leave"/>
+                <field name="replaced_by_ids"/>
+              </group>
+            </page>
+          </notebook>
+        </form>
       </field>
     </record>
--->
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="maya_core.action_employee">
+      <field name="name">Empleados</field>
+      <field name="res_model">maya_core.employee</field>
+      <field name="view_mode">list,form</field>
+    </record>
 
     <!-- Top menu item -->
-<!--
-    <menuitem name="maya_core" id="maya_core.menu_root"/>
--->
+    <menuitem name="Maya | Core" id="maya_core.menu_root" sequence="1"/>
+
     <!-- menu categories -->
-<!--
-    <menuitem name="Menu 1" id="maya_core.menu_1" parent="maya_core.menu_root"/>
-    <menuitem name="Menu 2" id="maya_core.menu_2" parent="maya_core.menu_root"/>
--->
-    <!-- actions -->
-<!--
-    <menuitem name="List" id="maya_core.menu_1_list" parent="maya_core.menu_1"
-              action="maya_core.action_window"/>
-    <menuitem name="Server to list" id="maya_core" parent="maya_core.menu_2"
-              action="maya_core.action_server"/>
--->
+    <menuitem name="Curso" id="maya_core.course" parent="maya_core.menu_root"/>
+
+    <!-- menú Curso -->
+    <menuitem name="Empleados" id="maya_core.course_employee" parent="maya_core.course"
+              action="maya_core.action_employee" sequence="3"/>
+
   </data>
 </odoo>

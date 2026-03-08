@@ -39,6 +39,8 @@
 
     # always loaded
     'data': [
+        # seguridad
+        'security/core_access.xml',
         # 'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',

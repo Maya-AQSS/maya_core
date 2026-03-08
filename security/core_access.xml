@@ -1,0 +1,19 @@
+<odoo>
+  <data>
+    <!-- ******************************************************** -->
+    <!-- permisos sobre modelos                                   -->
+    <!-- ******************************************************** -->
+
+    <!-- EMPLOYEE -->
+    <record id="maya_core.employee_admin_user_access" model="ir.model.access">
+      <field name="name">Acceso Administrador a los empleados</field>
+      <field name="model_id" ref="model_maya_core_employee"/>
+      <field name="group_id" ref="base.group_user"></field>  <!-- TOCHANGE! permiso temporal -->
+      <field name="perm_read">1</field>
+      <field name="perm_create">1</field>
+      <field name="perm_write">1</field>
+      <field name="perm_unlink">1</field>
+    </record>
+
+  </data>
+</odoo>
