@@ -2,3 +2,4 @@
 
 from . import res
 from . import center
+from . import course
