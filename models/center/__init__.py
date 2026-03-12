@@ -3,3 +3,4 @@
 from . import departament
 from . import course
 from . import location
+from . import session_schedule

@@ -101,6 +101,12 @@
       <field name="view_mode">list,form</field>
     </record>
 
+    <record model="ir.actions.act_window" id="maya_core.action_session_schedule">
+      <field name="name">Horarios de sesiones</field>
+      <field name="res_model">maya_core.session_schedule</field>
+      <field name="view_mode">list</field>
+    </record>
+
     <!-- Top menu item -->
     <menuitem name="Maya | Core" id="maya_core.menu_root" sequence="1"/>
 
@@ -115,6 +121,8 @@
               action="maya_core.action_course" sequence="2"/>
     <menuitem name="Departamentos" id="maya_core.school_departament" parent="maya_core.school"
               action="maya_core.action_departament" sequence="3"/>
+    <menuitem name="Horario de sesiones" id="maya_core.school_session_schedule" parent="maya_core.school"
+              action="maya_core.action_session_schedule" sequence="4"/>
 
     <!-- menú Curso -->
     <menuitem name="Empleados" id="maya_core.course_employee" parent="maya_core.course"
