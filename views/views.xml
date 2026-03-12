@@ -89,6 +89,12 @@
       <field name="view_mode">list,form</field>
     </record>
 
+    <record model="ir.actions.act_window" id="maya_core.action_course">
+      <field name="name">Cursos</field>
+      <field name="res_model">maya_core.course</field>
+      <field name="view_mode">list,form</field>
+    </record>
+
     <!-- Top menu item -->
     <menuitem name="Maya | Core" id="maya_core.menu_root" sequence="1"/>
 
@@ -97,8 +103,10 @@
     <menuitem name="Curso" id="maya_core.course" parent="maya_core.menu_root" sequence="2"/>
      
     <!-- menú centro -->
+    <menuitem name="Cursos" id="maya_core.school_course" parent="maya_core.school"
+              action="maya_core.action_course" sequence="1"/>
     <menuitem name="Departamentos" id="maya_core.school_departament" parent="maya_core.school"
-              action="maya_core.action_departament" sequence="1"/>
+              action="maya_core.action_departament" sequence="2"/>
 
     <!-- menú Curso -->
     <menuitem name="Empleados" id="maya_core.course_employee" parent="maya_core.course"
