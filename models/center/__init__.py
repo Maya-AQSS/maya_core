@@ -2,3 +2,4 @@
 
 from . import departament
 from . import course
+from . import location
