@@ -41,11 +41,11 @@
     </record>
   </data>
 
-  <data noupdate="1"> 
+  <!-- <data noupdate="1"> 
     <record id="base.main_company" model="res.company">
       <field name="name">Empresa por Defecto (NO USAR)</field>
-      <field name="color">-1</field>  <!-- Gris -->
-      <field name="active" eval="False"/>  <!-- Archivar -->
+      <field name="color">-1</field>  Gris 
+      <field name="active" eval="False"/>  Archivar 
     </record>
-  </data>
+  </data> -->
 </odoo>
