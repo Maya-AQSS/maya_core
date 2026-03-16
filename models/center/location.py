@@ -13,6 +13,11 @@ class Location(models.Model):
   name = fields.Char(_('Nombre'), required = True, translate = True)
   description = fields.Text(_('Descripción'), help=_('Usos permitidos, normas de acceso y cualquier información relevante.'))
 
+  # Añadidos campos que faltaban por definir de dirección y teléfono móvil
+  adress = fields.Char(string='Dirección')
+  phone_number = fields.Char(string='Teléfono')
+
+
   image = fields.Image(
     string = _('Fotografía'),
     max_width = 1920,
