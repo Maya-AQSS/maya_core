@@ -14,7 +14,7 @@ class Location(models.Model):
   description = fields.Text(_('Descripción'), help=_('Usos permitidos, normas de acceso y cualquier información relevante.'))
 
   # Añadidos campos que faltaban por definir de dirección y teléfono móvil
-  adress = fields.Char(string='Dirección')
+  address = fields.Char(string='Dirección')
   phone_number = fields.Char(string='Teléfono')
 
 
