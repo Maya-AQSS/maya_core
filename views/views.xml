@@ -135,9 +135,45 @@
         <field name="arch" type="xml">
             <list>
                 <field name="name"/>
-                <field name="adress"/>
+                <field name="address"/>
                 <field name="phone_number"/>
             </list>
+        </field>
+    </record>
+
+    <record id="view_location_form" model="ir.ui.view">
+        <field name="name">maya_core.location.form</field>
+        <field name="model">maya_core.location</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <!-- ¿imgage? -->
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" string="Nombre"/>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                        <!-- tags pendiente -->
+                    </div>
+
+                    <group>
+                        <group string="Dirección y Teléfono">
+                            <field name="phone_number" widget="phone"/>
+                            <field name="address"/>
+                            <field name="map_url" widget="url"/>
+                        </group>
+                        <group string="Información">
+                            <field name="description"/>
+                            <!-- horario pendiente-->
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Alumnos en Prácticas">
+                            <field name="floor_plan"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
         </field>
     </record>
 
