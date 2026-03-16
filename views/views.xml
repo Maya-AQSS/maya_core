@@ -128,5 +128,18 @@
     <menuitem name="Empleados" id="maya_core.course_employee" parent="maya_core.course"
               action="maya_core.action_employee" sequence="3"/>
 
+    <!-- Views de Location -->
+    <record id="view_location_list" model="ir.ui.view">
+        <field name="name">maya_core.location.list</field>
+        <field name="model">maya_core.location</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="adress"/>
+                <field name="phone_number"/>
+            </list>
+        </field>
+    </record>
+
   </data>
 </odoo>
