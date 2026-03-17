@@ -151,7 +151,7 @@
                     <table style="width: 100%; margin-bottom: 20px;">
                         <tr>
                             <td style="width: 170px; vertical-align: top;">
-                                <field name="image" widget="image" options="{'size': [150, 200]}"/>
+                                <field name="image" widget="image" options="{'size': [150, 200], 'zoom': true}"/>
                             </td>
                             
                             <td style="vertical-align: top;">
@@ -178,7 +178,7 @@
                     </group>
                     <notebook>
                       <page string="Plano">
-                            <field name="floor_plan" widget="image" options="{'size': [0, 600]}"/>
+                            <field name="floor_plan" widget="image" options="{'size': [0, 600], 'zoom': true}"/>
                       </page>
                     </notebook>
                 </sheet>
