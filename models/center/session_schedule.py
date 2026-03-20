@@ -22,19 +22,22 @@ class SessionSchedule(models.Model):
   start_time = fields.Float(
     string = _('Hora de inicio'), 
     required = True,
-    help = _("Hora de inicio de la sesión.")
+    help = _("Hora de inicio de la sesión."),
+    group_operator=False
   )
 
   end_time = fields.Float(
     string = _('Hora de fin'), 
     required = True,
-    help = _("Hora de fin de la sesión.")
+    help = _("Hora de fin de la sesión."),
+    group_operator=False
   )
 
   duration = fields.Float(
     string = _('Duración (Horas)'), 
     compute = '_compute_duration', 
-    store = True
+    store = True,
+    group_operator=False
   )
 
   active = fields.Boolean('Activa', default=True)
