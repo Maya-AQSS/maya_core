@@ -80,7 +80,7 @@
       <field name="name">Lista de sesiones</field>
       <field name="model">maya_core.session_schedule</field>
       <field name="arch" type="xml">
-        <list>
+        <list editable="bottom">
         <field name="location_id"/>
         <field name="name"/>
         <field name="week_day"/>
@@ -89,7 +89,7 @@
         <field name="duration"/>
         <field name="active" widget="boolean_button"/>
         <groupby name="location_id">
-
+            <button type="edit" name="edit" icon="fa-edit" title="Edit"/>
         </groupby>
         </list>
       </field>
