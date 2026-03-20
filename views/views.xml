@@ -81,18 +81,28 @@
       <field name="model">maya_core.session_schedule</field>
       <field name="arch" type="xml">
         <list>
+        <field name="location_id"/>
         <field name="name"/>
         <field name="week_day"/>
         <field name="start_time" widget="float_time"/>
         <field name="end_time" widget="float_time"/>
         <field name="duration"/>
         <field name="active" widget="boolean_button"/>
-        <!-- <groupby name="location_id">
-          <button type="edit" name="edit" icon="fa-edit" title="Edit"/>
-          <field name="location_id"/>
-        </groupby> -->
+        <groupby name="location_id">
+
+        </groupby>
         </list>
       </field>
+    </record>
+
+    <record id="maya_core_session_schedule_search" model="ir.ui.view">
+        <field name="name">session.schedule.search</field>
+        <field name="model">maya_core.session_schedule</field>
+        <field name="arch" type="xml">
+            <search>
+                <filter string="Ubicación" name="groupby_location" context="{'group_by': 'location_id'}"/>
+            </search>
+        </field>
     </record>
 
     
@@ -126,6 +136,7 @@
       <field name="name">Horarios de sesiones</field>
       <field name="res_model">maya_core.session_schedule</field>
       <field name="view_mode">list</field>
+      <field name="context">{'search_default_groupby_location': 1}</field>
     </record>
 
     <!-- Top menu item -->
