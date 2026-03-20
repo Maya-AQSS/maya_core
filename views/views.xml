@@ -77,8 +77,8 @@
     </record>
 
     <!-- Views de Location -->
-    <record id="view_location_list" model="ir.ui.view">
-        <field name="name">maya_core.location.list</field>
+    <record id="maya_core.location_list" model="ir.ui.view">
+        <field name="name">Lista de Ubicaciones</field>
         <field name="model">maya_core.location</field>
         <field name="arch" type="xml">
             <list>
@@ -89,8 +89,8 @@
         </field>
     </record>
 
-    <record id="view_location_form" model="ir.ui.view">
-        <field name="name">maya_core.location.form</field>
+    <record id="maya_core.location_form" model="ir.ui.view">
+        <field name="name">Gestión de Ubicaciones</field>
         <field name="model">maya_core.location</field>
         <field name="arch" type="xml">
             <form>
