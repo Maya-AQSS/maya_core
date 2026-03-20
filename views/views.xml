@@ -76,58 +76,6 @@
       </field>
     </record>
 
-    <!-- actions opening views on models -->
-    <record model="ir.actions.act_window" id="maya_core.action_employee">
-      <field name="name">Empleados</field>
-      <field name="res_model">maya_core.employee</field>
-      <field name="view_mode">list,form</field>
-    </record>
-
-    <record model="ir.actions.act_window" id="maya_core.action_location">
-      <field name="name">Ubicaciones</field>
-      <field name="res_model">maya_core.location</field>
-      <field name="view_mode">list,form</field>
-    </record>
-
-    <record model="ir.actions.act_window" id="maya_core.action_departament">
-      <field name="name">Departamentos</field>
-      <field name="res_model">maya_core.departament</field>
-      <field name="view_mode">list,form</field>
-    </record>
-
-    <record model="ir.actions.act_window" id="maya_core.action_course">
-      <field name="name">Cursos</field>
-      <field name="res_model">maya_core.course</field>
-      <field name="view_mode">list,form</field>
-    </record>
-
-    <record model="ir.actions.act_window" id="maya_core.action_session_schedule">
-      <field name="name">Horarios de sesiones</field>
-      <field name="res_model">maya_core.session_schedule</field>
-      <field name="view_mode">list</field>
-    </record>
-
-    <!-- Top menu item -->
-    <menuitem name="Maya | Core" id="maya_core.menu_root" sequence="1"/>
-
-    <!-- menu categories -->
-    <menuitem name="Centro" id="maya_core.school" parent="maya_core.menu_root" sequence="1"/>
-    <menuitem name="Curso" id="maya_core.course" parent="maya_core.menu_root" sequence="2"/>
-     
-    <!-- menú centro -->
-    <menuitem name="Ubicaciones" id="maya_core.school_location" parent="maya_core.school"
-              action="maya_core.action_location" sequence="1"/>
-    <menuitem name="Cursos" id="maya_core.school_course" parent="maya_core.school"
-              action="maya_core.action_course" sequence="2"/>
-    <menuitem name="Departamentos" id="maya_core.school_departament" parent="maya_core.school"
-              action="maya_core.action_departament" sequence="3"/>
-    <menuitem name="Horario de sesiones" id="maya_core.school_session_schedule" parent="maya_core.school"
-              action="maya_core.action_session_schedule" sequence="4"/>
-
-    <!-- menú Curso -->
-    <menuitem name="Empleados" id="maya_core.course_employee" parent="maya_core.course"
-              action="maya_core.action_employee" sequence="3"/>
-
     <!-- Views de Location -->
     <record id="view_location_list" model="ir.ui.view">
         <field name="name">maya_core.location.list</field>
@@ -185,6 +133,58 @@
             </form>
         </field>
     </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="maya_core.action_employee">
+      <field name="name">Empleados</field>
+      <field name="res_model">maya_core.employee</field>
+      <field name="view_mode">list,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="maya_core.action_location">
+      <field name="name">Ubicaciones</field>
+      <field name="res_model">maya_core.location</field>
+      <field name="view_mode">list,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="maya_core.action_departament">
+      <field name="name">Departamentos</field>
+      <field name="res_model">maya_core.departament</field>
+      <field name="view_mode">list,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="maya_core.action_course">
+      <field name="name">Cursos</field>
+      <field name="res_model">maya_core.course</field>
+      <field name="view_mode">list,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="maya_core.action_session_schedule">
+      <field name="name">Horarios de sesiones</field>
+      <field name="res_model">maya_core.session_schedule</field>
+      <field name="view_mode">list</field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem name="Maya | Core" id="maya_core.menu_root" sequence="1"/>
+
+    <!-- menu categories -->
+    <menuitem name="Centro" id="maya_core.school" parent="maya_core.menu_root" sequence="1"/>
+    <menuitem name="Curso" id="maya_core.course" parent="maya_core.menu_root" sequence="2"/>
+     
+    <!-- menú centro -->
+    <menuitem name="Ubicaciones" id="maya_core.school_location" parent="maya_core.school"
+              action="maya_core.action_location" sequence="1"/>
+    <menuitem name="Cursos" id="maya_core.school_course" parent="maya_core.school"
+              action="maya_core.action_course" sequence="2"/>
+    <menuitem name="Departamentos" id="maya_core.school_departament" parent="maya_core.school"
+              action="maya_core.action_departament" sequence="3"/>
+    <menuitem name="Horario de sesiones" id="maya_core.school_session_schedule" parent="maya_core.school"
+              action="maya_core.action_session_schedule" sequence="4"/>
+
+    <!-- menú Curso -->
+    <menuitem name="Empleados" id="maya_core.course_employee" parent="maya_core.course"
+              action="maya_core.action_employee" sequence="3"/>
 
   </data>
 </odoo>
