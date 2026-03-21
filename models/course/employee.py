@@ -60,8 +60,8 @@ class Employee(models.Model):
   replaces_id = fields.Many2one('maya_core.employee', string='Sustituye a')
   replaced_by_ids = fields.One2many('maya_core.employee', 'replaces_id')
   
-  """ departament_ids = fields.Many2many('maya_core.departament', required = True, string = 'Departamentos')
-  roles_ids = fields.Many2many('maya_core.rol', string = 'Cargos')
+  departament_ids = fields.Many2many('maya_core.departament', required = True, string = 'Departamentos y equipos')
+  """ roles_ids = fields.Many2many('maya_core.rol', string = 'Cargos')
    """
   active = fields.Boolean('Activo', related='user_id.active', help = 'Indica si el usuario maya_core asociado está activo')
   

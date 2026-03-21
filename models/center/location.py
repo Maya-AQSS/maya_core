@@ -8,7 +8,7 @@ class Location(models.Model):
   """
     
   _name = 'maya_core.location'
-  _description = 'Departamento didáctico'
+  _description = 'Ubicaciones'
 
   name = fields.Char(_('Nombre'), required = True, translate = True)
   description = fields.Text(_('Descripción'), translate=True, help=_('Usos permitidos, normas de acceso y cualquier información relevante.'))
