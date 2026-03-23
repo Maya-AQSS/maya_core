@@ -10,7 +10,12 @@ class SessionSchedule(models.Model):
   _name = 'maya_core.session_schedule'
   _description = 'Horarios de sesiones'
 
-  name = fields.Char(_('Descripción'), required = True, translate = True, help=_('Descripción de la sesión.'))
+  name = fields.Char(
+      _('Descripción'), 
+      required = True, 
+      size= 10,
+      translate = True, 
+      help=_('Descripción de la sesión.'))
   week_day = fields.Selection([
       ('L', _('Lunes')),
       ('M', _('Martes')),
