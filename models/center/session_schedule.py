@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api, _
+from odoo.exceptions import ValidationError
 
 class SessionSchedule(models.Model):
   """
@@ -47,4 +48,23 @@ class SessionSchedule(models.Model):
       if record.end_time > record.start_time:
         record.duration = record.end_time - record.start_time
       else:
-        record.duration = 0.0
+        record.duration = 0.0 
+
+  @api.constrains('start_time', 'end_time', 'week_day', 'location_id')
+  def _check_overlap(self):
+      """
+      Comprueba que la sesión que se crea no solapa con ningúna existente
+      """
+      for record in self:
+
+          domain = [
+              # Ignora el registro que se está creando
+              ('id', '!=', record.id),                   
+              # Comprobar que sea en la misma localización y día de la semana
+              ('location_id', '=', record.location_id.id),
+              ('week_day', '=', record.week_day),  
+              # Comprobar solapamiento        
+              ('start_time', '<', record.end_time),        
+              ('end_time', '>', record.start_time),        
+          ]
+          
