@@ -67,4 +67,9 @@ class SessionSchedule(models.Model):
               ('start_time', '<', record.end_time),        
               ('end_time', '>', record.start_time),        
           ]
-          
+      
+          overlapping_sessions = self.search_count(domain)
+
+          if overlapping_sessions > 0:
+              raise ValidationError(_("Error: Ya existe una sesión en esta ubicación y día que se solapa con este horario."))
+        
