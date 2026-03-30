@@ -81,7 +81,7 @@
       <field name="model">maya_core.session_schedule</field>
       <field name="arch" type="xml">
         <list editable="bottom" default_order="week_day, start_time" decoration-danger="active == False">
-          <field name="location_id"/>
+          <field name="location_id" column_invisible="True"/>
           <field name="name"/>
           <field name="week_day"/>
           <field name="start_time" widget="float_time"/>
