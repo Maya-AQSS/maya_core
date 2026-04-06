@@ -36,11 +36,16 @@
             </group>  
           </group>
           <notebook>
-           <!--  <page string='Departamentos'>
+            <page string='Departamentos'>
               <group>
-                <field name="departament_ids"/>
+                <field name="departament_ids">
+                  <list>
+                    <field name="name"/>
+                    <field name="primary" widget="boolean_favorite" readonly="1"/>
+                  </list>
+                </field>
               </group>
-            </page> -->
+            </page>
             <!-- <page string='Módulos'>
               <group>
                 <field name="subjects_ids">
@@ -75,6 +80,18 @@
         </form>
       </field>
     </record>
+    
+    <record model="ir.ui.view" id="maya_core.departament_tree">
+      <field name="name">Lista de departamentos</field>
+      <field name="model">maya_core.departament</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="name" />
+          <field name="abbr"/>
+          <field name="primary" widget="boolean_favorite" readonly="1"/>
+        </list>
+      </field>
+    </record>
 
     <record model="ir.ui.view" id="maya_core.session_schedule_list">
       <field name="name">Lista de sesiones</field>
@@ -107,7 +124,64 @@
         </field>
     </record>
 
-    
+   
+    <!-- Views de Location -->
+    <record id="maya_core.location_list" model="ir.ui.view">
+        <field name="name">Lista de Ubicaciones</field>
+        <field name="model">maya_core.location</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="address"/>
+                <field name="phone_number" widget="phone"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="maya_core.location_form" model="ir.ui.view">
+        <field name="name">Gestión de Ubicaciones</field>
+        <field name="model">maya_core.location</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <!--tabla y estilos para la alineacion horizontal de la imagen con el titulo (oe_title alinea siempre la imagen a la derecha) -->
+                    <table style="width: 100%; margin-bottom: 20px;">
+                        <tr>
+                            <td style="width: 170px; vertical-align: top;">
+                                <field name="image" widget="image" options="{'size': [150, 200], 'zoom': true}"/>
+                            </td>
+                            
+                            <td style="vertical-align: top;">
+                                <div class="oe_title">
+                                    <label for="name" string="Nombre"/>
+                                    <h1>
+                                        <field name="name"/>
+                                    </h1>
+                                    <!-- tags con many2many_tags -->
+                                </div>
+                            </td>
+                        </tr>
+                    </table> 
+                    <group>
+                        <group string="Dirección y Teléfono">
+                            <field name="phone_number" widget="phone"/>
+                            <field name="address"/>
+                            <field name="map_url" widget="url"/>
+                        </group>
+                        <group string="Información">
+                            <field name="description"/>
+                            <!-- campo de horario -->
+                        </group>
+                    </group>
+                    <notebook>
+                      <page string="Plano">
+                            <field name="floor_plan" widget="image" options="{'size': [0, 600], 'zoom': true}"/>
+                      </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
 
     <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="maya_core.action_employee">
@@ -123,7 +197,7 @@
     </record>
 
     <record model="ir.actions.act_window" id="maya_core.action_departament">
-      <field name="name">Departamentos</field>
+      <field name="name">Departamentos y Equipos</field>
       <field name="res_model">maya_core.departament</field>
       <field name="view_mode">list,form</field>
     </record>

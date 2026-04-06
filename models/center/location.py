@@ -8,10 +8,15 @@ class Location(models.Model):
   """
     
   _name = 'maya_core.location'
-  _description = 'Departamento didáctico'
+  _description = 'Ubicaciones'
 
   name = fields.Char(_('Nombre'), required = True, translate = True)
-  description = fields.Text(_('Descripción'), help=_('Usos permitidos, normas de acceso y cualquier información relevante.'))
+  description = fields.Text(_('Descripción'), translate=True, help=_('Usos permitidos, normas de acceso y cualquier información relevante.'))
+
+  # Añadidos campos que faltaban por definir de dirección y teléfono móvil
+  address = fields.Char(string=_('Dirección'), required = True, help=_('Dirección de la ubicación física.'))
+  phone_number = fields.Char(string=_('Teléfono'), required = False, help=_('Número de teléfono del departamento docente.'))
+
 
   image = fields.Image(
     string = _('Fotografía'),
