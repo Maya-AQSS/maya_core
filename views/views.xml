@@ -81,7 +81,6 @@
       </field>
     </record>
 
-<<<<<<< feature/views-location
     <!-- Views de Location -->
     <record id="maya_core.location_list" model="ir.ui.view">
         <field name="name">Lista de Ubicaciones</field>
@@ -127,19 +126,30 @@
                         </group>
                         <group string="Información">
                             <field name="description"/>
-                            <!-- campo de horario -->
+                            <field name="opening_hours" readonly="1" widget="text" />
                         </group>
                     </group>
                     <notebook>
                       <page string="Plano">
                             <field name="floor_plan" widget="image" options="{'size': [0, 600], 'zoom': true}"/>
                       </page>
+                      <page string="Sesiones Asignadas">
+                            <field name="session_ids">
+                                <list editable="bottom">
+                                    <field name="name"/>
+                                    <field name="week_day"/>
+                                    <field name="start_time" widget="float_time"/>
+                                    <field name="end_time" widget="float_time"/>
+                                    <field name="active" column_invisible="1"/>
+                                </list>
+                            </field>
+                      </page>
                     </notebook>
                 </sheet>
             </form>
         </field>
     </record>
-=======
+
     <record model="ir.ui.view" id="maya_core.departament_tree">
       <field name="name">Lista de departamentos</field>
       <field name="model">maya_core.departament</field>
@@ -151,8 +161,6 @@
         </list>
       </field>
     </record>
-
->>>>>>> develop
 
     <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="maya_core.action_employee">

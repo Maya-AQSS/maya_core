@@ -40,7 +40,7 @@ class SessionSchedule(models.Model):
 
   active = fields.Boolean('Activa', default=True)
 
-  location_id = fields.Many2one('maya_core.location', string = _('Ubicación'))
+  location_ids = fields.Many2many('maya_core.location', string=_('Ubicaciones'))
 
   @api.depends('start_time', 'end_time')
   def _compute_duration(self):
@@ -50,7 +50,7 @@ class SessionSchedule(models.Model):
       else:
         record.duration = 0.0 
 
-  @api.constrains('start_time', 'end_time', 'week_day', 'location_id')
+  @api.constrains('start_time', 'end_time', 'week_day', 'location_ids')
   def _check_overlap(self):
       """
       Comprueba que la sesión que se crea no solapa con ningúna existente
@@ -61,7 +61,7 @@ class SessionSchedule(models.Model):
               # Ignora el registro que se está creando
               ('id', '!=', record.id),                   
               # Comprobar que sea en la misma localización y día de la semana
-              ('location_id', '=', record.location_id.id),
+              ('location_ids', '=', record.location_ids.id),
               ('week_day', '=', record.week_day),  
               # Comprobar solapamiento        
               ('start_time', '<', record.end_time),        
