@@ -94,7 +94,7 @@ class Location(models.Model):
                 # Se guarda el último bloque que quede pendiente
                 merged.append((current_start, current_end))
 
-                #Formatear a String  09:00 - 11:00 / 15:00 - 17:00)
+                #Formatear a String  (ej: 09:00 - 11:00 / 15:00 - 17:00)
                 formatted_intervals = " / ".join([f"{format_time(s)} - {format_time(e)}" for s, e in merged])
                 
                 day_name = day_dict.get(day, day)
@@ -102,3 +102,25 @@ class Location(models.Model):
 
             # Se une con saltos de línea para que quede estético en la vista form
             location.opening_hours = "\n".join(schedule_lines)
+    
+    def action_show_opening_hours_popup(self):
+        """
+        Devuelve un diálogo modal de Odoo que usa una vista de formulario para mostrar el horario.
+        """
+        self.ensure_one()
+
+        view_id = self.env.ref('maya_core.view_location_opening_hours_popup').id
+        return {
+            'name': _('Horario Detallado: %s') % self.name,
+            'type': 'ir.actions.act_window',
+            'res_model': 'maya_core.location',
+            'view_mode': 'form',
+            'views': [[view_id, 'form']],
+            'res_id': self.id,
+            'target': 'new', # indica que se abra en modal
+            'flags': {
+                'form': {
+                    'action_buttons': False, # quitar botones
+                }
+            }
+        }
