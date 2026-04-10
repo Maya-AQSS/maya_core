@@ -27,7 +27,7 @@ class SessionSchedule(models.Model):
   )
 
   end_time = fields.Float(
-    string = _('Hora de fin'), 
+    string = _('Hora de fin'),
     required = True,
     help = _("Hora de fin de la sesión.")
   )
