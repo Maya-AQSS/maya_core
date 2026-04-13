@@ -80,19 +80,8 @@
         </form>
       </field>
     </record>
-    
-    <record model="ir.ui.view" id="maya_core.departament_tree">
-      <field name="name">Lista de departamentos</field>
-      <field name="model">maya_core.departament</field>
-      <field name="arch" type="xml">
-        <list>
-          <field name="name" />
-          <field name="abbr"/>
-          <field name="primary" widget="boolean_favorite" readonly="1"/>
-        </list>
-      </field>
-    </record>
-
+   
+    <!-- Views de session_Schedule -->
     <record model="ir.ui.view" id="maya_core.session_schedule_list">
       <field name="name">Lista de sesiones</field>
       <field name="model">maya_core.session_schedule</field>
@@ -123,8 +112,7 @@
             </search>
         </field>
     </record>
-
-   
+    
     <!-- Views de Location -->
     <record id="maya_core.location_list" model="ir.ui.view">
       <field name="name">Lista de Ubicaciones</field>
@@ -250,6 +238,7 @@
     <menuitem name="Espacios" id="maya_core.school_place" parent="maya_core.physical_layout_school"
               action="maya_core.action_place" sequence="2"/>
 
+    <!-- menú organización -->
     <menuitem name="Cursos" id="maya_core.school_course" parent="maya_core.organization_school"
               action="maya_core.action_course" sequence="3"/>
     <menuitem name="Equipos" id="maya_core.school_team" parent="maya_core.organization_school"
