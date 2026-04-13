@@ -11,7 +11,12 @@ class SessionSchedule(models.Model):
   _name = 'maya_core.session_schedule'
   _description = 'Horarios de sesiones'
 
-  name = fields.Char(_('Descripción'), required = True, translate = True, help=_('Descripción de la sesión.'))
+  name = fields.Char(
+      _('Descripción'), 
+      required = True, 
+      size= 10,
+      translate = True, 
+      help=_('Descripción de la sesión.'))
   week_day = fields.Selection([
       ('0L', _('Lunes')),
       ('1M', _('Martes')),
@@ -23,18 +28,21 @@ class SessionSchedule(models.Model):
   start_time = fields.Float(
     string = _('Hora de inicio'), 
     required = True,
-    help = _("Hora de inicio de la sesión.")
+    help = _("Hora de inicio de la sesión."),
+    group_operator=False
   )
 
   end_time = fields.Float(
     string = _('Hora de fin'), 
     required = True,
-    help = _("Hora de fin de la sesión.")
+    help = _("Hora de fin de la sesión."),
+    group_operator=False
   )
 
   duration = fields.Float(
     string = _('Duración (Horas)'), 
-    compute = '_compute_duration'
+    compute = '_compute_duration', 
+    group_operator=False
   )
 
   active = fields.Boolean('Activa', default=True)
