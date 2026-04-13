@@ -13,7 +13,6 @@ class Place(models.Model):
     required=True,
     ondelete="restrict", 
   )
-  location_name = fields.Char(related="location_id.name", string=_("Nombre de ubicación"))
   description = fields.Text(string=_("Descripción"))
 
   image = fields.Image(
