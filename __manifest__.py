@@ -47,6 +47,7 @@
         # datos de modelos
         'data/companies.xml', # Los tipos de estudios impartidos en el centro
         'data/center/maya_core.team.csv',
+        'data/center/maya_core.session_schedule.csv',
     ],
     # only loaded in demonstration mode
     'demo': [
