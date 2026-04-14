@@ -112,6 +112,36 @@
             </search>
         </field>
     </record>
+
+    <record model="ir.ui.view" id="maya_core.session_schedule_form">
+      <field name="name">Formulario de sesiones</field>
+      <field name="model">maya_core.session_schedule</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <widget name="web_ribbon" title="Archivada" bg_color="bg-danger" invisible="active == True"/>
+            <div class="oe_title">
+              <label for="name" string="Descripción de la sesión"/>
+              <h1>
+                <field name="name" placeholder="Ej. L01"/>
+              </h1>
+            </div>
+            <group>
+              <group string="Horario">
+                <field name="week_day"/>
+                <field name="start_time" widget="float_time"/>
+                <field name="end_time" widget="float_time"/>
+                <field name="duration" widget="float_time"/>
+              </group>
+              <group string="Datos Generales">
+                <field name="location_id"/>
+                <field name="active" invisible="1"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
     
     <!-- Views de Location -->
     <record id="maya_core.location_list" model="ir.ui.view">
@@ -217,7 +247,7 @@
     <record model="ir.actions.act_window" id="maya_core.action_session_schedule">
       <field name="name">Horarios de sesiones</field>
       <field name="res_model">maya_core.session_schedule</field>
-      <field name="view_mode">list</field>
+      <field name="view_mode">list,form</field>
       <field name="context">{'search_default_groupby_location': 1}</field>
     </record>
 
