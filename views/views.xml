@@ -82,21 +82,6 @@
     </record>
 
     <!-- Views de Location -->
-    <record id="maya_core.view_location_opening_hours_popup" model="ir.ui.view">
-        <field name="name">location.opening_hours.popup</field>
-        <field name="model">maya_core.location</field>
-        <field name="arch" type="xml">
-            <form string="Horario Detallado">
-                <sheet>
-                    <field name="opening_hours" readonly="1" widget="text" nolabel="1"/>
-                </sheet>
-                <footer>
-                    <button string="Cerrar" class="btn-primary" special="cancel"/>
-                </footer>
-            </form>
-        </field>
-    </record>
-    
     <record id="maya_core.location_list" model="ir.ui.view">
         <field name="name">Lista de Ubicaciones</field>
         <field name="model">maya_core.location</field>
@@ -106,8 +91,6 @@
                 
                 <field name="address"/>
                 <field name="phone_number" widget="phone"/>
-                <field name="opening_hours" optional="hide"/>
-                <button name="action_show_opening_hours_popup" type="object" string="Ver Horario" icon="fa-clock-o" title="Ver Horario Detallado" />
             </list>
         </field>
     </record>
@@ -144,7 +127,7 @@
                         </group>
                         <group string="Información">
                             <field name="description"/>
-                            <field name="opening_hours" readonly="1" widget="text" />
+                            <field name="opening_hours" readonly="1" decoration-bf="1"/>
                         </group>
                     </group>
                     <notebook>
