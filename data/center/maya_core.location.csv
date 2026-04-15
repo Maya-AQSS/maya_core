@@ -1,3 +1,4 @@
 id,name,description,address,map_url
 maya_core.location_CEED,CEED,Centro Misericordia. Edificio principal,C/ Casa de la Misericòrdia 34. 46014 València,https://maps.app.goo.gl/VvrPhWej8ExMzknR8
-maya_core.location_Girola,Girola. Antigua Capilla,Centro Misericordia. Edificio Girola,C/ Casa de la Misericòrdia 34. 46014 València,https://maps.app.goo.gl/VvrPhWej8ExMzknR8
+maya_core.location_Girola,Girola,Centro Misericordia. Edificio Girola. Antigua capilla del complejo Misericordia,C/ Casa de la Misericòrdia 34. 46014 València,https://maps.app.goo.gl/VvrPhWej8ExMzknR8
+maya_core.location_Berenguer,Berenguer,Escola de Persones Adultes Vicent Ventura,Plaça del Doctor Berenguer Ferrer 11. 46014 València,https://maps.app.goo.gl/uzgEkjMbitrH7mhs6
