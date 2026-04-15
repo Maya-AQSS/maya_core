@@ -47,14 +47,3 @@ class Place(models.Model):
       if record.floor_plan_image and len(record.floor_plan_image) > max_size:
         raise ValidationError(_("El plano es demasiado grande. Máximo 10 MB."))
 
-  def unlink(self):
-    for record in self:
-      reservas = self.env["maya_booking.booking"].search_count(
-        [("place_id", "=", record.id)]
-      )
-      if reservas > 0:
-        raise UserError(
-            _("No se puede eliminar el espacio '%s' porque tiene reservas asociadas.") % record.name
-        )
-      
-    return super().unlink()
