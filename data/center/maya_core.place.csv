@@ -1,0 +1,5 @@
+id,name,description,location_id:id
+maya_core.location.cabina01,Cabina 01,Cabina en la planta baja del CEED,maya_core.location_CEED
+maya_core.location.cabina02,Cabina 02,Cabina en la planta baja del CEED,maya_core.location_CEED
+maya_core.location.cabina03,Cabina 03,Cabina en la planta baja del CEED,maya_core.location_CEED
+maya_core.location.cabina24,Cabina 24,Cabina en el primer piso. Tiene aire acondicionado,maya_core.location_Girola
