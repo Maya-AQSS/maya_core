@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, _
+from odoo.exceptions import UserError
 
 class Location(models.Model):
   """
@@ -30,3 +31,17 @@ class Location(models.Model):
   )  # va al filestore
 
   map_url = fields.Char(string = _('Enlace Google Maps'), help = _('URL de Google Maps'))
+
+  def unlink(self):
+    for record in self:
+      # Si hay espacios de trabajo asignados a esta ubicación no es posible eliminarla
+      num_places = self.env["maya_core.place"].search_count([
+          ("location_id", "=", record.id)
+      ])
+        
+      if num_places > 0:
+        raise UserError(
+            _("No se puede eliminar la ubicación '%s' porque tiene %s espacios de trabajo definidos.") % (record.name, num_places)
+        )
+        
+    return super().unlink()
