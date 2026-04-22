@@ -264,9 +264,9 @@
       <field name="view_mode">list,form</field>
     </record>
 
-    <record model="ir.actions.act_window" id="maya_core.action_course">
-      <field name="name">Cursos</field>
-      <field name="res_model">maya_core.course</field>
+    <record model="ir.actions.act_window" id="maya_core.action_study">
+      <field name="name">Estudios</field>
+      <field name="res_model">maya_core.study</field>
       <field name="view_mode">list,form</field>
     </record>
 
@@ -282,7 +282,7 @@
 
     <!-- menu categories -->
     <menuitem name="Centro" id="maya_core.school" parent="maya_core.menu_root" sequence="1"/>
-    <menuitem name="Curso" id="maya_core.course" parent="maya_core.menu_root" sequence="2"/>
+    <menuitem name="Curso" id="maya_core.course_menu" parent="maya_core.menu_root" sequence="2"/>
      
     <!-- menú centro -->
     <menuitem name="Disposición física" id="maya_core.physical_layout_school" parent="maya_core.school" sequence="1"/>
@@ -295,15 +295,15 @@
               action="maya_core.action_place" sequence="2"/>
 
     <!-- menú organización -->
-    <menuitem name="Cursos" id="maya_core.school_course" parent="maya_core.organization_school"
-              action="maya_core.action_course" sequence="3"/>
+    <menuitem name="Estudios" id="maya_core.school_study" parent="maya_core.organization_school"
+              action="maya_core.action_study" sequence="3"/>
     <menuitem name="Equipos" id="maya_core.school_team" parent="maya_core.organization_school"
               action="maya_core.action_team" sequence="4"/>
     <menuitem name="Horario de sesiones" id="maya_core.school_session_schedule" parent="maya_core.organization_school"
               action="maya_core.action_session_schedule" sequence="5"/>
 
     <!-- menú Curso -->
-    <menuitem name="Empleados" id="maya_core.course_employee" parent="maya_core.course"
+    <menuitem name="Empleados" id="maya_core.course_employee" parent="maya_core.course_menu"
               action="maya_core.action_employee" sequence="3"/>
 
   </data>

@@ -1,11 +1,11 @@
 from odoo import models, fields, _
 
-class Course(models.Model):
+class Study(models.Model):
   """  
-  Define un curso: ciclo formativo, tipo bachillerato, etc
+  Define un estudio: ciclo formativo, tipo bachillerato, etc
   """
 
-  _name = 'maya_core.course'
+  _name = 'maya_core.study'
   _description = 'Ciclo Formativo/Tipo de bachillerato/ESPA/FPA'
 
   # index=True para optimizar las búsquedas por empresa
