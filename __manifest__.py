@@ -50,6 +50,7 @@
         'data/center/maya_core.session_schedule.csv',
         'data/center/maya_core.place.csv',
         'data/center/maya_core.team.csv',
+        'data/center/maya_core.study.csv',
     ],
     # only loaded in demonstration mode
     'demo': [
