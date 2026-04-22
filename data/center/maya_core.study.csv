@@ -9,3 +9,10 @@ maya_core.CF_DAW,fp_company,DAW,Desarrollo de Aplicaciones Web,845104,GS,IC,LFP,
 maya_core.CF_ASIR,fp_company,ASIR,Administración de Sistemas Informáticos y Redes,829104,GS,IC,LFP,1
 maya_core.CF_ADI,fp_company,ADI,Asistencia a Dirección,906104,GS,AD,LFP,1
 maya_core.CF_AFI,fp_company,AFI,Administración y Finanzas,441104,GS,AD,LFP,1
+maya_core.CF_GAT,fp_company,GAT,Gestión de Alojamientos Turísticos,714104,GS,HT,LFP,1
+maya_core.CF_GIAT,fp_company,GIAT,Guía Información y Asistencias Turísticas,828104,GS,HT,LFP,1
+maya_core.CF_AVGE,fp_company,AVGE,Agencias de Viajes y Gestión de Eventos,827104,GS,HT,LFP,1
+maya_core.CF_CI,fp_company,CI,Comercio Internacional,449104,GS,CM,LFP,1
+maya_core.CF_TIL,fp_company,TIL,Transporte y Logística,898104,GS,CM,LFP,1
+maya_core.CF_GVEC,fp_company,GVEC,Gestión y Ventas de Espacios Comerciales,899104,GS,CM,LFP,1
+maya_core.CF_MIP,fp_company,MIP,Marketing y Publicidad<,222104,GS,CM,LFP,1
