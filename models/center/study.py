@@ -63,6 +63,7 @@ class Study(models.Model):
     required = True, help = "Familia formativa a la que pertenece el curso. Solo Ciclos Formativos")
 
   law = fields.Selection([
+      ('NR', 'No reglada'),
       ('LOE', 'LOE'),
       ('LOGSE', 'LOGSE'),
       ('LFP', 'LFP'),
