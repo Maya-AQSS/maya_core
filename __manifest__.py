@@ -51,6 +51,7 @@
         'data/center/maya_core.place.csv',
         'data/center/maya_core.team.csv',
         'data/center/maya_core.study.csv',
+        'data/center/subjects/cf/tic.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

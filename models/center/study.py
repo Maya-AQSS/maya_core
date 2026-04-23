@@ -30,7 +30,6 @@ class Study(models.Model):
       string ='Grado', default = '',
       help = "Grado del curso. Solo Ciclos Formativos")
   
-
   family = fields.Selection([
       ('NF', 'Sin familia'),
       ('AFD', 'Actividades Físicas y Deportivas'),
@@ -72,3 +71,5 @@ class Study(models.Model):
       help = "Ley Educativa a la que está adscrito el curso.")
   
   active = fields.Boolean('Activo', default=True)
+
+  subjects_ids = fields.Many2many('maya_core.subject', string = 'Asignaturas / Módulos')

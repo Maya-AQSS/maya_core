@@ -1,0 +1,17 @@
+<odoo>
+  <data>
+    <!-- Módulos DAW LFP -->
+    <record model="maya_core.subject" id="maya_core.subject_DAW_DWEC">
+      <field name="abbr">DWEC</field>
+      <field name="code">0612</field>
+      <field name="name">Desarrollo web en entorno cliente</field>
+      <field name="year">2</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_DAW')])]"/>                            
+      <field name="year">2</field>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">2</field>  
+      <field name="week_hours">6</field>
+      <field name="week_hours_teacher">5</field>
+    </record>
+  </data>
+</odoo>
