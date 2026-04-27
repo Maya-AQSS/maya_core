@@ -83,22 +83,26 @@
    
     <!-- Views de session_Schedule -->
     <record model="ir.ui.view" id="maya_core.session_schedule_list">
-      <field name="name">Lista de sesiones</field>
-      <field name="model">maya_core.session_schedule</field>
-      <field name="arch" type="xml">
-        <list editable="bottom" default_order="week_day, start_time" decoration-danger="active == False">
-          <field name="location_id" column_invisible="True"/>
-          <field name="name"/>
-          <field name="week_day"/>
-          <field name="start_time" widget="float_time"/>
-          <field name="end_time" widget="float_time"/>
-          <field name="duration"/>
-          <field name="active" widget="boolean_button"/>
-          <groupby name="location_id">
-          </groupby>
-        </list>
-      </field>
-    </record>
+    <field name="name">Lista de sesiones</field>
+    <field name="model">maya_core.session_schedule</field>
+    <field name="arch" type="xml">
+      <list editable="bottom" default_order="week_day, start_time" decoration-danger="active == False">
+        <field name="location_id" column_invisible="True"/>
+        <field name="name"/>
+        <field name="week_day"/>
+        
+        <field name="start_time" widget="float_time" class="text-center"/>
+        <field name="end_time" widget="float_time" class="text-center"/>
+        
+        <field name="duration" widget="float_time" class="text-center"/>
+        
+        <field name="active" class="text-center"/> 
+        
+        <groupby name="location_id">
+        </groupby>
+      </list>
+    </field>
+  </record>
 
     <record id="maya_core_session_schedule_search" model="ir.ui.view">
         <field name="name">session.schedule.search</field>
