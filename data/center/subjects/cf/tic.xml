@@ -7,11 +7,54 @@
       <field name="name">Desarrollo web en entorno cliente</field>
       <field name="year">2</field>
       <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_DAW')])]"/>                            
-      <field name="year">2</field>
       <field name="optional">False</field>
       <field name="group_tutoring_hours">2</field>  
-      <field name="week_hours">6</field>
+      <field name="individual_tutoring_hours">3</field>
       <field name="week_hours_teacher">5</field>
+      <field name="week_hours">6</field>
+      <field name="total_hours">200</field>
     </record>
+
+     <record model="maya_core.subject" id="maya_core.subject_DAW_DWES">
+      <field name="abbr">DWES</field>
+      <field name="code">0613</field>
+      <field name="name">Desarrollo web en entorno servidor</field>
+      <field name="year">2</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_DAW')])]"/>
+      <field name="group_tutoring_hours">2</field>  
+      <field name="individual_tutoring_hours">3</field>
+      <field name="week_hours_teacher">5</field>
+      <field name="week_hours">6</field>
+      <field name="total_hours">200</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_DAW_DAW">
+      <field name="abbr">DAW</field>
+      <field name="code">0614</field>
+      <field name="name">Despliegue de aplicaciones web</field>
+      <field name="year">2</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_DAW')])]"/>                            
+      <field name="group_tutoring_hours">1</field>  
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">2</field>
+      <field name="week_hours">3</field>
+      <field name="total_hours">100</field>
+      
+    </record>
+
+    <!-- Módulos DAM LFP -->
+    <record model="maya_core.subject" id="maya_core.subject_DAM_AD">
+      <field name="abbr">AD</field>
+      <field name="code">0486</field>
+      <field name="name">Acceso a datos</field>
+      <field name="year">2</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_DAM')])]"/>
+      <field name="group_tutoring_hours">2</field>  
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">3</field>
+      <field name="total_hours">133</field>
+      <field name="week_hours">4</field>
+    </record>
+
   </data>
 </odoo>
