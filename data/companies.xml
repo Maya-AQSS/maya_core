@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
   <data noupdate="0"> <!-- se actualizan cuando instala o actualiza -->
+
+    <!-- Centro  -->
+    <record id="base.main_company" model="res.company">
+      <field name="name">CEEDCV</field>
+      <field name="email">46025799@edu.gva.es</field>
+      <field name="street">Casa de la Misericòrdia, 34</field>
+      <field name="zip">46014</field>
+      <field name="city">València</field>
+      <field name="phone">96 120 69 90</field>
+      <field name="website">https://portal.edu.gva.es/ceedcv</field>
+      <field name="currency_id" ref="base.EUR"/>
+    </record>
+
     <!-- Ciclos  -->
     <record id="fp_company" model="res.company">
       <field name="name">FP</field>
@@ -12,6 +25,7 @@
       <field name="website">https://portal.edu.gva.es/ceedcv</field>
       <field name="currency_id" ref="base.EUR"/>
       <field name="color">1</field>
+      <field name="parent_id" ref="base.main_company"/>
     </record>
 
     <!-- Bachillerato  -->
@@ -25,6 +39,7 @@
       <field name="website">https://portal.edu.gva.es/ceedcv</field>
       <field name="currency_id" ref="base.EUR"/>
       <field name="color">10</field>
+      <field name="parent_id" ref="base.main_company"/>
     </record>
 
     <!-- FPA -->
@@ -38,6 +53,7 @@
       <field name="website">https://portal.edu.gva.es/ceedcv</field>
       <field name="currency_id" ref="base.EUR"/>
       <field name="color">2</field>
+      <field name="parent_id" ref="base.main_company"/>
     </record>
   </data>
 
