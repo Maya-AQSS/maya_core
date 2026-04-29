@@ -14,10 +14,15 @@ class Subject(models.Model):
   year = fields.Selection([('1', '1º'), ('2', '2º')], required = True, default = '1', string = _("Curso"))
 
   optional = fields.Boolean(default = False, string = _("Optativa"))
+  
+  # tutorias
   group_tutoring_hours = fields.Integer(default = 2, string = _("Horas de tutorías colectivas"), help=_("Número de horas de tutoría colectiva semanal para esta asignatura."))
-  week_hours = fields.Integer(default = 2, string = _("Horas semanales"), help=_("Número de horas semanales para esta asignatura (según currículo)."))
-  week_hours_teacher = fields.Integer(default = 2, string = _("Horas semanales profesor"), help=_("Número de horas semanales para el profesor."))
+  individual_tutoring_hours = fields.Integer(default = 2, string = _("Horas de tutorías colectivas"), help=_("Número de horas de tutoría colectiva semanal para esta asignatura."))
 
+  total_hours = fields.Integer(default = 100, string=_("Horas totales"), help=_("Número total de horas para esta asignatura."))
+  week_hours = fields.Integer(default = 2, string=_("Horas semanales"), help=_("Número de horas semanales para esta asignatura (según currículo)."))
+  week_hours_teacher = fields.Integer(default = 2, string=_("Horas semanales profesor"), help=_("Número de horas semanales para el profesor."))
+  
   studies_ids = fields.Many2many('maya_core.study', string = _('Estudios'), help = _('Estudios en los que se imparte'))
 
-  # employees_ids = fields.One2many('maya_core.subject_employee_rel', 'subject_id', string = _('Profesores'))
+  employees_ids = fields.One2many('maya_core.subject_employee_rel', 'subject_id', string = _('Profesores'))
