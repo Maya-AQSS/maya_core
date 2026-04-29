@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import api, models, fields
+from odoo import api, models, fields, _
 from odoo.exceptions import ValidationError
 
 import re
@@ -24,48 +24,49 @@ class Employee(models.Model):
                             inverse = '_user_inverse',
                             store=True)
   
-  dni = fields.Char(string = 'DNI', size = 9, required = True)
-  name = fields.Char(string = 'Nombre', required = True)
-  surname = fields.Char(string = 'Apellidos', required = True)
-  phone_extension = fields.Char(string = "Extensión", size = 6)
-  work_email = fields.Char(string = 'Email', related = 'user_id.email')
-  employee_info = fields.Char(string = 'Nombre completo', compute = '_compute_full_employee_info')
+  dni = fields.Char(_('DNI'), related="user_id.login", readonly = True, store = True)
+  name = fields.Char(string = _('Nombre'), related="user_id.name", readonly = True, store = True)
+  surname = fields.Char(string = _('Apellidos'), related="user_id.surname", readonly = True, store = True)
+  phone_extension = fields.Char(string = _("Extensión"), size = 6)
+  work_email = fields.Char(string = 'Email', related = 'user_id.email', store = True)
+  employee_info = fields.Char(string = _('Nombre completo'), compute = '_compute_full_employee_info')
 
   employee_type = fields.Selection([
-        ('profesor', 'Profesor/a'),
+        ('profesor', _('Profesor/a')),
         ('pas', 'PAS'),
-        ], string ='Tipo de empleado', default = 'profesor', required = True,
+        ], string = _('Tipo de empleado'), default = 'profesor', required = True,
         help = "Permite categorizar a los empleados en profesores o personal de administración.")
   
   position_type = fields.Selection([
-        ('AJC', 'Adjudicaciones julio carrera'),
-        ('AJT', 'Adjudicaciones julio interino'),
-        ('AS', 'Adjudicaciones septiembre'),
-        ('PRM', 'Definitiva'),
-        ('ESP', 'Específica'),
-        ('ESPJ', 'Puesto específico'),
-        ('SUP', 'Suprimida'),
-        ], string ='Tipo de plaza', default = 'ESPJ', required = True,
-        help = "Tipo de plaza que el empleado/a tienen asignada.")
-  
-  car_registration_number_1 = fields.Char(string = 'Matrícula principal', size = 7)
-  car_registration_number_2 = fields.Char(string = 'Matrícula secundaria', size = 7)
-  car_registration_number_3 = fields.Char(string = 'Matrícula terciaria', size = 7)
+        ('AJC', _('Adjudicaciones julio carrera')),
+        ('AJT', _('Adjudicaciones julio interino')),
+        ('AS', _('Adjudicaciones septiembre')),
+        ('PRM', _('Definitiva')),
+        ('CMS', _('Comisión servicios')),
+        ('CES', _('Específica')),
+        ('ESPJ', _('Puesto específico')),
+        ('SUP', _('Suprimida')),
+        ], string = _('Tipo de plaza'), default = 'ESPJ',
+        help = _("Tipo de plaza que el empleado/a tienen asignada en el curso actual."))
+
+  car_registration_number_1 = fields.Char(string = _('Matrícula principal'), size = 7)
+  car_registration_number_2 = fields.Char(string = _('Matrícula secundaria'), size = 7)
+  car_registration_number_3 = fields.Char(string = _('Matrícula terciaria'), size = 7)
 
   # sustituciones. Simulo un One2one con dos many2one, un one2many y funciones calculadas
   sick_leave = fields.Boolean(default = False)
-  replaced_by_id = fields.Many2one('maya_core.employee', string='Sustituye a', 
+  replaced_by_id = fields.Many2one('maya_core.employee', string=_('Sustituye a'), 
                                     compute='_compute_teacher', 
                                     inverse='_teacher_inverse')
   replaces_id = fields.Many2one('maya_core.employee', string='Sustituye a')
   replaced_by_ids = fields.One2many('maya_core.employee', 'replaces_id')
-  
-  team_ids = fields.Many2many('maya_core.team', required = True, string = 'Departamentos y equipos')
+
+  team_ids = fields.Many2many('maya_core.team', required = True, string = _('Departamentos y equipos'))
   """ roles_ids = fields.Many2many('maya_core.rol', string = 'Cargos')
    """
   active = fields.Boolean('Activo', related='user_id.active', help = 'Indica si el usuario maya_core asociado está activo')
   
-  """ subjects_ids = fields.One2many('maya_core.subject_employee_rel', 'employee_id', string = 'Módulos') """
+  subjects_ids = fields.One2many('maya_core.subject_employee_rel', 'employee_id', string = _('Asignaturas/Módulos'))
 
   @api.depends('user_ids')
   def _compute_user_id(self):

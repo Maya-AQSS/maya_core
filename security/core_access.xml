@@ -6,7 +6,7 @@
 
     <!-- EMPLOYEE -->
     <record id="maya_core.employee_admin_user_access" model="ir.model.access">
-      <field name="name">Acceso Administrador a los empleados</field>
+      <field name="name">Acceso usuario general a los empleados</field>
       <field name="model_id" ref="model_maya_core_employee"/>
       <field name="group_id" ref="base.group_user"></field>  <!-- TOCHANGE! permiso temporal -->
       <field name="perm_read">1</field>
@@ -17,7 +17,7 @@
 
     <!-- TEANS -->
     <record id="maya_core.team_admin_user_access" model="ir.model.access">
-      <field name="name">Acceso Administrador a los equipos</field>
+      <field name="name">Acceso usuario general a los equipos</field>
       <field name="model_id" ref="model_maya_core_team"/>
       <field name="group_id" ref="base.group_user"></field>  <!-- TOCHANGE! permiso temporal -->
       <field name="perm_read">1</field>
@@ -28,7 +28,7 @@
 
     <!-- STUDY -->
     <record id="maya_core.study_admin_user_access" model="ir.model.access">
-      <field name="name">Acceso Administrador a los estudios</field>
+      <field name="name">Acceso usuario general a los estudios</field>
       <field name="model_id" ref="model_maya_core_study"/>
       <field name="group_id" ref="base.group_user"></field>  <!-- TOCHANGE! permiso temporal -->
       <field name="perm_read">1</field>
@@ -39,7 +39,7 @@
 
     <!-- SUBJECT -->
     <record id="maya_core.subject_admin_user_access" model="ir.model.access">
-      <field name="name">Acceso Administrador a las asignaturas</field>
+      <field name="name">Acceso usuario general a las asignaturas</field>
       <field name="model_id" ref="model_maya_core_subject"/>
       <field name="group_id" ref="base.group_user"></field>  <!-- TOCHANGE! permiso temporal -->
       <field name="perm_read">1</field>
@@ -48,10 +48,20 @@
       <field name="perm_unlink">1</field>
     </record>
 
+    <!-- SUBJECT EMPLOYEE -->
+    <record id="maya_core.subject_employee_rel_user_access" model="ir.model.access">
+      <field name="name">Acceso usuario general a las relaciones entre asignaturas y profesores</field>
+      <field name="model_id" ref="model_maya_core_subject_employee_rel"/>
+      <field name="group_id" ref="base.group_user"></field>  <!-- TOCHANGE! permiso temporal -->
+      <field name="perm_read">1</field>
+      <field name="perm_create">1</field>
+      <field name="perm_write">1</field>
+      <field name="perm_unlink">1</field>
+    </record>
 
     <!-- LOCATION -->
-    <record id="maya_core.location_admin_user_access" model="ir.model.access">
-      <field name="name">Acceso Administrador a las ubicaciones</field>
+    <record id="maya_core.location_user_user_access" model="ir.model.access">
+      <field name="name">Acceso usuario general a las ubicaciones</field>
       <field name="model_id" ref="model_maya_core_location"/>
       <field name="group_id" ref="base.group_user"></field>  <!-- TOCHANGE! permiso temporal -->
       <field name="perm_read">1</field>
@@ -62,7 +72,7 @@
 
     <!-- PLACE -->
     <record id="maya_core.place_admin_user_access" model="ir.model.access">
-      <field name="name">Acceso Administrador a los espacios</field>
+      <field name="name">Acceso usuario general a los espacios</field>
       <field name="model_id" ref="model_maya_core_place"/>
       <field name="group_id" ref="base.group_user"></field>  <!-- TOCHANGE! permiso temporal -->
       <field name="perm_read">1</field>
@@ -72,8 +82,8 @@
     </record>
 
     <!-- SESSION SCHEDULE -->
-    <record id="maya_core.session_schedule_admin_user_access" model="ir.model.access">
-      <field name="name">Acceso Administrador a los horarios de sesiones</field>
+    <record id="maya_core.session_schedule_user_user_access" model="ir.model.access">
+      <field name="name">Acceso usuario general a los horarios de sesiones</field>
       <field name="model_id" ref="model_maya_core_session_schedule"/>
       <field name="group_id" ref="base.group_user"></field>  <!-- TOCHANGE! permiso temporal -->
       <field name="perm_read">1</field>
