@@ -1,9 +1,9 @@
 id,company_id:id,abbr,name,code,grade,family,law,active
 maya_core.BCH_artes_plasticas,bachillerato_company,BAP,Bachillerato Artes Plásticas,BAA,NG,NF,LOMLOE,1
-maya_core.BCH_artes_musicales,bachillerato_company,BAM,Bachillerato Artes Musicales,BAAM,NG,NF,LOMLOE,1
-maya_core.BCH_artes_ciencias,bachillerato_company,BCT,Bachillerato Ciencias y Tecnología,BAC,NG,NF,LOMLOE,1
-maya_core.BCH_artes_general,bachillerato_company,BGN,Bachillerato General,BAG,NG,NF,LOMLOE,1
-maya_core.BCH_artes_humanindades,bachillerato_company,BHC,Bachillerato Humanidades y Ciencias Sociales,BAH,NG,NF,LOMLOE,1
+maya_core.BCH_artes_musicales,bachillerato_company,BAM,Bachillerato Artes Musicales,BAM,NG,NF,LOMLOE,1
+maya_core.BCH_ciencias,bachillerato_company,BCT,Bachillerato Ciencias y Tecnología,BAC,NG,NF,LOMLOE,1
+maya_core.BCH_general,bachillerato_company,BGN,Bachillerato General,BAG,NG,NF,LOMLOE,1
+maya_core.BCH_humanidades,bachillerato_company,BHC,Bachillerato Humanidades y Ciencias Sociales,BAH,NG,NF,LOMLOE,1
 maya_core.CF_DAM,fp_company,DAM,Desarrollo de Aplicaciones Multiplataforma,836104,GS,IC,LFP,1
 maya_core.CF_DAW,fp_company,DAW,Desarrollo de Aplicaciones Web,845104,GS,IC,LFP,1
 maya_core.CF_ASIR,fp_company,ASIR,Administración de Sistemas Informáticos y Redes,829104,GS,IC,LFP,1
