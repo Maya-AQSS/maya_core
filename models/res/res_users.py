@@ -14,7 +14,7 @@ class Users(models.Model):
 
   maya_employee_id = fields.Many2one('maya_core.employee', string='Empleado', check_company=False)
   
-  surname = fields.Char(string = _('Apellidos'), required = True)
+  surname = fields.Char(string = _('Apellidos'), required = True, default= " ")
   employee_info = fields.Char(string = _('Nombre completo'), compute = '_compute_full_employee_info', store=False)
 
   keycloak_user_id = fields.Char(string='Keycloak User ID')
