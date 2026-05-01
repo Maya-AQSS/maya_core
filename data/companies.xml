@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <data noupdate="0"> <!-- se actualizan cuando instala o actualiza -->
+  <data noupdate="1"> <!-- se actualizan cuando instala o actualiza -->
 
     <!-- Centro  -->
     <record id="base.main_company" model="res.company">
