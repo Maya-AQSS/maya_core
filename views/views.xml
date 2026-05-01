@@ -169,13 +169,14 @@
               </page>
               <page string="Sesiones Asignadas">
                   <field name="session_ids">
-                      <list editable="bottom">
-                          <field name="name"/>
-                          <field name="week_day"/>
-                          <field name="start_time" widget="float_time"/>
-                          <field name="end_time" widget="float_time"/>
-                          <field name="active" column_invisible="1"/>
-                      </list>
+                    <list editable="bottom" default_order="week_day" limit="11">
+                      <field name="name"/>
+                      <field name="week_day"/>
+                      <field name="start_time" widget="float_time"/>
+                      <field name="end_time" widget="float_time"/>
+                      <field name="duration" widget="float_time"/>
+                      <field name="active" column_invisible="1"/>
+                    </list>
                   </field>
                </page>
             </notebook>
