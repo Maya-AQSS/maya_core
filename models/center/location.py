@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, api, fields, _
+from odoo.exceptions import UserError
 
 class Location(models.Model):
     """
@@ -93,3 +94,17 @@ class Location(models.Model):
                 lines.append("%s: %s" % (label, g['text']))
             
             record.opening_hours = "\n".join(lines) if lines else "Sin horario definido"
+
+    def unlink(self):
+      for record in self:
+        # Si hay espacios de trabajo asignados a esta ubicación no es posible eliminarla
+        num_places = self.env["maya_core.place"].search_count([
+            ("location_id", "=", record.id)
+        ])
+        
+        if num_places > 0:
+          raise UserError(
+              _("No se puede eliminar la ubicación '%s' porque tiene %s espacios de trabajo definidos.") % (record.name, num_places)
+          )
+        
+      return super().unlink()

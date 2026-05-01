@@ -1,11 +1,11 @@
 from odoo import models, fields, _
 
-class Course(models.Model):
+class Study(models.Model):
   """  
-  Define un curso: ciclo formativo, tipo bachillerato, etc
+  Define un estudio: ciclo formativo, tipo bachillerato, etc
   """
 
-  _name = 'maya_core.course'
+  _name = 'maya_core.study'
   _description = 'Ciclo Formativo/Tipo de bachillerato/ESPA/FPA'
 
   # index=True para optimizar las búsquedas por empresa
@@ -30,7 +30,6 @@ class Course(models.Model):
       string ='Grado', default = '',
       help = "Grado del curso. Solo Ciclos Formativos")
   
-
   family = fields.Selection([
       ('NF', 'Sin familia'),
       ('AFD', 'Actividades Físicas y Deportivas'),
@@ -63,6 +62,7 @@ class Course(models.Model):
     required = True, help = "Familia formativa a la que pertenece el curso. Solo Ciclos Formativos")
 
   law = fields.Selection([
+      ('NR', 'No reglada'),
       ('LOE', 'LOE'),
       ('LOGSE', 'LOGSE'),
       ('LFP', 'LFP'),
@@ -71,3 +71,5 @@ class Course(models.Model):
       help = "Ley Educativa a la que está adscrito el curso.")
   
   active = fields.Boolean('Activo', default=True)
+
+  subjects_ids = fields.Many2many('maya_core.subject', string = 'Asignaturas / Módulos')

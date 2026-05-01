@@ -10,8 +10,8 @@
           <field name="phone_extension"/>
           <field name="work_email"/>
           <field name="employee_type"/>
-          <!-- <field name="departament_ids" widget="many2many_tags" />
-          <field name="roles_ids" widget="many2many_tags" /> -->
+          <field name="team_ids" widget="many2many_tags" />
+          <!-- <field name="roles_ids" widget="many2many_tags" /> -->
         </list>
       </field>
     </record>
@@ -36,12 +36,12 @@
             </group>  
           </group>
           <notebook>
-            <page string='Departamentos'>
+            <page string='Equipos'>
               <group>
-                <field name="departament_ids">
+                <field name="team_ids">
                   <list>
                     <field name="name"/>
-                    <field name="primary" widget="boolean_favorite" readonly="1"/>
+                    <field name="is_departament" widget="boolean_favorite" readonly="1"/>
                   </list>
                 </field>
               </group>
@@ -80,88 +80,271 @@
         </form>
       </field>
     </record>
+   
+    <!-- Views de session_Schedule -->
+    <record model="ir.ui.view" id="maya_core.session_schedule_list">
+      <field name="name">Lista de sesiones</field>
+      <field name="model">maya_core.session_schedule</field>
+      <field name="arch" type="xml">
+        <list editable="bottom" default_order="week_day, start_time" decoration-danger="active == False">
+          <field name="location_id" column_invisible="True"/>
+          <field name="name"/>
+          <field name="week_day"/>
+        
+          <field name="start_time" widget="float_time" class="text-center"/>
+          <field name="end_time" widget="float_time" class="text-center"/>
+        
+          <field name="duration" widget="float_time" class="text-center"/>
+        
+          <field name="active" widget="boolean_button" class="text-center"/> 
+        
+          <groupby name="location_id">
+          </groupby>
+        </list>
+      </field>
+    </record>
+    
+    <record id="maya_core_session_schedule_search" model="ir.ui.view">
+        <field name="name">session.schedule.search</field>
+        <field name="model">maya_core.session_schedule</field>
+        <field name="arch" type="xml">
+            <search>
+                <filter string="Ubicación" name="groupby_location" context="{'group_by': 'location_id'}"/>
+                <searchpanel>
+                    <field name="week_day" string="Días de la semana" icon="fa-calendar" enable_counters="1"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
 
     <!-- Views de Location -->
-    <record id="maya_core.location_list" model="ir.ui.view">
-        <field name="name">Lista de Ubicaciones</field>
-        <field name="model">maya_core.location</field>
-        <field name="arch" type="xml">
-            <list>
-                <field name="name"/>
+    <record id="maya_core.view_location_list" model="ir.ui.view">
+      <field name="name">Lista de Ubicaciones</field>
+      <field name="model">maya_core.location</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="name"/>
+          <field name="address"/>
+        </list>
+      </field>
+    </record>
+
+    <record id="maya_core.view_location_form" model="ir.ui.view">
+      <field name="name">Gestión de Ubicaciones</field>
+      <field name="model">maya_core.location</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <!--tabla y estilos para la alineacion horizontal de la imagen con el titulo (oe_title alinea siempre la imagen a la derecha) -->
+            <table style="width: 100%; margin-bottom: 20px;">
+              <tr>
+                <td style="width: 170px; vertical-align: top;">
+                  <field name="image" widget="image" options="{'size': [150, 200], 'zoom': true}"/>
+                </td>
                 
+                <td style="vertical-align: top;">
+                  <div class="oe_title">
+                      <label for="name" string="Nombre"/>
+                      <h1>
+                          <field name="name"/>
+                      </h1>
+                      <!-- tags con many2many_tags -->
+                  </div>
+                </td>
+              </tr>
+            </table> 
+            <group>
+              <group string="Dirección y Teléfono">
                 <field name="address"/>
-                <field name="phone_number" widget="phone"/>
-            </list>
-        </field>
+                <field name="map_url" widget="url"/>
+              </group>
+              <group string="Información">
+                <field name="description"/>
+                <!-- campo de horario -->
+              </group>
+            </group>
+            <notebook>
+              <page string="Plano">
+                <field name="floor_plan" widget="image" options="{'size': [0, 600], 'zoom': true}"/>
+              </page>
+              <page string="Sesiones Asignadas">
+                  <field name="session_ids">
+                      <list editable="bottom">
+                          <field name="name"/>
+                          <field name="week_day"/>
+                          <field name="start_time" widget="float_time"/>
+                          <field name="end_time" widget="float_time"/>
+                          <field name="active" column_invisible="1"/>
+                      </list>
+                  </field>
+               </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
     </record>
 
-    <record id="maya_core.location_form" model="ir.ui.view">
-        <field name="name">Gestión de Ubicaciones</field>
-        <field name="model">maya_core.location</field>
-        <field name="arch" type="xml">
-            <form>
-                <sheet>
-                    <!--tabla y estilos para la alineacion horizontal de la imagen con el titulo (oe_title alinea siempre la imagen a la derecha) -->
-                    <table style="width: 100%; margin-bottom: 20px;">
-                        <tr>
-                            <td style="width: 170px; vertical-align: top;">
-                                <field name="image" widget="image" options="{'size': [150, 200], 'zoom': true}"/>
-                            </td>
-                            
-                            <td style="vertical-align: top;">
-                                <div class="oe_title">
-                                    <label for="name" string="Nombre"/>
-                                    <h1>
-                                        <field name="name"/>
-                                    </h1>
-                                    <!-- tags con many2many_tags -->
-                                </div>
-                            </td>
-                        </tr>
-                    </table> 
-                    <group>
-                        <group string="Dirección y Teléfono">
-                            <field name="phone_number" widget="phone"/>
-                            <field name="address"/>
-                            <field name="map_url" widget="url"/>
-                        </group>
-                        <group string="Información">
-                            <field name="description"/>
-                            <field name="opening_hours" readonly="1" decoration-bf="1"/>
-                        </group>
-                    </group>
-                    <notebook>
-                      <page string="Plano">
-                            <field name="floor_plan" widget="image" options="{'size': [0, 600], 'zoom': true}"/>
-                      </page>
-                      <page string="Sesiones Asignadas">
-                            <field name="session_ids">
-                                <list editable="bottom">
-                                    <field name="name"/>
-                                    <field name="week_day"/>
-                                    <field name="start_time" widget="float_time"/>
-                                    <field name="end_time" widget="float_time"/>
-                                    <field name="active" column_invisible="1"/>
-                                </list>
-                            </field>
-                      </page>
-                    </notebook>
-                </sheet>
-            </form>
-        </field>
+    <!-- Views de Place -->
+    <record id="maya_core.view_place_list" model="ir.ui.view">
+      <field name="name">mmaya_core.place.list</field>
+      <field name="model">maya_core.place</field>
+      <field name="arch" type="xml">
+        <list string="Espacios de trabajo">
+          <field name="name"/>
+          <field name="location_id"/>
+        </list>
+      </field>
     </record>
 
-    <record model="ir.ui.view" id="maya_core.departament_tree">
-      <field name="name">Lista de departamentos</field>
-      <field name="model">maya_core.departament</field>
+    <record id="maya_core.view_place_form" model="ir.ui.view">
+      <field name="name">Gestión de espacios de trabajo</field>
+      <field name="model">maya_core.place</field>
+      <field name="arch" type="xml">
+        <form string="Espacio">
+        
+          <div class="oe_title">
+            <h1>
+              <field name="name" placeholder="Nombre del espacio..."/>
+            </h1>
+          </div>
+
+          <group name="main_info" string="Información Principal">
+            <div class="d-flex align-items-start">
+              <div style="min-width: 150px; margin-left: 50px;" class="justify-content-center">
+                <field name="image" class="oe_avatar m-0" widget="image" style="float: none;" options="{'zoom': true}"/>
+              </div>
+              <div class="flex-grow-1" style="margin-top: 0; min-width: 700px">
+                <group col="2" >
+                    <field name="location_id" options="{'no_create': True}" class="w-100"/>
+                    <field name="description" placeholder="Descripción detallada del espacio..." class="w-100"/>
+                </group>
+              </div>
+            </div>
+          </group>
+
+          <notebook>
+            <page string = 'Imágenes'>
+              <group>
+                <field name="image" widget="image" options="{'size': [150, 200], 'zoom': true}" />
+                <field name="image_360" widget="image" options="{'size': [150, 200], 'zoom': true}" />
+                <field name="floor_plan_image" widget="image" options="{'size': [150, 200], 'zoom': true}"/>
+                <field name="is_panoramic"/>
+              </group>
+            </page>
+          </notebook>
+
+        </form>
+      </field>
+    </record>
+
+    <!-- Views de Team -->
+    <record model="ir.ui.view" id="maya_core.team_tree">
+      <field name="name">Lista de equipos</field>
+      <field name="model">maya_core.team</field>
       <field name="arch" type="xml">
         <list>
           <field name="name" />
           <field name="abbr"/>
-          <field name="primary" widget="boolean_favorite" readonly="1"/>
+          <field name="is_departament" widget="boolean_favorite" readonly="1"/>
         </list>
       </field>
     </record>
+              
+    <!-- Herencia de la vista lista de usuarios -->
+    <record id="view_users_tree_inherit_employee_info" model="ir.ui.view">
+      <field name="name">res.users.tree - Nombre completo</field>
+      <field name="model">res.users</field>
+      <field name="inherit_id" ref="base.view_users_tree"/>   <!-- Vista original -->
+      <field name="arch" type="xml">  
+        <!-- Reemplazamos el campo name por employee_info -->
+        <field name="name" position="replace">
+            <field name="employee_info"/>
+        </field>
+      </field>
+    </record>
+
+    <!-- Herencia de la vista Formulario de Usuarios -->
+    <record id="view_users_form_inherit_employee_info" model="ir.ui.view">
+      <field name="name">res.users.form - Nombre y Apellido</field>
+      <field name="model">res.users</field>
+      <field name="inherit_id" ref="base.view_users_form"/>   <!-- Vista original de Odoo -->
+      <field name="arch" type="xml">
+
+        <!-- Reemplazamos el campo 'name' por name + surname uno al lado del otro -->
+        <field name="name" position="replace">
+          <group col="2">
+            <field name="name" string="Nombre" />
+            <field name="surname" string="Apellidos" style="font-size: 0.8em"/>
+          </group>
+        </field>
+
+      </field>
+    </record>          
+      
+    <!-- Views de Team -->
+    <record model="ir.ui.view" id="maya_core.team_tree">
+      <field name="name">Lista de equipos</field>
+      <field name="model">maya_core.team</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="name" />
+          <field name="abbr"/>
+          <field name="is_departament" widget="boolean_favorite" readonly="1"/>
+        </list>
+      </field>
+    </record>
+              
+    <record model="ir.ui.view" id="maya_core.study_tree">
+      <field name="name">Lista de Estudioss</field>
+      <field name="model">maya_core.study</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="name"/>
+          <field name="abbr"/>
+          <field name="code"/>
+          <field name="company_id"/>
+          <field name="subjects_ids"/>
+        </list>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="maya_core.study_form">
+      <field name="name">Gestión de estudios</field>
+      <field name="model">maya_core.study</field>
+      <field name="arch" type="xml">
+        <form>
+         <div class="oe_title">
+            <h1>
+              <field name="name" placeholder="Nombre del estudio..."/>
+            </h1>
+          </div>
+          <group col="3" string="Información">
+            <group>
+              <field name="abbr" />
+              <field name="code" />
+            </group>
+          
+            <group>
+              <field name="family" />
+              <field name="grade" />   
+            </group>
+            <group>
+              <field name="law" />
+            </group>
+          </group>
+          <group string="Asignaturas / Módulos">
+            <field name="subjects_ids">
+              <list>
+                <field name="name" />
+                <field name="abbr" />
+                <field name="code" />
+              </list> 
+            </field>
+          </group>  
+        </form>
+      </field>
+    </record>
+
 
     <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="maya_core.action_employee">
@@ -176,15 +359,27 @@
       <field name="view_mode">list,form</field>
     </record>
 
-    <record model="ir.actions.act_window" id="maya_core.action_departament">
-      <field name="name">Departamentos y Equipos</field>
-      <field name="res_model">maya_core.departament</field>
+    <record model="ir.actions.act_window" id="maya_core.action_place">
+      <field name="name">Espacios</field>
+      <field name="res_model">maya_core.place</field>
       <field name="view_mode">list,form</field>
     </record>
 
-    <record model="ir.actions.act_window" id="maya_core.action_course">
-      <field name="name">Cursos</field>
-      <field name="res_model">maya_core.course</field>
+    <record model="ir.actions.act_window" id="maya_core.action_team">
+      <field name="name">Departamentos y Equipos</field>
+      <field name="res_model">maya_core.team</field>
+      <field name="view_mode">list,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="maya_core.action_study">
+      <field name="name">Estudios</field>
+      <field name="res_model">maya_core.study</field>
+      <field name="view_mode">list,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="maya_core.action_subject">
+      <field name="name">Asignaturas</field>
+      <field name="res_model">maya_core.subject</field>
       <field name="view_mode">list,form</field>
     </record>
 
@@ -192,6 +387,7 @@
       <field name="name">Horarios de sesiones</field>
       <field name="res_model">maya_core.session_schedule</field>
       <field name="view_mode">list</field>
+      <field name="context">{'search_default_groupby_location': 1}</field>
     </record>
 
     <!-- Top menu item -->
@@ -199,20 +395,34 @@
 
     <!-- menu categories -->
     <menuitem name="Centro" id="maya_core.school" parent="maya_core.menu_root" sequence="1"/>
-    <menuitem name="Curso" id="maya_core.course" parent="maya_core.menu_root" sequence="2"/>
+    <menuitem name="Curso" id="maya_core.course_menu" parent="maya_core.menu_root" sequence="2"/>
      
     <!-- menú centro -->
-    <menuitem name="Ubicaciones" id="maya_core.school_location" parent="maya_core.school"
+    <menuitem name="Disposición física" id="maya_core.physical_layout_school" parent="maya_core.school" sequence="1"/>
+    <menuitem name="Organización " id="maya_core.organization_school" parent="maya_core.school" sequence="2"/>
+    <menuitem name="Enseñanzas " id="maya_core.teaching_school" parent="maya_core.school" sequence="3"/>
+
+    <!-- menú disposición física -->
+    <menuitem name="Ubicaciones" id="maya_core.school_location" parent="maya_core.physical_layout_school"
               action="maya_core.action_location" sequence="1"/>
-    <menuitem name="Cursos" id="maya_core.school_course" parent="maya_core.school"
-              action="maya_core.action_course" sequence="2"/>
-    <menuitem name="Departamentos" id="maya_core.school_departament" parent="maya_core.school"
-              action="maya_core.action_departament" sequence="3"/>
-    <menuitem name="Horario de sesiones" id="maya_core.school_session_schedule" parent="maya_core.school"
+    <menuitem name="Espacios" id="maya_core.school_place" parent="maya_core.physical_layout_school"
+              action="maya_core.action_place" sequence="2"/>
+
+    <!-- menú organización -->
+    <menuitem name="Equipos" id="maya_core.school_team" parent="maya_core.organization_school"
+              action="maya_core.action_team" sequence="3"/>
+    <menuitem name="Horario de sesiones" id="maya_core.school_session_schedule" parent="maya_core.organization_school"
               action="maya_core.action_session_schedule" sequence="4"/>
 
+    <!-- menú enseñanza -->
+    <menuitem name="Estudios" id="maya_core.school_study" parent="maya_core.teaching_school"
+              action="maya_core.action_study" sequence="5"/>
+    <menuitem name="Asignaturas" id="maya_core.school_subject" parent="maya_core.teaching_school"
+              action="maya_core.action_subject" sequence="6"/>
+
+
     <!-- menú Curso -->
-    <menuitem name="Empleados" id="maya_core.course_employee" parent="maya_core.course"
+    <menuitem name="Empleados" id="maya_core.course_employee" parent="maya_core.course_menu"
               action="maya_core.action_employee" sequence="3"/>
 
   </data>
