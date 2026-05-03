@@ -5,7 +5,7 @@
     <!-- ******************************************************** -->
 
     <!-- EMPLOYEE -->
-    <record id="maya_core.employee_admin_user_access" model="ir.model.access">
+    <record id="maya_core.employee_user_access" model="ir.model.access">
       <field name="name">Acceso usuario general a los empleados</field>
       <field name="model_id" ref="model_maya_core_employee"/>
       <field name="group_id" ref="base.group_user"></field>  <!-- TOCHANGE! permiso temporal -->
@@ -16,7 +16,7 @@
     </record>
 
     <!-- TEANS -->
-    <record id="maya_core.team_admin_user_access" model="ir.model.access">
+    <record id="maya_core.team_user_access" model="ir.model.access">
       <field name="name">Acceso usuario general a los equipos</field>
       <field name="model_id" ref="model_maya_core_team"/>
       <field name="group_id" ref="base.group_user"></field>  <!-- TOCHANGE! permiso temporal -->
@@ -27,7 +27,7 @@
     </record>
 
     <!-- STUDY -->
-    <record id="maya_core.study_admin_user_access" model="ir.model.access">
+    <record id="maya_core.study_user_access" model="ir.model.access">
       <field name="name">Acceso usuario general a los estudios</field>
       <field name="model_id" ref="model_maya_core_study"/>
       <field name="group_id" ref="base.group_user"></field>  <!-- TOCHANGE! permiso temporal -->
@@ -38,9 +38,20 @@
     </record>
 
     <!-- SUBJECT -->
-    <record id="maya_core.subject_admin_user_access" model="ir.model.access">
+    <record id="maya_core.subject_user_access" model="ir.model.access">
       <field name="name">Acceso usuario general a las asignaturas</field>
       <field name="model_id" ref="model_maya_core_subject"/>
+      <field name="group_id" ref="base.group_user"></field>  <!-- TOCHANGE! permiso temporal -->
+      <field name="perm_read">1</field>
+      <field name="perm_create">1</field>
+      <field name="perm_write">1</field>
+      <field name="perm_unlink">1</field>
+    </record>
+
+    <!-- CLASSROOM -->
+    <record id="maya_core.classroom_user_access" model="ir.model.access">
+      <field name="name">Acceso usuario general a las aulas</field>
+      <field name="model_id" ref="model_maya_core_classroom"/>
       <field name="group_id" ref="base.group_user"></field>  <!-- TOCHANGE! permiso temporal -->
       <field name="perm_read">1</field>
       <field name="perm_create">1</field>
@@ -52,6 +63,17 @@
     <record id="maya_core.subject_employee_rel_user_access" model="ir.model.access">
       <field name="name">Acceso usuario general a las relaciones entre asignaturas y profesores</field>
       <field name="model_id" ref="model_maya_core_subject_employee_rel"/>
+      <field name="group_id" ref="base.group_user"></field>  <!-- TOCHANGE! permiso temporal -->
+      <field name="perm_read">1</field>
+      <field name="perm_create">1</field>
+      <field name="perm_write">1</field>
+      <field name="perm_unlink">1</field>
+    </record>
+
+    <!-- SUBJECT CLASSROOM -->
+    <record id="maya_core.subject_classroom_rel_user_access" model="ir.model.access">
+      <field name="name">Acceso usuario general a las relaciones entre asignaturas y aulas</field>
+      <field name="model_id" ref="model_maya_core_subject_classroom_rel"/>
       <field name="group_id" ref="base.group_user"></field>  <!-- TOCHANGE! permiso temporal -->
       <field name="perm_read">1</field>
       <field name="perm_create">1</field>
@@ -82,10 +104,54 @@
     </record>
 
     <!-- SESSION SCHEDULE -->
-    <record id="maya_core.session_schedule_user_user_access" model="ir.model.access">
+    <record id="maya_core.session_schedule_user_access" model="ir.model.access">
       <field name="name">Acceso usuario general a los horarios de sesiones</field>
       <field name="model_id" ref="model_maya_core_session_schedule"/>
       <field name="group_id" ref="base.group_user"></field>  <!-- TOCHANGE! permiso temporal -->
+      <field name="perm_read">1</field>
+      <field name="perm_create">1</field>
+      <field name="perm_write">1</field>
+      <field name="perm_unlink">1</field>
+    </record>
+
+    <!-- SCHOOL YEAR -->
+    <record id="maya_core.school_year_user_access" model="ir.model.access">
+      <field name="name">Acceso usuario general a los años escolares</field>
+      <field name="model_id" ref="model_maya_core_school_year"/>
+      <field name="group_id" ref="base.group_user"></field>  <!-- TOCHANGE! permiso temporal -->
+      <field name="perm_read">1</field>
+      <field name="perm_create">1</field>
+      <field name="perm_write">1</field>
+      <field name="perm_unlink">1</field>
+    </record>
+
+    <!-- HOLIDAY -->
+    <record id="maya_core.holiday_user_access" model="ir.model.access">
+      <field name="name">Acceso usuario general a los días festivos</field>
+      <field name="model_id" ref="model_maya_core_holiday"/>
+      <field name="group_id" ref="base.group_system"></field>
+      <field name="perm_read">1</field>
+      <field name="perm_create">1</field>
+      <field name="perm_write">1</field>
+      <field name="perm_unlink">1</field>
+    </record>
+
+    <!-- CRON REGISTER -->
+    <record id="maya_core.cron_register_admin_access" model="ir.model.access">
+      <field name="name">Acceso administradores a las tareas programadas</field>
+      <field name="model_id" ref="model_maya_core_cron_register"/>
+      <field name="group_id" ref="base.group_system"></field>  
+      <field name="perm_read">1</field>
+      <field name="perm_create">1</field>
+      <field name="perm_write">1</field>
+      <field name="perm_unlink">1</field>
+    </record>
+
+    <!-- IR CRON  -->
+    <record id="maya_core.ir_cron_admin_access" model="ir.model.access">
+      <field name="name">Acceso administradores a las ir.cron</field>
+      <field name="model_id" ref="model_maya_core_ir_cron"/>
+      <field name="group_id" ref="base.group_system"></field>  
       <field name="perm_read">1</field>
       <field name="perm_create">1</field>
       <field name="perm_write">1</field>
