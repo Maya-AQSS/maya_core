@@ -25,7 +25,7 @@
       <field name="website">https://portal.edu.gva.es/ceedcv</field>
       <field name="currency_id" ref="base.EUR"/>
       <field name="color">1</field>
-      <field name="parent_id" ref="base.main_company"/>
+      <!-- <field name="parent_id" ref="base.main_company"/> -->
     </record>
 
     <!-- Bachillerato  -->
@@ -39,7 +39,7 @@
       <field name="website">https://portal.edu.gva.es/ceedcv</field>
       <field name="currency_id" ref="base.EUR"/>
       <field name="color">10</field>
-      <field name="parent_id" ref="base.main_company"/>
+      <!-- <field name="parent_id" ref="base.main_company"/> -->
     </record>
 
     <!-- FPA -->
@@ -53,7 +53,7 @@
       <field name="website">https://portal.edu.gva.es/ceedcv</field>
       <field name="currency_id" ref="base.EUR"/>
       <field name="color">2</field>
-      <field name="parent_id" ref="base.main_company"/>
+      <!-- <field name="parent_id" ref="base.main_company"/> -->
     </record>
   </data>
 
