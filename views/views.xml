@@ -218,6 +218,7 @@
                 <group col="2" >
                     <field name="location_id" options="{'no_create': True}" class="w-100"/>
                     <field name="description" placeholder="Descripción detallada del espacio..." class="w-100"/>
+                    <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
                 </group>
               </div>
             </div>
@@ -523,6 +524,40 @@
       </field>
     </record>  
 
+    <!-- Views de Tags -->
+    <record id="view_maya_core_tag_form" model="ir.ui.view">
+        <field name="name">maya_core.tag.form</field>
+        <field name="model">maya_core.tag</field>
+        <field name="arch" type="xml">
+            <form string="Etiqueta">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" placeholder="ej. Equipamiento"/>
+                            <field name="code" placeholder="ej. EQUIP"/>
+                        </group>
+                        <group>
+                            <!-- El widget color_picker muestra la paleta nativa de Odoo -->
+                            <field name="color" widget="color_picker"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_maya_core_tag_list" model="ir.ui.view">
+        <field name="name">maya_core.tag.list</field>
+        <field name="model">maya_core.tag</field>
+        <field name="arch" type="xml">
+            <list string="Etiquetas" editable="bottom">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="color" widget="color_picker"/>
+            </list>
+        </field>
+    </record>
+
 
     <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="maya_core.action_employee">
@@ -574,6 +609,12 @@
       <field name="view_mode">list,form</field>
     </record>
 
+    <record model="ir.actions.act_window" id="maya_core.action_tag">
+      <field name="name">Etiquetas</field>
+      <field name="res_model">maya_core.tag</field>
+      <field name="view_mode">list,form</field>
+    </record>
+
 
     <!-- Top menu item -->
     <menuitem name="Maya | Core" id="maya_core.menu_root" sequence="1"/>
@@ -598,6 +639,8 @@
               action="maya_core.action_team" sequence="3"/>
     <menuitem name="Horario de sesiones" id="maya_core.school_session_schedule" parent="maya_core.organization_school"
               action="maya_core.action_session_schedule" sequence="4"/>
+    <menuitem name="Etiquetas" id="maya_core.school_tag" parent="maya_core.organization_school"
+              action="maya_core.action_tag" sequence="5"/>
 
     <!-- menú enseñanza -->
     <menuitem name="Estudios" id="maya_core.school_study" parent="maya_core.teaching_school"

@@ -114,6 +114,17 @@
       <field name="perm_unlink">1</field>
     </record>
 
+    <!-- TAGS -->
+    <record id="access_maya_core_tag_user" model="ir.model.access">
+      <field name="name">Acceso a etiquetas generales (Usuarios)</field>
+      <field name="model_id" ref="model_maya_core_tag"/>
+      <field name="group_id" ref="base.group_user"/>
+      <field name="perm_read">1</field>
+      <field name="perm_create">1</field>
+      <field name="perm_write">1</field>
+      <field name="perm_unlink">1</field>
+    </record>
+
     <!-- SCHOOL YEAR -->
     <record id="maya_core.school_year_user_access" model="ir.model.access">
       <field name="name">Acceso usuario general a los años escolares</field>

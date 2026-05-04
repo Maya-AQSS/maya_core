@@ -36,6 +36,11 @@ class Place(models.Model):
     string=_("Horarios de reserva"),
   )
 
+  tag_ids = fields.Many2many(
+    comodel_name='maya_core.tag',
+    string='Etiquetas'
+  )
+
   @api.constrains("image", "image_360", "floor_plan_image")
   def _check_image_size(self):
     max_size = 10 * 1024 * 1024
