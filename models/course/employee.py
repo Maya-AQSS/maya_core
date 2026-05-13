@@ -65,6 +65,14 @@ class Employee(models.Model):
   """ roles_ids = fields.Many2many('maya_core.rol', string = 'Cargos')
    """
   active = fields.Boolean('Activo', related='user_id.active', help = 'Indica si el usuario maya_core asociado está activo')
+
+  lang = fields.Char(
+    string=_('Idioma'),
+    compute='_compute_lang',
+    inverse='_inverse_lang',
+    store=True,
+    help=_('Idioma configurado por defecto para el usuario vinculado. Para su modificación utilizar el módulo maya-dashboard o modificar el usuario de Odoo'))
+  )
   
   subjects_ids = fields.One2many('maya_core.subject_employee_rel', 'employee_id', string = _('Asignaturas/Módulos'))
 
@@ -104,6 +112,30 @@ class Employee(models.Model):
       # set new reference
       record.replaced_by_id.replaces_id = record
 
+  @api.depends('user_id', 'user_id.lang')
+  def _compute_lang(self):
+    for record in self:
+      record.lang = record.user_id.lang if record.user_id else False
+
+  def _inverse_lang(self):
+    """
+    Cuando se cambia el idioma del empleado, lo propaga al usuario vinculado.
+    Valida que el idioma esté activo en Odoo antes de aplicarlo.
+    """
+    for record in self:
+      if not record.user_id or not record.lang:
+        continue
+      active_lang = record.env['res.lang'].search([
+        ('code', '=', record.lang),
+        ('active', '=', True),
+      ], limit=1)
+      if not active_lang:
+        raise ValidationError(
+          _('El idioma "%s" no está activo en Odoo. '
+            'Actívalo primero en Ajustes → Idiomas.') % record.lang
+        )
+      record.user_id.sudo().write({'lang': record.lang})
+
   def _compute_full_employee_info(self):
     for record in self:
       if record.surname != False and record.name != False:
@@ -111,47 +143,30 @@ class Employee(models.Model):
       else: 
         record.employee_info = False    
 
+  _CAR_REGEX = r'^[0-9]{4}[A-Z]{3}$'
+  _CAR_ERROR = _(
+    "La matrícula debe tener exactamente 4 números seguidos de 3 letras mayúsculas. "
+    "Ejemplo válido: 1234ABC"
+  )
+
   @api.onchange('car_registration_number_1')
   def _onchange_car_registration_number_1_upper(self):
     if self.car_registration_number_1:
         self.car_registration_number_1 = self.car_registration_number_1.upper()
-  
-  @api.constrains('car_registration_number_1')
-  def _check_car_registration_number_1(self):
-    regex = r'^[0-9]{4}[A-Z]{3}$'
-    for record in self:
-      if record.car_registration_number_1 and not re.match(regex, record.car_registration_number_1):
-          raise ValidationError(
-              "La matrícula debe tener exactamente 4 números seguidos de 3 letras mayúsculas. "
-              "Ejemplo válido: 1234ABC"
-          )
-      
+        
   @api.onchange('car_registration_number_2')
   def _onchange_car_registration_number_2_upper(self):
     if self.car_registration_number_2:
         self.car_registration_number_2 = self.car_registration_number_2.upper()
-
-  @api.constrains('car_registration_number_2')
-  def _check_car_registration_number_2(self):
-    regex = r'^[0-9]{4}[A-Z]{3}$'
-    for record in self:
-      if record.car_registration_number_2 and not re.match(regex, record.car_registration_number_2):
-          raise ValidationError(
-              "La matrícula debe tener exactamente 4 números seguidos de 3 letras mayúsculas. "
-              "Ejemplo válido: 1234ABC"
-          )
-      
+    
   @api.onchange('car_registration_number_3')
   def _onchange_codigo_upper(self):
     if self.car_registration_number_1:
         self.car_registration_number_3 = self.car_registration_number_3.upper()
 
-  @api.constrains('car_registration_number_3')
-  def _check_car_registration_number_3(self):
-    regex = r'^[0-9]{4}[A-Z]{3}$'
+  @api.constrains('car_registration_number_1','car_registration_number_2','car_registration_number_3')
+  def _check_car_registration_numbers(self):
     for record in self:
-      if record.car_registration_number_3 and not re.match(regex, record.car_registration_number_3):
-          raise ValidationError(
-              "La matrícula debe tener exactamente 4 números seguidos de 3 letras mayúsculas. "
-              "Ejemplo válido: 1234ABC"
-          )
+      for plate in (record.car_registration_number_1,record.car_registration_number_2,record.car_registration_number_3):
+        if plate and not re.match(self._CAR_REGEX, plate):
+          raise ValidationError(self._CAR_ERROR)

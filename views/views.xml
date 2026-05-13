@@ -21,7 +21,7 @@
       <field name="model">maya_core.employee</field>
       <field name="arch" type="xml">
         <form>
-          <group col="2">
+          <group col="3">
             <group>
               <field name="user_id" />
               <field name="dni"/>
@@ -33,7 +33,10 @@
               <field name="work_email"/>
               <field name="employee_type"/>
               <field name="active"/>
-            </group>  
+            </group>
+            <group>
+              <field name="lang" />
+            </group>
           </group>
           <notebook>
             <page string='Equipos'>
@@ -523,6 +526,18 @@
       </field>
     </record>  
 
+    <record model="ir.ui.view" id="maya_core.classroom_tree">
+      <field name="name">Lista de Aulas virtuales</field>
+      <field name="model">maya_core.classroom</field>
+      <field name="arch" type="xml">
+        <list limit="25">
+          <field name="short_description"/>
+          <field name="description"/>
+          <field name="subjects_ids" string="Asignatura (Estudio)" widget="many2many_tags"/>
+          <field name="lang_id"/>
+        </list>
+      </field>
+    </record>
 
     <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="maya_core.action_employee">
@@ -574,6 +589,16 @@
       <field name="view_mode">list,form</field>
     </record>
 
+    <record model="ir.actions.act_window" id="maya_core.action_classroom">
+      <field name="name">Aulas virtuales</field>
+      <field name="res_model">maya_core.classroom</field>
+      <field name="view_mode">list,form</field>
+      <field name="context">{
+        'search_default_group_by_study': 1
+      }
+      </field>
+    </record>
+
 
     <!-- Top menu item -->
     <menuitem name="Maya | Core" id="maya_core.menu_root" sequence="1"/>
@@ -581,6 +606,7 @@
     <!-- menu categories -->
     <menuitem name="Centro" id="maya_core.school" parent="maya_core.menu_root" sequence="1"/>
     <menuitem name="Curso" id="maya_core.course_menu" parent="maya_core.menu_root" sequence="2"/>
+    <menuitem name="Moodle" id="maya_core.moodle_menu" parent="maya_core.menu_root" sequence="3"/>
      
     <!-- menú centro -->
     <menuitem name="Disposición física" id="maya_core.physical_layout_school" parent="maya_core.school" sequence="1"/>
@@ -605,12 +631,15 @@
     <menuitem name="Asignaturas" id="maya_core.school_subject" parent="maya_core.teaching_school"
               action="maya_core.action_subject" sequence="6"/>
 
-
     <!-- menú Curso -->
     <menuitem name="Cursos escolares" id="maya_core.course_school_year" parent="maya_core.course_menu"
               action="maya_core.action_school_year" sequence="1"/>
     <menuitem name="Empleados" id="maya_core.course_employee" parent="maya_core.course_menu"
               action="maya_core.action_employee" sequence="3"/>
+
+    <!-- menú Moodle -->
+    <menuitem name="Aulas virtuales" id="maya_core.moodle_classroom" parent="maya_core.moodle_menu"
+              action="maya_core.action_classroom"/>
 
   </data>
 </odoo>
