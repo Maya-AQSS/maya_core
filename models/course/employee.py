@@ -71,8 +71,9 @@ class Employee(models.Model):
     compute='_compute_lang',
     inverse='_inverse_lang',
     store=True,
-    help=_('Idioma configurado por defecto para el usuario vinculado. Para su modificación utilizar el módulo maya-dashboard o modificar el usuario de Odoo'))
+    help=_('Idioma configurado por defecto para el usuario vinculado. Para su modificación utilizar el módulo maya-dashboard o modificar el usuario de Odoo')
   )
+  
   
   subjects_ids = fields.One2many('maya_core.subject_employee_rel', 'employee_id', string = _('Asignaturas/Módulos'))
 
