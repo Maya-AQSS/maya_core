@@ -13,42 +13,42 @@ class SessionSchedule(models.Model):
   _order = 'week_day'
 
   name = fields.Char(
-      _('Descripción'), 
+      'Descripción', 
       required = True, 
       size= 10,
       translate = True, 
-      help=_('Descripción de la sesión.'))
+      help='Descripción de la sesión.')
   week_day = fields.Selection([
-      ('0L', _('Lunes')),
-      ('1M', _('Martes')),
-      ('2X', _('Miércoles')),
-      ('3J', _('Jueves')),
-      ('4V', _('Viernes')),
-  ], string = _('Día de la semana'), help = _('Día de la semana de la sesión.'), required = True)
+      ('0L', 'Lunes'),
+      ('1M', 'Martes'),
+      ('2X', 'Miércoles'),
+      ('3J', 'Jueves'),
+      ('4V', 'Viernes'),
+  ], string = 'Día de la semana', help = 'Día de la semana de la sesión.', required = True)
 
   start_time = fields.Float(
-    string = _('Hora de inicio'), 
+    string = 'Hora de inicio', 
     required = True,
-    help = _("Hora de inicio de la sesión."),
+    help = "Hora de inicio de la sesión.",
     group_operator=False
   )
 
   end_time = fields.Float(
-    string = _('Hora de fin'),
+    string = 'Hora de fin',
     required = True,
-    help = _("Hora de fin de la sesión."),
+    help = "Hora de fin de la sesión.",
     group_operator=False
   )
 
   duration = fields.Float(
-    string = _('Duración (Horas)'), 
+    string = 'Duración (Horas)', 
     compute = '_compute_duration', 
     group_operator=False
   )
 
   active = fields.Boolean('Activa', default=True)
 
-  location_id = fields.Many2one('maya_core.location', string = _('Ubicación'))
+  location_id = fields.Many2one('maya_core.location', string = 'Ubicación')
 
   @api.depends('start_time', 'end_time')
   def _compute_duration(self):

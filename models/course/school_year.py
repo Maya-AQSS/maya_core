@@ -21,7 +21,7 @@ class SchoolYear(models.Model):
   # hay un curso escolar por cada enseñanza
   company_id = fields.Many2one(
       'res.company', 
-      string=_('Tipo de enseñanza'),
+      string='Tipo de enseñanza',
       required=True, 
       default=lambda self: self.env.company,
       index=True
@@ -29,12 +29,12 @@ class SchoolYear(models.Model):
 
   name = fields.Char(readonly = True, compute = '_compute_name', string = 'Curso')
   state = fields.Selection([
-      ('0', _('Borrador')),
-      ('1', _('En curso')),
-      ('2', _('Finalizado'))
-      ], string = _('Estado del curso'), default = '0')
+      ('0', 'Borrador'),
+      ('1', 'En curso'),
+      ('2', 'Finalizado')
+      ], string = 'Estado del curso', default = '0')
   
-  date_init = fields.Date(string = _('Fecha de inicio oficial'))
+  date_init = fields.Date(string = 'Fecha de inicio oficial')
 
   # estructura de datos con las fechas 
   # dates = { 'init_lective': { 'date': '', 'desc': 'Inicio clases', 'type': 'G'}}
@@ -49,17 +49,17 @@ class SchoolYear(models.Model):
   #  SEGUNDO CURSO
   ######################
   # inicio primera evaluación
-  date_1term2_ini = fields.Date(string = _('Inicio primera evaluación'), compute = '_compute_1term2_ini') 
+  date_1term2_ini = fields.Date(string = 'Inicio primera evaluación', compute = '_compute_1term2_ini') 
   # fin de las clases de la primera evaluación de segundo
-  date_1term2_end = fields.Date(string = _('Fin clases primera evaluación'), compute = '_compute_1term2_end', readonly = False, store = True) 
+  date_1term2_end = fields.Date(string = 'Fin clases primera evaluación', compute = '_compute_1term2_end', readonly = False, store = True) 
   # inicio examenes 1 evaluación de segundo. En caso de readonly True hay que forzar su grabación en el XML con force_save
-  date_1term2_exam_ini = fields.Date(string = _('Inicio exámenes primera evaluación'), compute = '_compute_1term2_exam_ini', readonly = False, store = True) 
+  date_1term2_exam_ini = fields.Date(string = 'Inicio exámenes primera evaluación', compute = '_compute_1term2_exam_ini', readonly = False, store = True) 
   # fin exámenes 1 evaluación de segundo
-  date_1term2_exam_end = fields.Date(string = _('Fin exámenes primera evaluación'), compute = '_compute_1term2_exam_end', store = True) 
+  date_1term2_exam_end = fields.Date(string = 'Fin exámenes primera evaluación', compute = '_compute_1term2_exam_end', store = True) 
   # duración primera evaluación segundo
-  duration_1term2 = fields.Integer(string = _('Duración (semanas)'), compute = '_compute_duration_1term2')
+  duration_1term2 = fields.Integer(string = 'Duración (semanas)', compute = '_compute_duration_1term2')
   # inicio segunda evaluación
-  date_2term2_ini = fields.Date(string = _('Inicio segunda evaluación'), compute = '_compute_2term2_ini', store = True) 
+  date_2term2_ini = fields.Date(string = 'Inicio segunda evaluación', compute = '_compute_2term2_ini', store = True) 
   # fin de las clases de la segunda evaluación de segundo
   date_2term2_end = fields.Date(string = 'Fin clases segunda evaluación', compute = '_compute_2term2_end', readonly = False, store = True) 
   # inicio examenes 2 evaluación de segundo

@@ -11,31 +11,31 @@ class Location(models.Model):
     _name = 'maya_core.location'
     _description = 'Ubicaciones'
 
-    name = fields.Char(_('Nombre'), required = True, translate = True)
-    description = fields.Text(_('Descripción'), translate=True, help=_('Usos permitidos, normas de acceso y cualquier información relevante.'))
+    name = fields.Char('Nombre', required = True, translate = True)
+    description = fields.Text('Descripción', translate=True, help='Usos permitidos, normas de acceso y cualquier información relevante.')
 
     # Añadidos campos que faltaban por definir de dirección y teléfono móvil
-    address = fields.Char(string=_('Dirección'), required = True, help=_('Dirección de la ubicación física.'))
-    phone_number = fields.Char(string=_('Teléfono'), required = False, help=_('Número de teléfono del departamento docente.'))
+    address = fields.Char(string='Dirección', required = True, help='Dirección de la ubicación física.')
+    phone_number = fields.Char(string='Teléfono', required = False, help='Número de teléfono del departamento docente.')
 
 
     image = fields.Image(
-        string = _('Fotografía'),
+        string = 'Fotografía',
         max_width = 1920,
         max_height = 1080,
         attachment=True
     )
 
     floor_plan = fields.Image(
-        string = _('Plano'),
+        string = 'Plano',
         max_width = 3508,
         max_height = 2480,
         attachment=True
     )  # va al filestore
 
-    map_url = fields.Char(string = _('Enlace Google Maps'), help = _('URL de Google Maps'))
+    map_url = fields.Char(string = 'Enlace Google Maps', help = 'URL de Google Maps')
 
-    session_ids = fields.One2many('maya_core.session_schedule', 'location_id', string=_('Sesiones Asignadas'))
+    session_ids = fields.One2many('maya_core.session_schedule', 'location_id', string='Sesiones Asignadas')
 
     opening_hours = fields.Text(string='Horario de Apertura', compute='_compute_opening_hours')
 

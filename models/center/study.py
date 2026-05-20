@@ -1,4 +1,4 @@
-from odoo import models, fields, _
+from odoo import models, fields
 
 class Study(models.Model):
   """  
@@ -11,7 +11,7 @@ class Study(models.Model):
   # index=True para optimizar las búsquedas por empresa
   company_id = fields.Many2one(
       'res.company', 
-      string=_('Tipo de enseñanza'),
+      string='Tipo de enseñanza',
       required=True, 
       default=lambda self: self.env.company,
       index=True

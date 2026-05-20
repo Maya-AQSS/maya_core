@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields,_
+from odoo import models, fields 
 
 class Team(models.Model):
   """
@@ -14,4 +14,4 @@ class Team(models.Model):
   name = fields.Char('Nombre', required=True, translate=True)
   abbr = fields.Char('Abreviatura', required=True, size=5 )
 
-  is_departament = fields.Boolean(_('Es un departamento'), default=True, help=_('Indica si el equipo es un departamento o simplemente es una agrupación interna (equipo). Todo el personal debe estar asignado como mínimo a un departamento.'))
+  is_departament = fields.Boolean('Es un departamento', default=True, help='Indica si el equipo es un departamento o simplemente es una agrupación interna (equipo). Todo el personal debe estar asignado como mínimo a un departamento.')

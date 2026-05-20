@@ -6,34 +6,34 @@ class Place(models.Model):
   _name = "maya_core.place"
   _description = "Espacio de trabajo"
 
-  name = fields.Char(string=_("Nombre"), required=True)
+  name = fields.Char(string="Nombre", required=True)
   location_id = fields.Many2one(
     "maya_core.location",
-    string=_("Ubicación"),
+    string="Ubicación",
     required=True,
     ondelete="restrict", 
   )
-  description = fields.Text(string=_("Descripción"))
+  description = fields.Text(string="Descripción")
 
   image = fields.Image(
-    string=_("Imagen principal"),
+    string="Imagen principal",
     max_width=1024,
     max_height=768,
     attachment=True,
   )
   image_360 = fields.Image(
-    string=_("Imagen 360°"),
+    string="Imagen 360°",
     attachment=True,
   )
   is_panoramic = fields.Boolean(string=_("Es panorámica"), default=False)
   floor_plan_image = fields.Image(
-    string=_("Plano del espacio"),
+    string="Plano del espacio",
     attachment=True,
   )
 
   session_schedule_ids = fields.Many2many(
     "maya_core.session_schedule",
-    string=_("Horarios de reserva"),
+    string="Horarios de reserva",
   )
 
   @api.constrains("image", "image_360", "floor_plan_image")
