@@ -16,7 +16,4 @@ class SubjectEmployeeRel(models.Model):
   # estudio en el que imparte la asignatura
   study_id = fields.Many2one('maya_core.study', required = True)
 
-  _sql_constraints = [ 
-    ('unique_subject_employee_rel', 'unique(employee_id, subject_id, study_id)', 
-       'Sólo puede haber una relación por empleado, asignatura y estudio.'),
-  ]
+  _unique_subject_employee_rel = models.Constraint('unique(employee_id, subject_id, study_id)', 'Sólo puede haber una relación por empleado, asignatura y estudio.')

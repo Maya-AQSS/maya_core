@@ -38,10 +38,7 @@ class CronRegister(models.Model):
   literal_nextcall_day = fields.Char(compute = '_compute_literal_nextcall_day')
   doall = fields.Boolean(default = True, help = 'Si el servidor cae, cuando se reinicie lanzará las tareas no ejecutadas')
   
-
-  _sql_constraints = [ 
-    ('unique_key', 'unique(key)', 'El código de la plantilla tiene que ser único.'),
-  ]
+  _unique_key = models.Constraint('unique(key)', 'El código de la plantilla tiene que ser único.')
 
   @api.constrains('interval_type')
   def _check_interval_type(self):

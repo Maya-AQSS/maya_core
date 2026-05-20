@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api, _
+from odoo import models, fields, api
 
 
 class SubjectClassroomRel(models.Model): 
@@ -18,12 +18,9 @@ class SubjectClassroomRel(models.Model):
   # estudio de la asignatura en el que está asociada el aula
   study_id = fields.Many2one('maya_core.study', required = True, string = 'Ciclo')
 
-  subject_and_study = fields.Char(compute = '_compute_subject_and_study', string = _('Asignatura (Estudio)'))
+  subject_and_study = fields.Char(compute = '_compute_subject_and_study', string = 'Asignatura (Estudio)')
 
-  _sql_constraints = [ 
-    ('unique_subject_classroom_rel', 'unique(classroom_id, subject_id, study_id)', 
-       'Sólo puede haber una relación por aula, ciclo y asignatura.'),
-  ]
+  _unique_subject_classroom_rel = models.Constraint('unique(classroom_id, subject_id, study_id)', 'Sólo puede haber una relación por aula, ciclo y asignatura.')  
 
   @api.depends('study_id','subject_id')
   def _compute_subject_and_study(self):
