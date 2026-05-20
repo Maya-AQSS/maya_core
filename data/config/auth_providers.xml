@@ -1,0 +1,18 @@
+<odoo>
+  <data>
+    <record id="auth_provider_keycloak" model="auth.oauth.provider">
+      <field name="name">Keycloak</field>
+      <field name="flow">id_token_code</field>
+      <field name="token_map">preferred_username:login name:name email:email</field>
+      <field name="client_id">odoo19-sso</field>
+      <field name="enabled">True</field>
+      <field name="body">Iniciar sesión con Keycloak</field>
+      <field name="css_class">fa fa-fw fa-sign-in text-primary</field>
+      <field name="auth_endpoint">http://localhost:8080/auth/realms/CEED/protocol/openid-connect/auth</field>
+      <field name="validation_endpoint">http://keycloak:8080/auth/realms/CEED/protocol/openid-connect/userinfo</field>
+      <field name="token_endpoint">http://keycloak:8080/auth/realms/CEED/protocol/openid-connect/token</field>
+      <field name="jwks_uri">http://keycloak:8080/auth/realms/CEED/protocol/openid-connect/certs</field>
+      <field name="scope">openid profile email</field>
+    </record>
+  </data>
+</odoo>

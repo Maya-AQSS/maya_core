@@ -35,12 +35,20 @@
     'price': 0,
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'web'],
+    'depends': ['base', 'web', 'auth_oidc'],
+
+    # external dependencies that have to be installed. Can be python or bin dependencies
+    # Only checks whether the dependency is installed. Not install the dependency!!
+    'external_dependencies': {
+       'python': ['toolz'],
+    },
 
     # always loaded
     'data': [
         # seguridad
         'security/core_access.xml',
+        # configuraciones
+        'data/config/auth_providers.xml',
         # 'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
@@ -52,6 +60,7 @@
         'data/center/maya_core.team.csv',
         'data/center/maya_core.study.csv',
         'data/center/subjects/cf/tic.xml',
+        
     ],
     # only loaded in demonstration mode
     'demo': [
