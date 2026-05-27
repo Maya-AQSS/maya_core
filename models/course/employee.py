@@ -83,7 +83,6 @@ class Employee(models.Model):
   iban = fields.Char(
         string='IBAN',
         size=34,                    # Longitud máxima de un IBAN
-        tracking=True,
         help='International Bank Account Number'
     )
   
