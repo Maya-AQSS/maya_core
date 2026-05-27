@@ -29,6 +29,7 @@ class Employee(models.Model):
   surname = fields.Char(string = 'Apellidos', related="user_id.surname", readonly = True, store = True)
   phone_extension = fields.Char(string ="Extensión", size = 6)
   work_email = fields.Char(string = 'Email', related = 'user_id.email', store = True)
+  personal_email = fields.Char(string = 'Email personal', help = 'Email personal del empleado')
   employee_info = fields.Char(string = 'Nombre completo', compute = '_compute_full_employee_info')
 
   employee_type = fields.Selection([
@@ -76,6 +77,35 @@ class Employee(models.Model):
   
   
   subjects_ids = fields.One2many('maya_core.subject_employee_rel', 'employee_id', string = 'Asignaturas/Módulos')
+
+  mentor_id = fields.Many2one('maya_core.employee', string='Mentor/a')
+
+  iban = fields.Char(
+        string='IBAN',
+        size=34,                    # Longitud máxima de un IBAN
+        tracking=True,
+        help='International Bank Account Number'
+    )
+  
+  comments = fields.Text(string = 'Observaciones', help = 'Información sobre el empleado.')
+
+  supervisor_id = fields.Many2one(
+      'maya_core.employee', 
+      string='Supervisor/a',
+      domain="[('id', 'in', available_supervisor_ids)]" # Filtra usando el campo computado
+  )
+  
+  available_supervisor_ids = fields.Many2many('maya_core.employee', compute='_compute_available_supervisors')
+
+  keys = fields.Selection([
+        ('HO', 'Entregadas'),
+        ('RT', 'Devueltas'),
+        ('PN', 'Pendiente de devolución'),
+        ], string = 'Estado llaves', default = False,
+        help = "Estado en el que se encuentra la entrega de llaves.")
+
+  date_keys_handover = fields.Date(string='Entrega de llaves',help = "Fecha en la que se hace la entrega de llaves.")
+  date_keys_return = fields.Date(string='Devolución de llaves',help = "Fecha en la que se hace la devolución de llaves.")
 
   @api.depends('user_ids')
   def _compute_user_id(self):
@@ -171,3 +201,136 @@ class Employee(models.Model):
       for plate in (record.car_registration_number_1,record.car_registration_number_2,record.car_registration_number_3):
         if plate and not re.match(self._CAR_REGEX, plate):
           raise ValidationError(self._CAR_ERROR)
+        
+  @api.constrains('iban')
+  def _check_iban(self):
+    for record in self:
+      if record.iban:
+        # Limpia espacios y pasa a mayúsculas
+        iban_clean = record.iban.replace(' ', '').upper()
+        
+        try:
+          # Usa la validación oficial de Odoo
+          self.env['res.partner.bank']._validate_iban(iban_clean)
+          # Opcional: guardar siempre formateado
+          record.iban = ' '.join([iban_clean[i:i+4] for i in range(0, len(iban_clean), 4)])
+        except Exception:
+          raise ValidationError(_("El IBAN introducido no es válido."))
+        
+  @api.constrains('personal_email')
+  def _check_email_format(self):
+    email_regex = r'^[\w\.-]+@[\w\.-]+\.\w+$'
+    for record in self:
+      if record.personal_email and not re.match(email_regex, record.personal_email):
+        raise ValidationError(_("El formato del correo electrónico no es válido."))
+      
+  @api.depends('team_ids') 
+  def _compute_available_supervisors(self):
+    try:
+      # Buscamos el registro real del team usando su XML_ID externo
+      target_team = self.env.ref('maya_core.dep_ed')  # refrencia del equipo directivo
+    except ValueError:
+      # Salvaguarda por si el módulo aún no ha cargado el archivo de datos del team
+      target_team = False
+
+    if target_team:
+      # Buscamos todos los empleados que tengan este equipo asignado en su Many2many
+      supervisors = self.env['maya_core.employee'].search([
+          ('team_ids', 'in', target_team.id)
+      ])
+      valid_ids = supervisors.ids
+    else:
+      valid_ids = []
+
+    for record in self:
+      # Asignamos la lista de IDs permitidos a cada registro
+      record.available_supervisor_ids = [(6, 0, valid_ids)]
+
+  @api.constrains('keys', 'date_keys_handover', 'date_keys_return')
+  def _check_keys_dates(self):
+    """
+    Verifica que las fechas de entrega y devolución de llaves estén completas según el estado.
+    """
+    for record in self:
+      if record.keys in ('HO', 'PN') and not record.date_keys_handover:
+        raise ValidationError(_(
+            "El estado actual requiere obligatoriamente una 'Fecha de entrega de llaves'."
+        ))
+      
+      if record.keys == 'PN' and record.date_keys_handover:
+        raise ValidationError(_(
+            "No puede existir una 'Fecha de entrega de llaves' si el estado es 'Pendiente de devolución'."
+        ))
+      
+      if record.keys == 'RT':
+        if not record.date_keys_handover or not record.date_keys_return:
+          raise ValidationError(_(
+              "El estado 'Devueltas' requiere tanto la 'Fecha de entrega' como la 'Fecha de devolución'."
+          ))
+      
+  @api.onchange('keys')
+  def _onchange_keys_populate_dates(self):
+    """
+    Rellena automáticamente la fecha de hoy si el usuario cambia el estado,
+    ahorrando clics en la interfaz.
+    """
+    today = fields.Date.context_today(self)
+    if self.keys == 'HO':
+      if not self.date_keys_handover:
+          self.date_keys_handover = today
+      self.date_keys_return = False # Al entregar, limpiamos una posible fecha de devolución previa
+        
+    elif self.keys == 'PN':
+      self.date_keys_return = False
+        
+    elif self.keys == 'RT':
+      if not self.date_keys_return:
+        self.date_keys_return = today
+      if not self.date_keys_handover:
+        self.date_keys_handover = today
+
+  @api.constrains('iban')
+  def _check_iban(self):
+    """
+    Verifica el formato y la validez del IBAN.
+    Generado por Gemini 3.5 Flash
+    """
+    for record in self:
+      if not record.iban:
+        continue
+        
+      # 1. Limpieza total de espacios, guiones y pasar a mayúsculas
+      iban_clean = record.iban.replace(' ', '').replace('-', '').upper()
+      
+      # 2. Validación de longitud básica (mínimo 15, máximo 34 caracteres)
+      if not (15 <= len(iban_clean) <= 34):
+        raise ValidationError(_("El IBAN no tiene una longitud válida."))
+      
+      # 3. Algoritmo oficial de validación IBAN (Módulo 97)
+      # Reordenar: mover los 4 primeros caracteres al final
+      reordered_iban = iban_clean[4:] + iban_clean[:4]
+      
+      # Convertir letras a números (A=10, B=11, ..., Z=35)
+      numeric_iban = ""
+      for char in reordered_iban:
+          if char.isdigit():
+              numeric_iban += char
+          elif char.isalpha():
+              numeric_iban += str(ord(char) - ord('A') + 10)
+          else:
+              raise ValidationError(_("El IBAN contiene caracteres no permitidos."))
+      
+      # Validar matemáticamente aplicando la operación por 97
+      if int(numeric_iban) % 97 != 1:
+          raise ValidationError(_("El código IBAN introducido no es válido (Fallo de checksum)."))
+      
+      # 4. Formatear automáticamente en bloques de 4 caracteres para mejorar la UX
+      record.iban = ' '.join([iban_clean[i:i+4] for i in range(0, len(iban_clean), 4)])
+
+  @api.onchange('iban')
+  def _onchange_iban_upper(self):
+    """
+    Convierte el IBAN a mayúsculas al modificarlo.
+    """
+    if self.iban:
+        self.iban = self.iban.upper()

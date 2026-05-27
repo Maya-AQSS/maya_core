@@ -30,11 +30,12 @@
             </group>
             <group>
               <field name="phone_extension" />
-              <field name="work_email"/>
+              <field name="work_email" widget="email" placeholder="ejemplo@edu.gva.es"/>
               <field name="employee_type"/>
-              <field name="active"/>
+              <field name="personal_email" widget="email" placeholder="ejemplo@dominio.com"/>
             </group>
             <group>
+              <field name="active"/>
               <field name="lang" readonly="1" />
             </group>
           </group>
@@ -60,16 +61,36 @@
               </group>
             </page>" -->
             <page string = "Situación administrativa">
-              <group>
-                <field name="position_type"/>
+              <group col="2">
+                <group>
+                  <separator string="Estado" style="padding-bottom:6px; color: #71639e"/>
+                  <field name="position_type"/>
+                </group>
+                <group>
+                  <separator string="Vinculaciones internas" style="padding-bottom:6px; color: #71639e"/>
+                  <field name="mentor_id" placeholder="Selecciona al mentor"/>
+                  <field name="available_supervisor_ids" invisible="1"/>
+                  <field name="supervisor_id" placeholder="Selecciona al supervisor"/>
+                </group>
               </group>
             </page>
             <page string = "Administración interna">
-              <group col="2">
+              <group col="3">
                 <group>
+                  <separator string="Vehículos" style="padding-bottom:6px; color: #71639e"/>
                   <field name="car_registration_number_1" placeholder="1234ABC"/>
                   <field name="car_registration_number_2" placeholder="1234ABC"/>
                   <field name="car_registration_number_3" placeholder="1234ABC"/>
+                </group>
+                <group>
+                  <separator string="Llaves" style="padding-bottom:6px; color: #71639e"/>
+                  <field name="keys"/>
+                  <field name="date_keys_handover"/>
+                  <field name="date_keys_return"/>
+                </group>
+                <group>
+                  <separator string="Datos bancarios" style="padding-bottom:6x; color: #71639e"/>
+                  <field name="iban" placeholder="ES00 0000 0000 0000 0000 0000"/>
                 </group>
               </group>
             </page>
@@ -402,7 +423,7 @@
             <page string = 'Primer curso'>
               <group col="3">
                 <group>
-                  <separator string="Primera evaluación" style="padding-bottom:15px"/>
+                  <separator string="Primera evaluación" style="padding-bottom:6x; color: #71639e"/>
                   <!-- empieza el mismo dia que en segundo -->
                   <field name="date_1term2_ini"/>
                   <field name="date_1term1_end" force_save="1"/>
@@ -412,7 +433,7 @@
                   <field name="duration_1term1"/>
                 </group>
                 <group>
-                  <separator string="Segunda evaluación" style="padding-bottom:15px"/>
+                  <separator string="Segunda evaluación" style="padding-bottom:6x; color: #71639e"/>
                   <field name="date_2term1_ini" force_save="1"/>
                   <field name="date_2term1_end" force_save="1"/>
                   <field name="date_2term1_exam_ini" force_save="1"/>
@@ -421,15 +442,15 @@
                   <field name="duration_2term1"/>
                 </group>
                 <group>
-                  <separator string="Ordinaria" style="padding-bottom:15px"/>
+                  <separator string="Ordinaria" style="padding-bottom:6x; color: #71639e"/>
                   <field name="date_ord1_exam_ini" force_save="1"/>
                   <field name="date_ord1_exam_end" force_save="1"/>
-                  <separator string="Extraordinaria" style="padding-top:30px; padding-bottom:15px"/>
+                  <separator string="Extraordinaria" style="padding-top:30px; padding-bottom:6x; color: #71639e"/>
                   <field name="date_extraord1_exam_ini" force_save="1"/>
                   <field name="date_extraord1_exam_end" force_save="1"/>
                 </group>
               </group>
-              <separator string="Anulaciones y renuncias" style="padding-top:30px"/> 
+              <separator string="Anulaciones y renuncias" style="padding-top:30px; padding-bottom:6x; color: #71639e"/>" 
               <group col="3">
                 <group>
                   <field name="date_cancellation1"/>
@@ -445,7 +466,7 @@
             <page string = 'Segundo curso'>
               <group col="3">
                 <group>
-                  <separator string="Primera evaluación" style="padding-bottom:15px"/>
+                  <separator string="Primera evaluación" style="padding-bottom:6x; color: #71639e"/>
                   <!-- los campos readonly no se actualizan en la BBDD salvo que se incluya force_save = "1"-->
                   <field name="date_1term2_ini"/>
                   <field name="date_1term2_end" force_save="1"/>
@@ -455,7 +476,7 @@
                   <field name="duration_1term2"/>
                 </group>
                 <group>
-                  <separator string="Segunda evaluación" style="padding-bottom:15px"/>
+                  <separator string="Segunda evaluación" style="padding-bottom:6x; color: #71639e"/>
                   <field name="date_2term2_ini" force_save="1"/>
                   <field name="date_2term2_end" force_save="1"/>
                   <field name="date_2term2_exam_ini" force_save="1"/>
@@ -464,15 +485,15 @@
                   <field name="duration_2term2"/>
                 </group>
                 <group>
-                  <separator string="Ordinaria" style="padding-bottom:15px"/>
+                  <separator string="Ordinaria" style="padding-bottom:6x; color: #71639e"/>
                   <field name="date_ord2_exam_ini" force_save="1"/>
                   <field name="date_ord2_exam_end" force_save="1"/>
-                  <separator string="Extraordinaria" style="padding-top:30px; padding-bottom:15px"/>
+                  <separator string="Extraordinaria" style="padding-top:30px; padding-bottom:6x; color: #71639e"/>
                   <field name="date_extraord2_exam_ini" force_save="1"/>
                   <field name="date_extraord2_exam_end" force_save="1"/>
                 </group>
               </group>
-              <separator string="Anulaciones y renuncias" style="padding-top:30px"/> 
+              <separator string="Anulaciones y renuncias" style="padding-top:30px; padding-bottom:6x; color: #71639e"/>" 
               <group col="3">
                 <group>
                   <field name="date_cancellation2"/>
