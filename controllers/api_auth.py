@@ -121,7 +121,7 @@ class ApiBaseController(http.Controller):
             jwks,
             algorithms=['RS256'],
             audience=KEYCLOAK_AUDIENCE,
-            issuer=KEYCLOAK_ISSUER,
+            issuer=KEYCLOAK_REALM_URL, # KEYCLOAK_ISSUER,
         )
     except JWTError as e:
         _logger.warning('JWT inválido: %s', e)

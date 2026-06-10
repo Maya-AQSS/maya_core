@@ -1,0 +1,59 @@
+meta {
+  name: 03 Modificar matrículas de coche (Ignorar DNI)
+  type: http
+  seq: 3
+}
+
+patch {
+  url: {{odoo_url}}/api/v1/employee/me
+  body: none
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Authorization: Bearer {{api_key}}
+}
+
+script:pre-request {
+  // Leer el token de Keycloak de la petición anterior
+  const keycloak_token = bru.getVar("keycloak_token");
+  
+  if (!keycloak_token) {
+    console.error("❌ keycloak_token no encontrado. Ejecuta primero '01 Get Keycloak Token'");
+    // Detener la ejecución si no hay token
+    throw new Error("keycloak_token no encontrado. Ejecuta primero la petición 01.");
+  }
+  
+  // Construir el body JSON completo
+  const body = {
+    keycloak_token,
+    car_registration_number_1: "0234ABC",
+    car_registration_number_2: "9678DEF",
+    dni: "11111111A",
+  };
+  
+  const bodyJson = JSON.stringify(body);
+
+  console.log("Token (primeros 50 chars):", keycloak_token.substring(0, 50) + "...");
+  
+  // Establecer el body de la petición
+  req.setBody(bodyJson);
+}
+
+tests {
+  test("Estado HTTP es 200 OK", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+
+  test("Campos de matrícula procesados", function() {
+    var data = res.getBody();
+    expect(data.updated_fields).to.include("car_registration_number_1");
+    expect(data.updated_fields).to.include("car_registration_number_2");
+  });
+
+  test("El campo DNI fue ignorado por seguridad", function() {
+    var data = res.getBody();
+    expect(data.ignored_fields).to.include("dni");
+  });
+}
