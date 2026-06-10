@@ -20,7 +20,9 @@ class Users(models.Model):
   @api.depends('name', 'surname')
   def _compute_full_employee_info(self):
     for record in self:
-      if record.surname != False and record.name != False:
+      if record.surname != False and record.surname.strip() != '' and record.name != False:
         record.employee_info = f"{record.surname}, {record.name}"
+      elif (record.surname == False or record.surname.strip() == '') and record.name != False:
+        record.employee_info = record.name
       else: 
         record.employee_info = False    
