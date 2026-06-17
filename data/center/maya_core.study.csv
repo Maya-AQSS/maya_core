@@ -24,6 +24,10 @@ maya_core.FPA_AGSA,fpa_company,ACGSA,Pruebas de acceso a Grado Superior A,PB008,
 maya_core.FPA_AGSB,fpa_company,ACGSB,Pruebas de acceso a Grado Superior B,PB009,NG,NF,NR
 maya_core.FPA_AGSC,fpa_company,ACGSC,Pruebas de acceso a Grado Superior C,PB010,NG,NF,NR
 maya_core.FPA_AGM,fpa_company,ACGM,Pruebas de acceso a Grado Medio,PB011,NG,NF,NR
+maya_core.FPA_M20,fpa_company,M20,Pruebas de acceso a Bachiller +20,PB117,NG,NF,NR
+maya_core.FPA_AEAS,fpa_company,ACEAS,Pruebas de acceso a Enseñanzas Artísticas Superiores,PB087,NG,NF,NR
+maya_core.FPA_AAPDM,fpa_company,ACAPDM,Pruebas de acceso a Artes Plásticas y Diseño,PB108,NG,NF,NR
+maya_core.FPA_AAPDS,fpa_company,ACAPDS,Pruebas de acceso a Artes Plásticas y Diseño,PB111,NG,NF,NR
 maya_core.FPA_JQCVA1,fpa_company,JQCVA1,Preparación exámenes JQCV A1,PC109,NG,NF,NR
 maya_core.FPA_JQCVA2,fpa_company,JQCVA2,Preparación exámenes JQCV A2,PC002,NG,NF,NR
 maya_core.FPA_JQCVB1,fpa_company,JQCVB1,Preparación exámenes JQCV B1,PC001,NG,NF,NR
@@ -34,6 +38,7 @@ maya_core.FPA_PAU25A,fpa_company,PAU25A,Preparación PAU +25 A,PD002,NG,NF,NR
 maya_core.FPA_PAU25BE,fpa_company,PAU25BE,Preparación PAU +25 B/E,PD003,NG,NF,NR
 maya_core.FPA_PAU25C,fpa_company,PAU25C,Preparación PAU +25 C,PD004,NG,NF,NR
 maya_core.FPA_PAU25D,fpa_company,PAU25D,Preparación PAU +25 D,PD005,NG,NF,NR
+maya_core.FPA_PAU45,fpa_company,PAU45,Preparación acceso universidad +45,PD045,NG,NF,NR
 maya_core.FPA_DIGICOMA1,fpa_company,DGCMA1,Competencia digital A1,PE119,NG,NF,NR
 maya_core.FPA_DIGICOMA2,fpa_company,DGCMA2,Competencia digital A2,PE120,NG,NF,NR
 maya_core.FPA_INGA1,fpa_company,INGA1,Inglés A1,PE121,NG,NF,NR
