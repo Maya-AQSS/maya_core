@@ -1,45 +1,158 @@
 <odoo>
   <data>
-    <!-- Módulos DAW LFP -->
-    <record model="maya_core.subject" id="maya_core.subject_DAW_DWEC">
-      <field name="abbr">DWEC</field>
-      <field name="code">0612</field>
-      <field name="name">Desarrollo web en entorno cliente</field>
+    <!-- Módulos ASIR LFP -->
+    <record model="maya_core.subject" id="maya_core.subject_ASIR_ASO">
+      <field name="abbr">ASO</field>
+      <field name="code">0374</field>
+      <field name="name">Adminsitración de sistemas operativos</field>
       <field name="year">2</field>
-      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_DAW')])]"/>                            
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_ASIR')])]"/>
       <field name="optional">False</field>
-      <field name="group_tutoring_hours">2</field>  
-      <field name="individual_tutoring_hours">3</field>
-      <field name="week_hours_teacher">5</field>
-      <field name="week_hours">6</field>
-      <field name="total_hours">200</field>
+      <field name="group_tutoring_hours">2</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">3</field>
+      <field name="total_hours">133</field>
+      <field name="week_hours">4</field>
     </record>
 
-     <record model="maya_core.subject" id="maya_core.subject_DAW_DWES">
-      <field name="abbr">DWES</field>
-      <field name="code">0613</field>
-      <field name="name">Desarrollo web en entorno servidor</field>
+    <record model="maya_core.subject" id="maya_core.subject_ASIR_SRI">
+      <field name="abbr">SRI</field>
+      <field name="code">0375</field>
+      <field name="name">Servicios de red e internet</field>
       <field name="year">2</field>
-      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_DAW')])]"/>
-      <field name="group_tutoring_hours">2</field>  
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_ASIR')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">2</field>
       <field name="individual_tutoring_hours">3</field>
       <field name="week_hours_teacher">5</field>
-      <field name="week_hours">6</field>
-      <field name="total_hours">200</field>
+      <field name="total_hours">166</field>
+      <field name="week_hours">5</field>
     </record>
 
-    <record model="maya_core.subject" id="maya_core.subject_DAW_DAW">
-      <field name="abbr">DAW</field>
-      <field name="code">0614</field>
-      <field name="name">Despliegue de aplicaciones web</field>
+    <record model="maya_core.subject" id="maya_core.subject_ASIR_IAW">
+      <field name="abbr">IAW</field>
+      <field name="code">0376</field>
+      <field name="name">Implantación de aplicaciones web</field>
       <field name="year">2</field>
-      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_DAW')])]"/>                            
-      <field name="group_tutoring_hours">1</field>  
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_ASIR')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">2</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">3</field>
+      <field name="total_hours">133</field>
+      <field name="week_hours">4</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_ASIR_ASGBD">
+      <field name="abbr">ASGBD</field>
+      <field name="code">0377</field>
+      <field name="name">Adminsitración de sistemas gestores de bases de datos</field>
+      <field name="year">2</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_ASIR')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">2</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">3</field>
+      <field name="total_hours">67</field>
+      <field name="week_hours">2</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_ASIR_SAD">
+      <field name="abbr">SAD</field>
+      <field name="code">0378</field>
+      <field name="name">Seguridad y alta disponibilidad</field>
+      <field name="year">2</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_ASIR')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">2</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">3</field>
+      <field name="total_hours">133</field>
+      <field name="week_hours">4</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_ASIR_PI2">
+      <field name="abbr">PI2</field>
+      <field name="code">0379</field>
+      <field name="name">Proyecto intermodular 2 de administración de sistemas informáticos en red</field>
+      <field name="year">2</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_ASIR')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">1</field>
       <field name="individual_tutoring_hours">1</field>
       <field name="week_hours_teacher">2</field>
-      <field name="week_hours">3</field>
       <field name="total_hours">100</field>
-      
+      <field name="week_hours">3</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_ASIR_ISO">
+      <field name="abbr">ISO</field>
+      <field name="code">0369</field>
+      <field name="name">Implantación de sistemas operativos</field>
+      <field name="year">1</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_ASIR')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">2</field>
+      <field name="individual_tutoring_hours">3</field>
+      <field name="week_hours_teacher">5</field>
+      <field name="total_hours">233</field>
+      <field name="week_hours">7</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_ASIR_PAR">
+      <field name="abbr">PAR</field>
+      <field name="code">0370</field>
+      <field name="name">Planificación y administración de redes</field>
+      <field name="year">1</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_ASIR')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">2</field>
+      <field name="individual_tutoring_hours">3</field>
+      <field name="week_hours_teacher">5</field>
+      <field name="total_hours">200</field>
+      <field name="week_hours">6</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_ASIR_FH">
+      <field name="abbr">FH</field>
+      <field name="code">0371</field>
+      <field name="name">Fundamentos de hardware</field>
+      <field name="year">1</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_ASIR')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">2</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">3</field>
+      <field name="total_hours">100</field>
+      <field name="week_hours">3</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_ASIR_GBD">
+      <field name="abbr">GBD</field>
+      <field name="code">0372</field>
+      <field name="name">Gestión de bases de datos</field>
+      <field name="year">1</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_ASIR')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">2</field>
+      <field name="individual_tutoring_hours">2</field>
+      <field name="week_hours_teacher">4</field>
+      <field name="total_hours">166</field>
+      <field name="week_hours">5</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_ASIR_PI1">
+      <field name="abbr">PI1</field>
+      <field name="code">0379p</field>
+      <field name="name">Proyecto intermodular de administración de sistemas informáticos en red</field>
+      <field name="year">1</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_ASIR')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">0</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">1</field>
+      <field name="total_hours">34</field>
+      <field name="week_hours">1</field>
     </record>
 
     <!-- Módulos DAM LFP -->
@@ -49,11 +162,280 @@
       <field name="name">Acceso a datos</field>
       <field name="year">2</field>
       <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_DAM')])]"/>
-      <field name="group_tutoring_hours">2</field>  
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">2</field>
       <field name="individual_tutoring_hours">1</field>
       <field name="week_hours_teacher">3</field>
       <field name="total_hours">133</field>
       <field name="week_hours">4</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_DAM_PMDM">
+      <field name="abbr">PMDM</field>
+      <field name="code">0489</field>
+      <field name="name">Programación multimedia y dispositivos móviles</field>
+      <field name="year">2</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_DAM')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">2</field>
+      <field name="individual_tutoring_hours">2</field>
+      <field name="week_hours_teacher">4</field>
+      <field name="total_hours">133</field>
+      <field name="week_hours">4</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_DAM_PSP">
+      <field name="abbr">PSP</field>
+      <field name="code">0490</field>
+      <field name="name">Programación de servicios y procesos</field>
+      <field name="year">2</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_DAM')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">1</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">2</field>
+      <field name="total_hours">67</field>
+      <field name="week_hours">2</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_DAM_SGE">
+      <field name="abbr">SGE</field>
+      <field name="code">0491</field>
+      <field name="name">Sistemas de gestión empresarial</field>
+      <field name="year">2</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_DAM')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">2</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">3</field>
+      <field name="total_hours">133</field>
+      <field name="week_hours">4</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_DAM_PI2">
+      <field name="abbr">PI2</field>
+      <field name="code">0492</field>
+      <field name="name">Proyecto intermodular 2 de desarrollo de aplicaciones multiplataforma</field>
+      <field name="year">2</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_DAM')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">1</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">2</field>
+      <field name="total_hours">100</field>
+      <field name="week_hours">3</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_DAM_DI">
+      <field name="abbr">DI</field>
+      <field name="code">0488</field>
+      <field name="name">Desarrollo interfaces</field>
+      <field name="year">2</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_DAM')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">2</field>
+      <field name="individual_tutoring_hours">3</field>
+      <field name="week_hours_teacher">5</field>
+      <field name="total_hours">166</field>
+      <field name="week_hours">5</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_DAM_PI1">
+      <field name="abbr">PI1</field>
+      <field name="code">0492p</field>
+      <field name="name">Proyecto intermodular 1 de desarrollo de aplicaciones multiplataforma</field>
+      <field name="year">1</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_DAM')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">0</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">1</field>
+      <field name="total_hours">35</field>
+      <field name="week_hours">1</field>
+    </record>
+
+    <!-- Módulos DAW LFP -->
+    <record model="maya_core.subject" id="maya_core.subject_DAW_DWEC">
+      <field name="abbr">DWEC</field>
+      <field name="code">0612</field>
+      <field name="name">Desarrollo web en entorno cliente</field>
+      <field name="year">2</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_DAW')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">2</field>
+      <field name="individual_tutoring_hours">3</field>
+      <field name="week_hours_teacher">5</field>
+      <field name="total_hours">200</field>
+      <field name="week_hours">6</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_DAW_DWES">
+      <field name="abbr">DWES</field>
+      <field name="code">0613</field>
+      <field name="name">Desarrollo web en entorno servidor</field>
+      <field name="year">2</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_DAW')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">2</field>
+      <field name="individual_tutoring_hours">4</field>
+      <field name="week_hours_teacher">6</field>
+      <field name="total_hours">200</field>
+      <field name="week_hours">6</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_DAW_DAW">
+      <field name="abbr">DAW</field>
+      <field name="code">0614</field>
+      <field name="name">Despliegue de aplicaciones web</field>
+      <field name="year">2</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_DAW')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">1</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">2</field>
+      <field name="total_hours">100</field>
+      <field name="week_hours">3</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_DAW_DIW">
+      <field name="abbr">DIW</field>
+      <field name="code">0615</field>
+      <field name="name">Diseño de interfaces web</field>
+      <field name="year">2</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_DAW')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">2</field>
+      <field name="individual_tutoring_hours">2</field>
+      <field name="week_hours_teacher">4</field>
+      <field name="total_hours">133</field>
+      <field name="week_hours">4</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_DAW_PI2">
+      <field name="abbr">PI2</field>
+      <field name="code">0616</field>
+      <field name="name">Proyecto intermodular 2 de desarrollo de aplicaciones WEB</field>
+      <field name="year">2</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_DAW')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">1</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">2</field>
+      <field name="week_hours">3</field>
+      <field name="total_hours">100</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_DAW_PI1">
+      <field name="abbr">PI1</field>
+      <field name="code">0616p</field>
+      <field name="name">Proyecto intermodular 1 de desarrollo de aplicaciones WEB</field>
+      <field name="year">1</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_DAW')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">0</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">1</field>
+      <field name="total_hours">35</field>
+      <field name="week_hours">1</field>
+    </record>
+
+    <!-- Módulos MIX (Varios ciclos misma familia)-->
+    <record model="maya_core.subject" id="maya_core.subject_MIX_SIN">
+      <field name="abbr">SI</field>
+      <field name="code">0483</field>
+      <field name="name">Sistemas informáticos</field>
+      <field name="year">1</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_DAW'), ref('maya_core.CF_DAM')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">2</field>
+      <field name="individual_tutoring_hours">3</field>
+      <field name="week_hours_teacher">3</field>
+      <field name="total_hours">166</field>
+      <field name="week_hours">5</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_MIX_LMSGI">
+      <field name="abbr">LMSGI</field>
+      <field name="code">0373</field>
+      <field name="name">Lenguajes de marcas y sistemas de gestión de información</field>
+      <field name="year">1</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_DAW'), ref('maya_core.CF_DAM'), ref('maya_core.CF_ASIR')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">2</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">3</field>
+      <field name="total_hours">100</field>
+      <field name="week_hours">3</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_MIX_BD">
+      <field name="abbr">BD</field>
+      <field name="code">0484</field>
+      <field name="name">Bases de datos</field>
+      <field name="year">1</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_DAW'), ref('maya_core.CF_DAM')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">2</field>
+      <field name="individual_tutoring_hours">2</field>
+      <field name="week_hours_teacher">4</field>
+      <field name="total_hours">166</field>
+      <field name="week_hours">5</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_MIX_PRG">
+      <field name="abbr">PRG</field>
+      <field name="code">0485</field>
+      <field name="name">Programación</field>
+      <field name="year">1</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_DAW'), ref('maya_core.CF_DAM')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">2</field>
+      <field name="individual_tutoring_hours">4</field>
+      <field name="week_hours_teacher">6</field>
+      <field name="total_hours">266</field>
+      <field name="week_hours">8</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_MIX_ED">
+      <field name="abbr">ED</field>
+      <field name="code">0487</field>
+      <field name="name">Entornos de desarrollo</field>
+      <field name="year">1</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_DAW'), ref('maya_core.CF_DAM')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">1</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">2</field>
+      <field name="total_hours">100</field>
+      <field name="week_hours">3</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_MIX_DASPIYC">
+      <field name="abbr">DASP</field>
+      <field name="code">1665190</field>
+      <field name="name">Digitalización aplicada al sistema productivo GS</field>
+      <field name="year">2</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_DAW'), ref('maya_core.CF_DAM'), ref('maya_core.CF_ASIR')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">0</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">1</field>
+      <field name="total_hours">34</field>
+      <field name="week_hours">1</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_MIX_SASPIYC">
+      <field name="abbr">SASP</field>
+      <field name="code">1708190</field>
+      <field name="name">Sostenibilidad aplicada al sistema productivo</field>
+      <field name="year">2</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_DAW'), ref('maya_core.CF_DAM'), ref('maya_core.CF_ASIR')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">0</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">1</field>
+      <field name="total_hours">34</field>
+      <field name="week_hours">1</field>
     </record>
 
   </data>

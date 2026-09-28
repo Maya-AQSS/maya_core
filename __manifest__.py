@@ -60,6 +60,8 @@
         'data/center/maya_core.team.csv',
         'data/center/maya_core.study.csv',
         'data/center/subjects/cf/tic.xml',
+        'data/center/subjects/cf/optional.xml',
+        'data/center/subjects/cf/common.xml',
         
     ],
     # only loaded in demonstration mode

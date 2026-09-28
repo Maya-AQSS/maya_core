@@ -1,0 +1,69 @@
+<odoo>
+  <data>
+    <!-- Módulos comunes a todos los ciclos -->
+     <record model="maya_core.subject" id="maya_core.subject_MIX_TUT1">
+      <field name="abbr">TUT1</field>
+      <field name="code">TUT1</field>
+      <field name="name">Tutoría 1º</field>
+      <field name="year">1</field>
+      <field name="group_tutoring_hours">0</field>
+      <field name="individual_tutoring_hours">2</field>
+      <field name="week_hours">2</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_DAW'), ref('maya_core.CF_DAM'), ref('maya_core.CF_ASIR'), ref('maya_core.CF_GIAT'), ref('maya_core.CF_GAT'), ref('maya_core.CF_AVGE'), ref('maya_core.CF_MIP'), ref('maya_core.CF_CI'), ref('maya_core.CF_TIL'), ref('maya_core.CF_GVEC'), ref('maya_core.CF_AFI'), ref('maya_core.CF_ADI')])]"/>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_MIX_TUT2">
+      <field name="abbr">TUT2</field>
+      <field name="code">TUT2</field>
+      <field name="name">Tutoría 2º</field>
+      <field name="year">2</field>
+      <field name="group_tutoring_hours">0</field>
+      <field name="individual_tutoring_hours">3</field>
+      <field name="week_hours">5</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_DAW'), ref('maya_core.CF_DAM'), ref('maya_core.CF_ASIR'), ref('maya_core.CF_GIAT'), ref('maya_core.CF_GAT'), ref('maya_core.CF_AVGE'), ref('maya_core.CF_MIP'), ref('maya_core.CF_CI'), ref('maya_core.CF_TIL'), ref('maya_core.CF_GVEC'), ref('maya_core.CF_AFI'), ref('maya_core.CF_ADI')])]"/> 
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_MIX_IP">
+      <field name="abbr">IP</field>
+      <field name="code">0179</field>
+      <field name="name">Inglés profesional</field>
+      <field name="year">1</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_GIAT'), ref('maya_core.CF_GAT'),ref('maya_core.CF_AVGE'), ref('maya_core.CF_TIL'), ref('maya_core.CF_CI'), ref('maya_core.CF_GVEC'), ref('maya_core.CF_MIP'), ref('maya_core.CF_AFI'), ref('maya_core.CF_ADI'), ref('maya_core.CF_DAW'), ref('maya_core.CF_DAM'), ref('maya_core.CF_ASIR')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">1</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">2</field>
+      <field name="total_hours">67</field>
+      <field name="week_hours">2</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_MIX_IPE2">
+      <field name="abbr">IPE2</field>
+      <field name="code">1710</field>
+      <field name="name">Itinerario personal para la empleabilidad 2</field>
+      <field name="year">2</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_GIAT'), ref('maya_core.CF_GAT'),ref('maya_core.CF_AVGE'), ref('maya_core.CF_TIL'), ref('maya_core.CF_CI'), ref('maya_core.CF_GVEC'), ref('maya_core.CF_MIP'), ref('maya_core.CF_AFI'), ref('maya_core.CF_ADI'), ref('maya_core.CF_DAW'), ref('maya_core.CF_DAM'), ref('maya_core.CF_ASIR')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">1</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">2</field>
+      <field name="total_hours">100</field>
+      <field name="week_hours">3</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_MIX_IPE1">
+      <field name="abbr">IPE1</field>
+      <field name="code">0487</field>
+      <field name="name">Itinerario personal para la empleabilidad 1</field>
+      <field name="year">1</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_GIAT'), ref('maya_core.CF_GAT'),ref('maya_core.CF_AVGE'), ref('maya_core.CF_TIL'), ref('maya_core.CF_CI'), ref('maya_core.CF_GVEC'), ref('maya_core.CF_MIP'), ref('maya_core.CF_AFI'), ref('maya_core.CF_ADI'), ref('maya_core.CF_DAW'), ref('maya_core.CF_DAM'), ref('maya_core.CF_ASIR')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">1</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">2</field>
+      <field name="total_hours">100</field>
+      <field name="week_hours">3</field>
+    </record>
+
+  </data>
+</odoo>

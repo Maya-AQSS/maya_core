@@ -1,0 +1,219 @@
+<odoo>
+  <data>
+    <!-- Módulos optativos TIC -->
+    <record model="maya_core.subject" id="maya_core.subject_OPT_INGO">
+      <field name="abbr">INGO</field>
+      <field name="code">CVOPS190:01</field>
+      <field name="name">Inglés oral para entornos profesionales</field>
+      <field name="year">2</field>
+      <field name="optional">True</field>
+      <field name="group_tutoring_hours">1</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">2</field>
+      <field name="total_hours">100</field>
+      <field name="week_hours">3</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_DAW'), ref('maya_core.CF_DAM'), ref('maya_core.CF_ASIR')])]"/>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_OPT_IOPTIC">
+      <field name="abbr">IOP</field>
+      <field name="code">CVOPS190:02</field>
+      <field name="name">Introducción a la programación</field>
+      <field name="year">2</field>
+      <field name="optional">True</field>
+      <field name="group_tutoring_hours">1</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">2</field>
+      <field name="total_hours">100</field>
+      <field name="week_hours">3</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_DAW'), ref('maya_core.CF_DAM'), ref('maya_core.CF_ASIR')])]"/>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_OPT_INP">
+      <field name="abbr">INP</field>
+      <field name="code">CVOPS190:03</field>
+      <field name="name">Introducción a la nube pública</field>
+      <field name="year">2</field>
+      <field name="optional">True</field>
+      <field name="group_tutoring_hours">1</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">2</field>
+      <field name="total_hours">100</field>
+      <field name="week_hours">3</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_DAW'), ref('maya_core.CF_DAM'), ref('maya_core.CF_ASIR')])]"/>
+    </record>
+
+    <!-- Módulos optativos AYG -->
+    <record model="maya_core.subject" id="maya_core.subject_OPT_INGOAYG">
+      <field name="abbr">INGO</field>
+      <field name="code">CVOPS001:01</field>
+      <field name="name">Inglés oral para entornos profesionales</field>
+      <field name="year">2</field>
+      <field name="optional">True</field>
+      <field name="group_tutoring_hours">1</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">2</field>
+      <field name="total_hours">100</field>
+      <field name="week_hours">3</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_AFI'), ref('maya_core.CF_ADI')])]"/>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_OPT_DRRSSGCE">
+      <field name="abbr">DRRSSGCE</field>
+      <field name="code">CVOPS001:02</field>
+      <field name="name">Dinamización de redes sociales y gestión del comercio electrónico</field>
+      <field name="year">2</field>
+      <field name="optional">True</field>
+      <field name="group_tutoring_hours">1</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">2</field>
+      <field name="total_hours">100</field>
+      <field name="week_hours">3</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_AFI'), ref('maya_core.CF_ADI')])]"/>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_OPT_GPD">
+      <field name="abbr">GPD</field>
+      <field name="code">CVOPS001:03</field>
+      <field name="name">Gestión de procesos digitales</field>
+      <field name="year">2</field>
+      <field name="optional">True</field>
+      <field name="group_tutoring_hours">1</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">2</field>
+      <field name="total_hours">100</field>
+      <field name="week_hours">3</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_AFI'), ref('maya_core.CF_ADI')])]"/>
+    </record>
+
+    <!-- Módulos optativos CYM -->
+    <record model="maya_core.subject" id="maya_core.subject_OPT_INGOCYM">
+      <field name="abbr">INGO</field>
+      <field name="code">CVOPS020:01</field>
+      <field name="name">Inglés oral para entornos profesionales</field>
+      <field name="year">2</field>
+      <field name="optional">True</field>
+      <field name="group_tutoring_hours">1</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">2</field>
+      <field name="total_hours">100</field>
+      <field name="week_hours">3</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_CI'), ref('maya_core.CF_TIL'), ref('maya_core.CF_MIP'), ref('maya_core.CF_GVEC')])]"/>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_OPT_OGECE">
+      <field name="abbr">OGECE</field>
+      <field name="code">CVOPS020:02</field>
+      <field name="name">Ofimática en la gestión económica y comercial de una empresa</field>
+      <field name="year">2</field>
+      <field name="optional">True</field>
+      <field name="group_tutoring_hours">1</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">2</field>
+      <field name="total_hours">100</field>
+      <field name="week_hours">3</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_CI'), ref('maya_core.CF_TIL'), ref('maya_core.CF_MIP'), ref('maya_core.CF_GVEC')])]"/>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_OPT_LOGPOR">
+      <field name="abbr">LOGPOR</field>
+      <field name="code">CVOPS039:03</field>
+      <field name="name">Logística portuaria</field>
+      <field name="year">2</field>
+      <field name="optional">True</field>
+      <field name="group_tutoring_hours">1</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">2</field>
+      <field name="total_hours">100</field>
+      <field name="week_hours">3</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_CI'), ref('maya_core.CF_TIL')])]"/>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_OPT_DDWW">
+      <field name="abbr">DDWW</field>
+      <field name="code">CVOPS039:04</field>
+      <field name="name">Diseño y desarrollo web con wordpress</field>
+      <field name="year">2</field>
+      <field name="optional">True</field>
+      <field name="group_tutoring_hours">1</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">2</field>
+      <field name="total_hours">100</field>
+      <field name="week_hours">3</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_GVEC'), ref('maya_core.CF_MIP')])]"/>
+    </record>
+
+    <!-- Módulos optativos HYT -->
+    <record model="maya_core.subject" id="maya_core.subject_OPT_INGOHYT">
+      <field name="abbr">INGO</field>
+      <field name="code">CVOPS039:01</field>
+      <field name="name">Inglés oral para entornos profesionales</field>
+      <field name="year">2</field>
+      <field name="optional">True</field>
+      <field name="group_tutoring_hours">1</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">2</field>
+      <field name="total_hours">100</field>
+      <field name="week_hours">3</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_GAT'), ref('maya_core.CF_GIAT'), ref('maya_core.CF_AVGE')])]"/>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_OPT_CFCTG">
+      <field name="abbr">CGCTG</field>
+      <field name="code">CVOPS039:02</field>
+      <field name="name">Creación y gestión de contenidos turísticos y gastronómicos</field>
+      <field name="year">2</field>
+      <field name="optional">True</field>
+      <field name="group_tutoring_hours">1</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">2</field>
+      <field name="total_hours">100</field>
+      <field name="week_hours">3</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_GAT'), ref('maya_core.CF_GIAT'), ref('maya_core.CF_AVGE')])]"/>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_OPT_DOPSBV">
+      <field name="abbr">DOPSBV</field>
+      <field name="code">CVOPS001:03</field>
+      <field name="name">Dinamización de la oferta de productos selectos, bebidas y vinos en la CV</field>
+      <field name="year">2</field>
+      <field name="optional">True</field>
+      <field name="group_tutoring_hours">1</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">2</field>
+      <field name="total_hours">100</field>
+      <field name="week_hours">3</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_GAT'), ref('maya_core.CF_GIAT'), ref('maya_core.CF_AVGE')])]"/>
+    </record>
+
+     <!-- Módulos optativos segunda lengua extranjera -->
+    <record model="maya_core.subject" id="maya_core.subject_MIX_LE2FR"> 
+      <field name="abbr">LE2FR</field>
+      <field name="code">0180:01</field>
+      <field name="name">Segunda lengua extranjera: Francés</field>
+      <field name="year">2</field>
+      <field name="optional">True</field>
+      <field name="group_tutoring_hours">1</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">2</field>
+      <field name="total_hours">100</field>
+      <field name="week_hours">3</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_GIAT'), ref('maya_core.CF_GAT'),ref('maya_core.CF_AVGE'), ref('maya_core.CF_AFI'), ref('maya_core.CF_ADI')])]"/>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_MIX_LE2AL"> 
+      <field name="abbr">LE2AL</field>
+      <field name="code">0180:02</field>
+      <field name="name">Segunda lengua extranjera: Alemán</field>
+      <field name="year">2</field>
+      <field name="optional">True</field>
+      <field name="group_tutoring_hours">1</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">2</field>
+      <field name="total_hours">100</field>
+      <field name="week_hours">3</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_GIAT'), ref('maya_core.CF_GAT'),ref('maya_core.CF_AVGE'), ref('maya_core.CF_AFI'), ref('maya_core.CF_ADI')])]"/>
+    </record>
+
+  </data>
+</odoo>

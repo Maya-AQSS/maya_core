@@ -17,7 +17,7 @@ class Study(models.Model):
       index=True
     )
 
-  abbr = fields.Char('Abreviatura', size = 5, required = True, translate = True)
+  abbr = fields.Char('Abreviatura', size = 7, required = True, translate = True)
   name = fields.Char('Nombre', required = True, translate = True)
   code = fields.Char('Código', required = True, size = 7)
 
