@@ -370,7 +370,20 @@
       </field>
     </record>
 
-    <record model="ir.ui.view" id="maya_core.chool_year_list">
+    <record model="ir.ui.view" id="maya_core.school_group_tree">
+      <field name="name">Lista de Grupos Escolares</field>
+      <field name="model">maya_core.school_group</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="name"/>
+          <field name="code"/>
+          <field name="study_id"/>
+          <field name="company_id"/>
+        </list>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="maya_core.school_year_list">
       <field name="name">Lista de cursos escolares</field>
       <field name="model">maya_core.school_year</field>
       <field name="arch" type="xml">
@@ -591,6 +604,12 @@
       <field name="view_mode">list,form</field>
     </record>
 
+    <record model="ir.actions.act_window" id="maya_core.action_school_group">
+      <field name="name">Grupos</field>
+      <field name="res_model">maya_core.school_group</field>
+      <field name="view_mode">list,form</field>
+    </record>
+    
     <record model="ir.actions.act_window" id="maya_core.action_subject">
       <field name="name">Asignaturas</field>
       <field name="res_model">maya_core.subject</field>
@@ -649,8 +668,10 @@
     <!-- menú enseñanza -->
     <menuitem name="Estudios" id="maya_core.school_study" parent="maya_core.teaching_school"
               action="maya_core.action_study" sequence="5"/>
+    <menuitem name="Grupos" id="maya_core.school_groups" parent="maya_core.teaching_school"
+              action="maya_core.action_school_group" sequence="6"/>
     <menuitem name="Asignaturas" id="maya_core.school_subject" parent="maya_core.teaching_school"
-              action="maya_core.action_subject" sequence="6"/>
+              action="maya_core.action_subject" sequence="7"/>
 
     <!-- menú Curso -->
     <menuitem name="Cursos escolares" id="maya_core.course_school_year" parent="maya_core.course_menu"

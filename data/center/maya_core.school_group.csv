@@ -1,0 +1,26 @@
+id,name,code,company_id:id,study_id:id
+maya_core.school_group_1CFSDAM,1º DAM A,1CFSDAM,fp_company,maya_core.CF_DAM
+maya_core.school_group_2CFSDAM,2º DAM A,2CFSDAM,fp_company,maya_core.CF_DAM
+maya_core.school_group_1CFSDAW,1º DAW A,1CFSDAW,fp_company,maya_core.CF_DAW
+maya_core.school_group_2CFSDAW,2º DAW A,2CFSDAW,fp_company,maya_core.CF_DAW
+maya_core.school_group_1CFSASIR,1º ASIR A,1CFSASIR,fp_company,maya_core.CF_ASIR
+maya_core.school_group_2CFSASIR,2º ASIR A,2CFSASIR,fp_company,maya_core.CF_ASIR
+maya_core.school_group_1CFSAFI_A,1º AFI A,1CFSAFI_A,fp_company,maya_core.CF_AFI
+maya_core.school_group_1CFSAFI_B,1º AFI B,1CFSAFI_B,fp_company,maya_core.CF_AFI
+maya_core.school_group_2CFSAFI,2º AFI A,2CFSAFI,fp_company,maya_core.CF_AFI
+maya_core.school_group_1CFSAD,1º ADIR A,1CFSAD,fp_company,maya_core.CF_ADI
+maya_core.school_group_2CFSAD,2º ADIR A,2CFSAD,fp_company,maya_core.CF_ADI
+maya_core.school_group_1CFSTL,1º TYL A,1CFSTL,fp_company,maya_core.CF_TIL
+maya_core.school_group_2CFSTL,2º TYL A,2CFSTL,fp_company,maya_core.CF_TIL
+maya_core.school_group_1CFSCI,1º CI A,1CFSCI,fp_company,maya_core.CF_CI
+maya_core.school_group_2CFSCI,2º CI A,2CFSCI,fp_company,maya_core.CF_CI
+maya_core.school_group_1CFSMK,1º MK A,1CFSMK,fp_company,maya_core.CF_MIP
+maya_core.school_group_2CFSMK,2º MK A,2CFSMK,fp_company,maya_core.CF_MIP
+maya_core.school_group_1CFSGVEC,1º GVEC A,1CFSGVEC,fp_company,maya_core.CF_GVEC
+maya_core.school_group_2CFSGEVC,2º GVEC A,2CFSGVEC,fp_company,maya_core.CF_GVEC
+maya_core.school_group_1CFSGAT,1º GAT A,1CFSGAT,fp_company,maya_core.CF_GAT
+maya_core.school_group_2CFSGAT,2º GAT A,2CFSGAT,fp_company,maya_core.CF_GAT
+maya_core.school_group_1CFSGIAT,1º GIAT A,1CFSGIAT,fp_company,maya_core.CF_GIAT
+maya_core.school_group_2CFSGIAT,2º GIAT A,2CFSGIAT,fp_company,maya_core.CF_GIAT
+maya_core.school_group_1CFSAVGE,1º AVGE A,1CFSAVGE,fp_company,maya_core.CF_AVGE
+maya_core.school_group_2CFSAVGE,2º AVGE A,2CFSAVGE,fp_company,maya_core.CF_AVGE

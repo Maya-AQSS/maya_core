@@ -59,6 +59,7 @@
         'data/center/maya_core.place.csv',
         'data/center/maya_core.team.csv',
         'data/center/maya_core.study.csv',
+        'data/center/maya_core.school_group.csv',
         'data/center/subjects/cf/tic.xml',
         'data/center/subjects/cf/optional.xml',
         'data/center/subjects/cf/common.xml',
