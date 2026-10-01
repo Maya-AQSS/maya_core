@@ -6,4 +6,6 @@ from . import course
 from . import ir
 from . import signature
 
+from . import config_settings
+
 from . import cron_register

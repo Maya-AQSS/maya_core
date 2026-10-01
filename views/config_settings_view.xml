@@ -1,0 +1,101 @@
+<odoo>
+  <data>
+    <!-- Acción para abrir los Ajustes de Maya -->
+    <record id="action_config_settings_maya_core" model="ir.actions.act_window">
+      <field name="name">Ajustes de Maya</field>
+      <field name="res_model">res.config.settings</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="view_mode">form</field>
+      <field name="context">{'module': 'maya_core', 'bin_size': False}</field>
+    </record>
+
+    <!-- Heredar la vista de res.config.settings -->
+    <record id="res_config_settings_view_form_maya" model="ir.ui.view">
+      <field name="name">res.config.settings.view.form.inherit.maya_core</field>
+      <field name="model">res.config.settings</field>
+      <field name="inherit_id" ref="base.res_config_settings_view_form" />
+      <field name="arch" type="xml">
+        <xpath expr="//app[@name='general_settings']" position="after">
+          <!-- Añadido data-key="maya_core" indispensable para Odoo 19 -->
+          <app data-string="Maya | Core" string="Maya | Core" name="maya_core" data-key="maya_core">
+            
+            <h2>Moodle</h2>
+            <div class="row mt16 o_settings_container" name="maya_core_moodle_setting_container">
+              <!-- URL Moodle -->
+              <div class="col-12 col-lg-6 o_setting_box" title="URL Moodle">
+                <div class="o_setting_right_pane">
+                  <span class="o_form_label">URL</span>
+                  <div class="text-muted">Dirección servidor Moodle</div>
+                  <div class="text-muted content-group mt8">
+                    <field name="moodle_url" class="oe_inline"/>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Usuario Moodle -->
+              <div class="col-12 col-lg-6 o_setting_box" title="Usuario">
+                <div class="o_setting_right_pane">
+                  <span class="o_form_label">Usuario</span>
+                  <div class="text-muted">Usuario (clave) definido en .maya_moodleteacher</div>
+                  <div class="text-muted content-group mt8">
+                    <field name="moodle_user" class="oe_inline"/>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Usuario Administrador -->
+              <div class="col-12 col-lg-6 o_setting_box" title="Usuario Administrador">
+                <div class="o_setting_right_pane">
+                  <span class="o_form_label">Usuario Administrador</span>
+                  <div class="text-muted">Usuario administrador (clave) definido en .maya_moodleteacher</div>
+                  <div class="text-muted content-group mt8">
+                    <field name="moodle_user_admin" class="oe_inline"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h2>Itaca</h2>
+            <div class="row mt16 o_settings_container" name="maya_core_itaca_setting_container">
+              <!-- Fichero datos -->
+              <div class="col-12 col-lg-6 o_setting_box" title="Ubicación datos alumnado">
+                <div class="o_setting_right_pane">
+                  <span class="o_form_label">Ubicación datos de alumnado</span>
+                  <div class="text-muted">Ubicación del fichero .csv con los datos de los alumnos exportados de Itaca.</div>
+                  <div class="text-muted content-group mt8">
+                    <field name="itaca_students_data" class="oe_inline"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h2>Correo</h2>
+            <div class="row mt16 o_settings_container" name="maya_core_mail_setting_container">
+              <!-- Alias Maya -->
+              <div class="col-12 col-lg-6 o_setting_box" title="Alias correo Maya">
+                <div class="o_setting_right_pane">
+                  <span class="o_form_label">Alias correo Maya</span>
+                  <div class="text-muted">Alias en la configuración del servidor que envía con nombre Maya</div>
+                  <div class="text-muted content-group mt8">
+                    <field name="alias_mail_maya" class="oe_inline"/>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Alias Centro -->
+              <div class="col-12 col-lg-6 o_setting_box" title="Alias correo Centro">
+                <div class="o_setting_right_pane">
+                  <span class="o_form_label">Alias correo Centro</span>
+                  <div class="text-muted">Alias en la configuración del servidor que envía con nombre Centro</div>
+                  <div class="text-muted content-group mt8">
+                    <field name="alias_mail_center" class="oe_inline"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </app>
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>
