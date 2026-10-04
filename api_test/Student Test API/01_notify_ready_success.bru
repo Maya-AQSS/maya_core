@@ -1,0 +1,40 @@
+meta {
+  name: Notify ITACA Datafile Ready - Success
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{odooURLInternal}}/api/v1/student/notify-itaca-datafile-ready
+  body: json
+  auth: bearer
+}
+
+headers {
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{apiKey}}
+}
+
+body:json {
+  {
+    "filename": "{{filename}}"
+  }
+}
+
+assert {
+  res.status: eq 202
+  res.body.success: eq true
+  res.body.status: eq queued
+  res.body.message: contains {{filename}}
+}
+
+tests {
+  test("Debe responder con 202 Accepted y encolar la tarea", function() {
+    expect(res.getStatus()).to.equal(202);
+    expect(res.getBody().success).to.be.true;
+    expect(res.getBody().status).to.equal("queued");
+  });
+}

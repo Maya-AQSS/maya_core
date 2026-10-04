@@ -1,0 +1,31 @@
+meta {
+  name: Error - Missing Authentication
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{odooURLInternal}}/api/v1/student/notify-itaca-datafile-ready
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "filename": "{{filename}}"
+  }
+}
+
+assert {
+  res.status: in [401, 403]
+}
+
+tests {
+  test("Debe rechazar la petición sin autenticación", function() {
+    expect([401, 403]).to.include(res.getStatus());
+  });
+}

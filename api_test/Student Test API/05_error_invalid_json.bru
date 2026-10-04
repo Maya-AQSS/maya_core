@@ -1,0 +1,33 @@
+meta {
+  name: Error - Invalid JSON Body
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{odooURLInternal}}/api/v1/student/notify-itaca-datafile-ready
+  body: text
+  auth: bearer
+}
+
+headers {
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{apiKey}}
+}
+
+body:text {
+  { "filename": "{filename}",
+}
+
+assert {
+  res.status: eq 400
+}
+
+tests {
+  test("Debe devolver 400 si el JSON está mal formado", function() {
+    expect(res.getStatus()).to.equal(400);
+  });
+}

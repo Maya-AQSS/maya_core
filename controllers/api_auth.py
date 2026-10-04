@@ -40,10 +40,11 @@ def error_response(message, code, http_status=400):
 class ApiBaseController(http.Controller):
 
   # Autenticar la aplicación
-  def _authenticate_app(self):
+  def _authenticate_app(self, required_group=None):
     """
     Valida que la petición viene de una app autorizada mediante Bearer token.
     Usa _check_credentials() de Odoo que maneja el hash internamente.
+    Opcionalmente comprueba si la app tiene un grupo/permiso específico.
     """
     auth_header = request.httprequest.headers.get('Authorization', '')
 
@@ -76,6 +77,13 @@ class ApiBaseController(http.Controller):
             return None, error_response(
                 'Usuario de servicio inactivo.',
                 'SERVICE_USER_INACTIVE', 401,
+            )
+        
+        # Validación de grupo/rol si se especifica
+        if required_group and not app_user.has_group(required_group):
+            return None, error_response(
+                'La aplicación no tiene permisos para acceder a este recurso.',
+                'FORBIDDEN', 403,
             )
 
         return app_user, None
@@ -153,18 +161,25 @@ class ApiBaseController(http.Controller):
 
     return odoo_user, None
   
-  def _authenticate(self, body: dict = None):
+  def _authenticate(self, body: dict = None, require_human_user: bool = True, required_group: str = None):
     """
-    Autenticación completa en dos niveles:
+    Orquestador de autenticación en dos niveles:
         1. Valida que la app es legítima via API key
         2. Identifica al usuario humano via JWT de Keycloak
 
-    Devuelve (odoo_user_humano, None) o (None, error_response).
+    :param body: Payload de la petición (de donde se lee 'keycloak_token').
+    :param require_human_user: Si es False, SOLO valida la API Key de la app.
+    :param required_group: Grupo de seguridad de Odoo requerido para la app.
+    :return: (user_record, error_response)
     """
     # Nivel 1: De qué aplicación viene
-    _, err = self._authenticate_app()
+    app_user, err = self._authenticate_app(required_group=required_group)
     if err:
         return None, err
+    
+    # 2. Si no se exige usuario humano, retornamos directamente el usuario de servicio de la App
+    if not require_human_user:
+        return app_user, None
 
     # Nivel 2: ¿qué usuario humano está detrás?
     keycloak_token = (body or {}).get('keycloak_token', '')

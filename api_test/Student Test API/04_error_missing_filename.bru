@@ -1,0 +1,33 @@
+meta {
+  name: Error - Missing Filename Parameter
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{odooURLInternal}}/api/v1/student/notify-itaca-datafile-ready
+  body: json
+  auth: bearer
+}
+
+headers {
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{apiKey}}
+}
+
+body:json {
+  {}
+}
+
+assert {
+  res.status: eq 400
+}
+
+tests {
+  test("Debe devolver 400 cuando falta el nombre del fichero", function() {
+    expect(res.getStatus()).to.equal(400);
+  });
+}

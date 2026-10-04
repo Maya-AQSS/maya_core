@@ -1,0 +1,11 @@
+<odoo>
+  <data>
+    <record id="maya_core.external_apps_category" model="ir.module.category">
+      <field name="name">External Apps</field>
+    </record>
+
+    <record id="maya_core.group_itaca_integration" model="res.groups">
+      <field name="name">Integración Ítaca</field>
+    </record>
+  </data>
+</odoo>

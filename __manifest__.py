@@ -46,6 +46,7 @@
     # always loaded
     'data': [
         # seguridad
+        'security/security_groups.xml',
         'security/core_access.xml',
         # configuraciones
         'data/config/auth_providers.xml',

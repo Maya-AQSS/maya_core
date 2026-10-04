@@ -4,3 +4,4 @@
 
 toolz
 python-jose
+pandas

@@ -35,4 +35,24 @@ class SchoolGroup(models.Model):
     )
 
     # Restricción SQL para evitar duplicar el código dentro del mismo tipo de enseñanza
-    _unique_codo_company = models.Constraint('unique(code, company_id)', 'El código del grupo debe ser único por tipo de enseñanza.')
+    _unique_code_company = models.Constraint('unique(code, company_id)', 'El código del grupo debe ser único por tipo de enseñanza.')
+
+    @api.model
+    def adjust_study_code(self, group_code: str):
+        """
+        Recibe el código de un grupo y devuelve una tupla con
+        (study_id, company_id) correspondiente.
+
+        :param group_code: Código del grupo a buscar (ej. '1DAWA')
+        :return: Tupla (int, int) con los IDs de (study_id, company_id) o (False, False) si no existe.
+        """
+        if not group_code:
+            return False, False
+
+        # Búsqueda con sudo() para omitir reglas de registro/multicompañía al consultar
+        group_rec = self.sudo().search([('code', '=', group_code)], limit=1)
+
+        if group_rec:
+            return group_rec.study_id.id, group_rec.company_id.id
+
+        return False, False

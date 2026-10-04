@@ -104,6 +104,22 @@
         </form>
       </field>
     </record>
+
+    <record model="ir.ui.view" id="maya_core.student_tree">
+      <field name="name">Lista de estudiantes</field>
+      <field name="model">maya_core.student</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="nia" />
+          <field name="name"/>
+          <field name="surname"/>
+          <field name="email_coorp"/>
+          <field name="telephone1"/>
+          <field name="studies_ids" widget="many2many_tags" />
+          <!-- <field name="roles_ids" widget="many2many_tags" /> -->
+        </list>
+      </field>
+    </record>
    
     <!-- Views de session_Schedule -->
     <record model="ir.ui.view" id="maya_core.session_schedule_list">
@@ -580,6 +596,12 @@
       <field name="view_mode">list,form</field>
     </record>
 
+    <record model="ir.actions.act_window" id="maya_core.action_student">
+      <field name="name">Estudiantes</field>
+      <field name="res_model">maya_core.student</field>
+      <field name="view_mode">list,form</field>
+    </record>
+
     <record model="ir.actions.act_window" id="maya_core.action_location">
       <field name="name">Ubicaciones</field>
       <field name="res_model">maya_core.location</field>
@@ -676,6 +698,8 @@
     <!-- menú Curso -->
     <menuitem name="Cursos escolares" id="maya_core.course_school_year" parent="maya_core.course_menu"
               action="maya_core.action_school_year" sequence="1"/>
+    <menuitem name="Estudiantes" id="maya_core.course_student" parent="maya_core.course_menu"
+              action="maya_core.action_student" sequence="2"/>
     <menuitem name="Empleados" id="maya_core.course_employee" parent="maya_core.course_menu"
               action="maya_core.action_employee" sequence="3"/>
 
