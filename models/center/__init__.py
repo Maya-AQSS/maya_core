@@ -7,3 +7,4 @@ from . import location
 from . import place
 from . import session_schedule
 from . import school_group
+from . import moodle

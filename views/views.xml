@@ -581,7 +581,7 @@
       <field name="model">maya_core.classroom</field>
       <field name="arch" type="xml">
         <list limit="25">
-          <field name="short_description"/>
+          <field name="short_name"/>
           <field name="description"/>
           <field name="subjects_ids" string="Asignatura (Estudio)" widget="many2many_tags"/>
           <field name="lang_id"/>
@@ -661,6 +661,16 @@
       </field>
     </record>
 
+    <record model="ir.actions.act_window" id="maya_core.action_moodle_task">
+      <field name="name">Tareas de Moodle</field>
+      <field name="res_model">maya_core.task_moodle</field>
+      <field name="view_mode">list,form</field>
+      <field name="context">{
+        'search_default_group_by_study': 1
+      }
+      </field>
+    </record>
+
 
     <!-- Top menu item -->
     <menuitem name="Maya | Core" id="maya_core.menu_root" sequence="1"/>
@@ -706,6 +716,8 @@
     <!-- menú Moodle -->
     <menuitem name="Aulas virtuales" id="maya_core.moodle_classroom" parent="maya_core.moodle_menu"
               action="maya_core.action_classroom"/>
+    <menuitem name="Tareas" id="maya_core.moodle_task" parent="maya_core.moodle_menu"
+              action="maya_core.action_moodle_task"/>
 
   </data>
 </odoo>
