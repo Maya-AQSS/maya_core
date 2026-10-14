@@ -19,3 +19,6 @@ class ResConfigSettings(models.TransientModel):
 
     itaca_students_data = fields.Char(string = 'Ubicación datos de alumnado', config_parameter='maya_core.itaca_students_data_folder',
                               help = 'Ubicación del fichero .csv que contiene los datos de los alumnos de Itaca para ser matriculados. Se genera con upload_itaca_students')
+
+    esv_service_url = fields.Char(string = 'URL del servicio ESV', config_parameter='maya_core.esv_service_url',
+                              help = 'URL del servicio ESV (Electronic Signature Verification)')

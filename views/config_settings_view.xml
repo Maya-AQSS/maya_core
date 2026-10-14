@@ -93,6 +93,20 @@
                 </div>
               </div>
             </div>
+
+            <h2>Firma electrónica</h2>
+            <div class="row mt16 o_settings_container" name="maya_core_esv_setting_container">
+              <!-- Fichero datos -->
+              <div class="col-12 col-lg-6 o_setting_box" title="Servicio de comprobación de firma electrónica">
+                <div class="o_setting_right_pane">
+                  <span class="o_form_label">URL Maya | Esv</span>
+                  <div class="text-muted">URL del servicio de comprobación de firma electrónica.</div>
+                  <div class="text-muted content-group mt8">
+                    <field name="esv_service_url" class="oe_inline"/>
+                  </div>
+                </div>
+              </div>
+            </div>
           </app>
         </xpath>
       </field>
