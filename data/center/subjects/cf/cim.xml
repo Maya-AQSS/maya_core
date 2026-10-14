@@ -1,0 +1,317 @@
+<odoo>
+  <data>
+    <!-- Módulos GVEC LFP -->
+    <record model="maya_core.subject" id="maya_core.subject_GVEC_LAM">
+      <field name="abbr">LAM</field>
+      <field name="code">0625</field>
+      <field name="name">Logística de almacenamiento</field>
+      <field name="year">2</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_GVEC')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">2</field>
+      <field name="individual_tutoring_hours">2</field>
+      <field name="week_hours_teacher">4</field>
+      <field name="total_hours">133</field>
+      <field name="week_hours">4</field>
+  </record>
+
+  <record model="maya_core.subject" id="maya_core.subject_GVEC_LAP">
+    <field name="abbr">LAP</field>
+    <field name="code">0626</field>
+    <field name="name">Logística de aprovisionamiento</field>
+    <field name="year">2</field>
+    <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_GVEC')])]"/>
+    <field name="optional">False</field>
+    <field name="group_tutoring_hours">2</field>
+    <field name="individual_tutoring_hours">1</field>
+    <field name="week_hours_teacher">3</field>
+    <field name="total_hours">100</field>
+    <field name="week_hours">3</field>
+  </record>
+
+  <record model="maya_core.subject" id="maya_core.subject_GVEC_EDEC">
+    <field name="abbr">EDEC</field>
+    <field name="code">0926</field>
+    <field name="name">Escaparatismo y diseño de espacios comerciales</field>
+    <field name="year">2</field>
+    <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_GVEC')])]"/>
+    <field name="optional">False</field>
+    <field name="group_tutoring_hours">2</field>
+    <field name="individual_tutoring_hours">1</field>
+    <field name="week_hours_teacher">3</field>
+    <field name="total_hours">100</field>
+    <field name="week_hours">3</field>
+  </record>
+
+  <record model="maya_core.subject" id="maya_core.subject_GVEC_GPPPV">
+    <field name="abbr">GPPPV</field>
+    <field name="code">0927</field>
+    <field name="name">Gestión de productos y promociones en el punto de venta</field>
+    <field name="year">2</field>
+    <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_GVEC')])]"/>
+    <field name="optional">False</field>
+    <field name="group_tutoring_hours">2</field>
+    <field name="individual_tutoring_hours">1</field>
+    <field name="week_hours_teacher">3</field>
+    <field name="total_hours">100</field>
+    <field name="week_hours">3</field>
+  </record>
+
+  <record model="maya_core.subject" id="maya_core.subject_GVEC_OEV">
+    <field name="abbr">OEV</field>
+    <field name="code">0928</field>
+    <field name="name">Organización de equipos de ventas</field>
+    <field name="year">2</field>
+    <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_GVEC')])]"/>
+    <field name="optional">False</field>
+    <field name="group_tutoring_hours">2</field>
+    <field name="individual_tutoring_hours">1</field>
+    <field name="week_hours_teacher">3</field>
+    <field name="total_hours">100</field>
+    <field name="week_hours">3</field>
+  </record>
+
+  <record model="maya_core.subject" id="maya_core.subject_GVEC_TVN">
+    <field name="abbr">TVN</field>
+    <field name="code">0929</field>
+    <field name="name">Técnicas de venta y negociación</field>
+    <field name="year">2</field>
+    <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_GVEC')])]"/>
+    <field name="optional">False</field>
+    <field name="group_tutoring_hours">1</field>
+    <field name="individual_tutoring_hours">1</field>
+    <field name="week_hours_teacher">2</field>
+    <field name="total_hours">100</field>
+    <field name="week_hours">3</field>
+  </record>
+
+  <record model="maya_core.subject" id="maya_core.subject_GVEC_PI2">
+    <field name="abbr">PI2</field>
+    <field name="code">932</field>
+    <field name="name">Proyecto intermodular 2 de gestión de ventas y espacios comerciales</field>
+    <field name="year">2</field>
+    <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_GVEC')])]"/>
+    <field name="optional">False</field>
+    <field name="group_tutoring_hours">1</field>
+    <field name="individual_tutoring_hours">1</field>
+    <field name="week_hours_teacher">2</field>
+    <field name="total_hours">99</field>
+    <field name="week_hours">3</field>
+  </record>
+
+  <record model="maya_core.subject" id="maya_core.subject_GVEC_PI1">
+    <field name="abbr">PI1</field>
+    <field name="code">0932p</field>
+    <field name="name">Proyecto intermodular 1 de gestión de ventas y espacios comerciales</field>
+    <field name="year">1</field>
+    <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_GVEC')])]"/>
+    <field name="optional">False</field>
+    <field name="group_tutoring_hours">0</field>
+    <field name="individual_tutoring_hours">1</field>
+    <field name="week_hours_teacher">1</field>
+    <field name="total_hours">34</field>
+    <field name="week_hours">1</field>
+  </record>
+
+  <!-- Módulos MKP LFP -->
+  <record model="maya_core.subject" id="maya_core.subject_MIP_DEMC">
+    <field name="abbr">DEMC</field>
+    <field name="code">1007</field>
+    <field name="name">Diseño y elaboración de material de comunicación</field>
+    <field name="year">2</field>
+    <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_MIP')])]"/>
+    <field name="optional">False</field>
+    <field name="group_tutoring_hours">2</field>
+    <field name="individual_tutoring_hours">2</field>
+    <field name="week_hours_teacher">4</field>
+    <field name="total_hours">166</field>
+    <field name="week_hours">5</field>
+  </record>
+
+  <record model="maya_core.subject" id="maya_core.subject_MIP_MSC">
+    <field name="abbr">MSC</field>
+    <field name="code">1008</field>
+    <field name="name">Medios y soportes de comunicación</field>
+    <field name="year">2</field>
+    <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_MIP')])]"/>
+    <field name="optional">False</field>
+    <field name="group_tutoring_hours">1</field>
+    <field name="individual_tutoring_hours">1</field>
+    <field name="week_hours_teacher">2</field>
+    <field name="total_hours">67</field>
+    <field name="week_hours">3</field>
+  </record>
+
+  <record model="maya_core.subject" id="maya_core.subject_MIP_RPOEM">
+    <field name="abbr">RPOEM</field>
+    <field name="code">1009</field>
+    <field name="name">Relaciones públicas y organización de eventos de marketing</field>
+    <field name="year">2</field>
+    <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_MIP')])]"/>
+    <field name="optional">False</field>
+    <field name="group_tutoring_hours">2</field>
+    <field name="individual_tutoring_hours">1</field>
+    <field name="week_hours_teacher">3</field>
+    <field name="total_hours">100</field>
+    <field name="week_hours">3</field>
+  </record>
+
+  <record model="maya_core.subject" id="maya_core.subject_MIP_TCIC">
+    <field name="abbr">TCIC</field>
+    <field name="code">1011</field>
+    <field name="name">Trabajo de campo en la investigación comercial</field>
+    <field name="year">2</field>
+    <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_MIP')])]"/>
+    <field name="optional">False</field>
+    <field name="group_tutoring_hours">2</field>
+    <field name="individual_tutoring_hours">1</field>
+    <field name="week_hours_teacher">3</field>
+    <field name="total_hours">100</field>
+    <field name="week_hours">3</field>
+  </record>
+
+  <record model="maya_core.subject" id="maya_core.subject_MIP_LPS">
+    <field name="abbr">LPS</field>
+    <field name="code">1109</field>
+    <field name="name">Lanzamiento de productos y servicios</field>
+    <field name="year">2</field>
+    <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_MIP')])]"/>
+    <field name="optional">False</field>
+    <field name="group_tutoring_hours">2</field>
+    <field name="individual_tutoring_hours">1</field>
+    <field name="week_hours_teacher">3</field>
+    <field name="total_hours">100</field>
+    <field name="week_hours">3</field>
+  </record>
+
+  <record model="maya_core.subject" id="maya_core.subject_MIP_ACCU">
+    <field name="abbr">ACCU</field>
+    <field name="code">1110</field>
+    <field name="name">Atención al cliente, consumidor y usuario</field>
+    <field name="year">2</field>
+    <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_MIP')])]"/>
+    <field name="optional">False</field>
+    <field name="group_tutoring_hours">1</field>
+    <field name="individual_tutoring_hours">1</field>
+    <field name="week_hours_teacher">2</field>
+    <field name="total_hours">100</field>
+    <field name="week_hours">3</field>
+  </record>
+
+  <record model="maya_core.subject" id="maya_core.subject_MIP_PI2">
+    <field name="abbr">PI2</field>
+    <field name="code">1012</field>
+    <field name="name">Proyecto intermodular 2 de marketing y publicidad</field>
+    <field name="year">2</field>
+    <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_ASIR')])]"/>
+    <field name="optional">False</field>
+    <field name="group_tutoring_hours">1</field>
+    <field name="individual_tutoring_hours">1</field>
+    <field name="week_hours_teacher">2</field>
+    <field name="total_hours">99</field>
+    <field name="week_hours">3</field>
+  </record>
+
+  <record model="maya_core.subject" id="maya_core.subject_MIP_PI1">
+    <field name="abbr">PI1</field>
+    <field name="code">1012p</field>
+    <field name="name">Proyecto intermodular 1 de gestión de ventas y espacios comerciales</field>
+    <field name="year">1</field>
+    <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_MIP')])]"/>
+    <field name="optional">False</field>
+    <field name="group_tutoring_hours">0</field>
+    <field name="individual_tutoring_hours">1</field>
+    <field name="week_hours_teacher">1</field>
+    <field name="total_hours">34</field>
+    <field name="week_hours">1</field>
+  </record>
+
+  <!-- Módulos MIX (Varios ciclos misma familia)--> 
+  <record model="maya_core.subject" id="maya_core.subject_MIX_DASPCYM">
+    <field name="abbr">DASP</field>
+    <field name="code">1665020</field>
+    <field name="name">Digitalización aplicada al sistema productivo GS</field>
+    <field name="year">2</field>
+    <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_GVEC'), ref('maya_core.CF_MIP'), ref('maya_core.CF_CI'), ref('maya_core.CF_TIL')])]"/>
+    <field name="optional">False</field>
+    <field name="group_tutoring_hours">0</field>
+    <field name="individual_tutoring_hours">1</field>
+    <field name="week_hours_teacher">1</field>
+    <field name="total_hours">34</field>
+    <field name="week_hours">1</field>
+  </record>
+
+  <record model="maya_core.subject" id="maya_core.subject_MIX_SASPCYM">
+    <field name="abbr">DASP</field>
+    <field name="code">1708020</field>
+    <field name="name">Sostenibilidad aplicada al sistema productivo</field>
+    <field name="year">2</field>
+    <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_ASIR')])]"/>
+    <field name="optional">False</field>
+    <field name="group_tutoring_hours">0</field>
+    <field name="individual_tutoring_hours">1</field>
+    <field name="week_hours_teacher">1</field>
+    <field name="total_hours">34</field>
+    <field name="week_hours">1</field>
+  </record>
+
+  <record model="maya_core.subject" id="maya_core.subject_MIX_GEFE">
+    <field name="abbr">GEFE</field>
+    <field name="code">0623</field>
+    <field name="name">Gestión económica y financiera de la empresa</field>
+    <field name="year">1</field>
+    <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_GVEC'), ref('maya_core.CF_MIP')])]"/>
+    <field name="optional">False</field>
+    <field name="group_tutoring_hours">2</field>
+    <field name="individual_tutoring_hours">3</field>
+    <field name="week_hours_teacher">5</field>
+    <field name="total_hours">200</field>
+    <field name="week_hours">6</field>
+  </record>
+
+  <record model="maya_core.subject" id="maya_core.subject_GVEC_PMK">
+    <field name="abbr">PMK</field>
+    <field name="code">0930</field>
+    <field name="name">Políticas de marketing</field>
+    <field name="year">1</field>
+    <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_GVEC'), ref('maya_core.CF_MIP')])]"/>
+    <field name="optional">False</field>
+    <field name="group_tutoring_hours">2</field>
+    <field name="individual_tutoring_hours">4</field>
+    <field name="week_hours_teacher">6</field>
+    <field name="total_hours">200</field>
+    <field name="week_hours">6</field>
+  </record>
+
+  <record model="maya_core.subject" id="maya_core.subject_GVEC_MKD">
+    <field name="abbr">MKD</field>
+    <field name="code">0931</field>
+    <field name="name">Marketing digital</field>
+    <field name="year">1</field>
+    <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_GVEC'), ref('maya_core.CF_MIP')])]"/>
+    <field name="optional">False</field>
+    <field name="group_tutoring_hours">2</field>
+    <field name="individual_tutoring_hours">3</field>
+    <field name="week_hours_teacher">5</field>
+    <field name="total_hours">166</field>
+    <field name="week_hours">5</field>
+  </record>
+
+  <record model="maya_core.subject" id="maya_core.subject_GVEC_IC">
+    <field name="abbr">IC</field>
+    <field name="code">1010</field>
+    <field name="name">Investigación comercial</field>
+    <field name="year">1</field>
+    <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_GVEC'), ref('maya_core.CF_MIP')])]"/>
+    <field name="optional">False</field>
+    <field name="group_tutoring_hours">2</field>
+    <field name="individual_tutoring_hours">1</field>
+    <field name="week_hours_teacher">3</field>
+    <field name="total_hours">133</field>
+    <field name="week_hours">4</field>
+  </record>
+
+
+
+  </data>
+</odoo>

@@ -1,0 +1,274 @@
+<odoo>
+  <data>
+    <!-- Módulos AD LFP -->
+    <record model="maya_core.subject" id="maya_core.subject_AD_PE">
+      <field name="abbr">PE</field>
+      <field name="code">0661</field>
+      <field name="name">Protocolo empresarial</field>
+      <field name="year">2</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_ADI')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">2</field>
+      <field name="individual_tutoring_hours">2</field>
+      <field name="week_hours_teacher">4</field>
+      <field name="total_hours">166</field>
+      <field name="week_hours">5</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_AD_OEE">
+      <field name="abbr">OEE</field>
+      <field name="code">0662</field>
+      <field name="name">Organización de eventos empresariales</field>
+      <field name="year">2</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_ADI')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">2</field>
+      <field name="individual_tutoring_hours">2</field>
+      <field name="week_hours_teacher">4</field>
+      <field name="total_hours">166</field>
+      <field name="week_hours">5</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_AD_GAI">
+      <field name="abbr">GAI</field>
+      <field name="code">0663</field>
+      <field name="name">Gestión Avanzada de la Información</field>
+      <field name="year">2</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_ADI')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">2</field>
+      <field name="individual_tutoring_hours">3</field>
+      <field name="week_hours_teacher">5</field>
+      <field name="total_hours">166</field>
+      <field name="week_hours">5</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_AD_PI2">
+      <field name="abbr">PI2</field>
+      <field name="code">0664</field>
+      <field name="name">Proyecto intermodular de Asistencia a la Dirección</field>
+      <field name="year">2</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_ADI')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">1</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">2</field>
+      <field name="total_hours">101</field>
+      <field name="week_hours">3</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_AD_PI1">
+      <field name="abbr">PIAD</field>
+      <field name="code">0664p</field>
+      <field name="name">Proyecto intermodular de asistencia a la dirección</field>
+      <field name="year">1</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_ASIR')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">0</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">1</field>
+      <field name="total_hours">34</field>
+      <field name="week_hours">1</field>
+    </record>
+
+    <!-- Módulos AF LFP -->
+    <record model="maya_core.subject" id="maya_core.subject_AF_GRRHH">
+      <field name="abbr">GRRHH</field>
+      <field name="code">0652</field>
+      <field name="name">Gestión de Recursos Humanos</field>
+      <field name="year">2</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_AFI')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">1</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">2</field>
+      <field name="total_hours">100</field>
+      <field name="week_hours">3</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_AF_GF">
+      <field name="abbr">GF</field>
+      <field name="code">0653</field>
+      <field name="name">Gestión Financiera</field>
+      <field name="year">2</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_AFI')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">2</field>
+      <field name="individual_tutoring_hours">2</field>
+      <field name="week_hours_teacher">4</field>
+      <field name="total_hours">133</field>
+      <field name="week_hours">4</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_AF_CYF">
+      <field name="abbr">CYF</field>
+      <field name="code">0654</field>
+      <field name="name">Contabilidad y Fiscalidad</field>
+      <field name="year">2</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_AFI')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">2</field>
+      <field name="individual_tutoring_hours">2</field>
+      <field name="week_hours_teacher">4</field>
+      <field name="total_hours">133</field>
+      <field name="week_hours">4</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_AF_GLC">
+      <field name="abbr">GLC</field>
+      <field name="code">0655</field>
+      <field name="name">Gestión logística y comercial</field>
+      <field name="year">2</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_AFI')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">2</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">3</field>
+      <field name="total_hours">100</field>
+      <field name="week_hours">3</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_AF_SE">
+      <field name="abbr">SE</field>
+      <field name="code">0656</field>
+      <field name="name">Simulación empresarial</field>
+      <field name="year">2</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_AFI')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">2</field>
+      <field name="individual_tutoring_hours">2</field>
+      <field name="week_hours_teacher">4</field>
+      <field name="total_hours">166</field>
+      <field name="week_hours">5</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_AF_PI2">
+      <field name="abbr">PIAF</field>
+      <field name="code">0657</field>
+      <field name="name">Proyecto intermodular de administración y finanzas</field>
+      <field name="year">2</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_AFI')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">1</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">2</field>
+      <field name="total_hours">100</field>
+      <field name="week_hours">3</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_AF_PI1">
+      <field name="abbr">PIAF</field>
+      <field name="code">0657p</field>
+      <field name="name">Proyecto Intermodular de Administración y Finanzas</field>
+      <field name="year">1</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_AFI')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">0</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">1</field>
+      <field name="total_hours">34</field>
+      <field name="week_hours">1</field>
+    </record>
+
+    <!-- Módulos MIX (Varios ciclos misma familia)--> 
+    <record model="maya_core.subject" id="maya_core.subject_MIX_GDJYE">
+      <field name="abbr">GDJYE</field>
+      <field name="code">0647</field>
+      <field name="name">Gestión de la documentación jurídica y empresarial</field>
+      <field name="year">1</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_ADI'), ref('maya_core.CF_AFI')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">1</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">2</field>
+      <field name="total_hours">100</field>
+      <field name="week_hours">3</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_MIX_RRHHYRSC">
+      <field name="abbr">RRHHYRSC</field>
+      <field name="code">0648</field>
+      <field name="name">Recursos humanos y responsabilidad social corporativa</field>
+      <field name="year">1</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_ADI'), ref('maya_core.CF_AFI')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">1</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">2</field>
+      <field name="total_hours">67</field>
+      <field name="week_hours">2</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_MIX_OYPI">
+      <field name="abbr">OYPI</field>
+      <field name="code">0649</field>
+      <field name="name">Ofimática y proceso de la información</field>
+      <field name="year">1</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_ADI'), ref('maya_core.CF_AFI')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">2</field>
+      <field name="individual_tutoring_hours">3</field>
+      <field name="week_hours_teacher">5</field>
+      <field name="total_hours">200</field>
+      <field name="week_hours">6</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_MIX_PIAC">
+      <field name="abbr">PIAC</field>
+      <field name="code">0650</field>
+      <field name="name">Proceso integral de la actividad comercial</field>
+      <field name="year">1</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_ADI'), ref('maya_core.CF_AFI')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">2</field>
+      <field name="individual_tutoring_hours">2</field>
+      <field name="week_hours_teacher">4</field>
+      <field name="total_hours">166</field>
+      <field name="week_hours">5</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_MIX_CAC">
+      <field name="abbr">CAC</field>
+      <field name="code">0651</field>
+      <field name="name">Comunicación y Atención al Cliente</field>
+      <field name="year">1</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_ADI'), ref('maya_core.CF_AFI')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">2</field>
+      <field name="individual_tutoring_hours">3</field>
+      <field name="week_hours_teacher">5</field>
+      <field name="total_hours">166</field>
+      <field name="week_hours">5</field>
+    </record>
+
+
+    <record model="maya_core.subject" id="maya_core.subject_MIX_DASPAYF">
+      <field name="abbr">DASP</field>
+      <field name="code">1665001</field>
+      <field name="name">Digitalización aplicada al sistema productivo GS</field>
+      <field name="year">2</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_ADI'), ref('maya_core.CF_AFI')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">0</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">1</field>
+      <field name="total_hours">34</field>
+      <field name="week_hours">1</field>
+    </record>
+
+    <record model="maya_core.subject" id="maya_core.subject_MIX_SASPAYF">
+      <field name="abbr">SASP</field>
+      <field name="code">1708001</field>
+      <field name="name">Sostenibilidad aplicada al sistema productivo</field>
+      <field name="year">2</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_ADI'), ref('maya_core.CF_AFI')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">0</field>
+      <field name="individual_tutoring_hours">1</field>
+      <field name="week_hours_teacher">1</field>
+      <field name="total_hours">34</field>
+      <field name="week_hours">1</field>
+    </record>
+ </data>
+</odoo>
+

@@ -187,32 +187,32 @@
     </record>
 
      <!-- Módulos optativos segunda lengua extranjera -->
-    <record model="maya_core.subject" id="maya_core.subject_MIX_LE2FR"> 
+    <record model="maya_core.subject" id="maya_core.subject_MIX_SLE">
       <field name="abbr">LE2FR</field>
-      <field name="code">0180:01</field>
-      <field name="name">Segunda lengua extranjera: Francés</field>
+      <field name="code">0180:FR</field>
+      <field name="name">Segunda lengua extranjera. Aleman</field>
       <field name="year">2</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_ADI'),ref('maya_core.CF_GIAT'), ref('maya_core.CF_GAT'),ref('maya_core.CF_AVGE')])]"/>
       <field name="optional">True</field>
-      <field name="group_tutoring_hours">1</field>
+      <field name="group_tutoring_hours">2</field>
       <field name="individual_tutoring_hours">1</field>
-      <field name="week_hours_teacher">2</field>
-      <field name="total_hours">100</field>
-      <field name="week_hours">3</field>
-      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_GIAT'), ref('maya_core.CF_GAT'),ref('maya_core.CF_AVGE'), ref('maya_core.CF_AFI'), ref('maya_core.CF_ADI')])]"/>
+      <field name="week_hours_teacher">3</field>
+      <field name="total_hours">133</field>
+      <field name="week_hours">4</field>
     </record>
 
-    <record model="maya_core.subject" id="maya_core.subject_MIX_LE2AL"> 
+    <record model="maya_core.subject" id="maya_core.subject_MIX_SLE">
       <field name="abbr">LE2AL</field>
-      <field name="code">0180:02</field>
-      <field name="name">Segunda lengua extranjera: Alemán</field>
+      <field name="code">0180:AL</field>
+      <field name="name">Segunda lengua extranjera. Frances</field>
       <field name="year">2</field>
-      <field name="optional">True</field>
-      <field name="group_tutoring_hours">1</field>
+      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_ADI'),ref('maya_core.CF_GIAT'), ref('maya_core.CF_GAT'),ref('maya_core.CF_AVGE')])]"/>
+      <field name="optional">False</field>
+      <field name="group_tutoring_hours">2</field>
       <field name="individual_tutoring_hours">1</field>
-      <field name="week_hours_teacher">2</field>
-      <field name="total_hours">100</field>
-      <field name="week_hours">3</field>
-      <field name="studies_ids" eval="[(6, 0, [ref('maya_core.CF_GIAT'), ref('maya_core.CF_GAT'),ref('maya_core.CF_AVGE'), ref('maya_core.CF_AFI'), ref('maya_core.CF_ADI')])]"/>
+      <field name="week_hours_teacher">3</field>
+      <field name="total_hours">133</field>
+      <field name="week_hours">4</field>
     </record>
 
   </data>
