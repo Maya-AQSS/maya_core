@@ -70,7 +70,8 @@ class Student(models.Model):
     }
 
     try:
-      df, _ = read_csv(csv_file)
+      # dtype=str para que NIA, teléfonos, etc. no se interpreten como números
+      df, _ = read_csv(csv_file, dtype=str)
     except Exception as e:
       raise Exception(f"Error al leer el fichero CSV: {str(e)}")
 
@@ -80,9 +81,9 @@ class Student(models.Model):
 
     # 2. Iterar sobre cada registro del CSV
     for index, row in df.iterrows():
-      nia = str(row.get('NIA') or '').strip()
+      nia = clean_str(row.get('NIA'))
       if not nia:
-        errors.append(f"El alumno {str(row.get('nombre') or '').strip()} {str(row.get('apellido1') or '').strip()} NIA especificado.")
+        errors.append(f"El alumno {clean_str(row.get('nombre'))} {clean_str(row.get('apellido1'))} no tiene NIA especificado.")
         continue
 
       # a) Buscar estudiante por NIA o por Email
@@ -92,7 +93,7 @@ class Student(models.Model):
       email_corp = clean_str(row.get('email_corporativo'))
 
       if not email_corp:
-        errors.append(f"El alumno {str(row.get('nombre') or '').strip()} {str(row.get('apellido1') or '').strip()} no tiene email corporativo especificado.")
+        errors.append(f"El alumno {clean_str(row.get('nombre'))} {clean_str(row.get('apellido1'))} no tiene email corporativo especificado.")
         continue
 
       email1 = clean_str(row.get('email1'))
@@ -108,15 +109,17 @@ class Student(models.Model):
         student = self.search(Domain.OR([[d] for d in domain]), limit=1)
 
       # Datos a actualizar/crear
+      surname = ' '.join(s for s in (clean_str(row.get('apellido1')), clean_str(row.get('apellido2'))) if s)
+
       student_vals = {
         'nia': nia,
-        'name': (row.get('nombre') or student.name or '').strip(),
-        'surname': (row.get('apellido1') or student.surname or '').strip() + ' ' + (row.get('apellido2') or student.surname or '').strip(),
+        'name': clean_str(row.get('nombre')) or student.name or '',
+        'surname': surname or student.surname or '',
         'email_coorp': email_corp or (student.email_coorp if student else False),
         'email': email1 or (student.email if student else False),
-        'email_support': (row.get('email2') or '').strip() or (student.email_support if student else False),
-        'telephone1': (row.get('telefono1') or '').strip() or (student.telephone1 if student else False),
-        'telephone2': (row.get('telefono2') or '').strip() or (student.telephone2 if student else False),
+        'email_support': clean_str(row.get('email2')) or (student.email_support if student else False),
+        'telephone1': clean_str(row.get('telefono1')) or (student.telephone1 if student else False),
+        'telephone2': clean_str(row.get('telefono2')) or (student.telephone2 if student else False),
       }
 
       # b) Crear o Actualizar el estudiante
@@ -126,7 +129,7 @@ class Student(models.Model):
         student.write(student_vals)
 
       # c) Obtener estudio y compañía a partir del grupo
-      group_code = str(row.get('grupo') or '').strip()
+      group_code = clean_str(row.get('grupo'))
       if not group_code:
         errors.append(f"(NIA {nia}): No se especificó el grupo.")
         continue
@@ -138,7 +141,7 @@ class Student(models.Model):
 
       # d) Matricular / Reactivar al alumno en el estudio
       rel = student.studies_ids.filtered(lambda r: r.study_id.id == study_id)
-      fecha_matricula = row.get('fecha_matricula') or today
+      fecha_matricula = clean_str(row.get('fecha_matricula')) or today
 
       current_sy = active_school_years.get(company_id)
 

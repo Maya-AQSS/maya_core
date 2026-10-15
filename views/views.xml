@@ -393,6 +393,7 @@
         <list>
           <field name="name"/>
           <field name="code"/>
+          <field name="itaca_course_code"/>
           <field name="study_id"/>
           <field name="company_id"/>
         </list>

@@ -7,7 +7,9 @@ Authorization: Bearer <api_key>
 Content-Type: application/json
 
 {
-    "filename": "nombre_del_fichero.csv"
+    "filename": "fichero_alumnos.csv",
+    "enrolments_filename": "fichero_matriculas.csv",
+    "groups_filename": "fichero_grupos.csv"
 }
 """
 import os
@@ -64,26 +66,34 @@ class StudentController(ApiBaseController):
     except json.JSONDecodeError:
       return error_response('El cuerpo de la petición no es JSON válido.', 'INVALID_JSON', 400)
 
-    filename = body.get('filename') or kwargs.get('filename')
-    if not filename:
-      return error_response('El parámetro "filename" es obligatorio en el payload.', 'MISSING_PARAM', 400)
-    
-    # 4. Validar que el fichero existe
-    full_filepath = os.path.join(folder_path, filename)
+    filenames = {}
+    for param in ('filename', 'enrolments_filename', 'groups_filename'):
+      value = body.get(param) or kwargs.get(param)
+      if not value:
+        return error_response(f'El parámetro "{param}" es obligatorio en el payload.', 'MISSING_PARAM', 400)
+      filenames[param] = value
 
-    if not os.path.isfile(full_filepath):
-        _logger.warning("El fichero especificado '%s' no existe en la ruta '%s'.", filename, folder_path)
+    # 4. Validar que los ficheros existen
+    for value in filenames.values():
+      full_filepath = os.path.join(folder_path, value)
+
+      if not os.path.isfile(full_filepath):
+        _logger.warning("El fichero especificado '%s' no existe en la ruta '%s'.", value, folder_path)
         return error_response(
-            f'El fichero "{filename}" no existe en el servidor o la ruta no es accesible.',
+            f'El fichero "{value}" no existe en el servidor o la ruta no es accesible.',
             'FILE_NOT_FOUND',
             404
         )
+
+    filename = filenames['filename']
+    enrolments_filename = filenames['enrolments_filename']
+    groups_filename = filenames['groups_filename']
 
     # 5. Lanzar la importación en un hilo secundario en segundo plano
     db_name = request.db
     thread = threading.Thread(
         target=self._run_import_in_thread,
-        args=(db_name, filename),
+        args=(db_name, filename, enrolments_filename, groups_filename),
         name=f"ItacaImportThread-{filename}"
     )
     thread.start()
@@ -98,7 +108,7 @@ class StudentController(ApiBaseController):
         status=202,  # 202 Accepted
     )
 
-  def _run_import_in_thread(self, db_name, filename):
+  def _run_import_in_thread(self, db_name, filename, enrolments_filename, groups_filename):
     """
     Método auxiliar ejecutado en un hilo independiente.
     Crea su propia transacción y entorno de Odoo.
@@ -115,6 +125,9 @@ class StudentController(ApiBaseController):
       env = env(context=dict(env.context, allowed_company_ids=company_ids))
       
       try:
+        # Asignamos a cada grupo su curso de Ítaca antes de importar los alumnos
+        env['maya_core.school_group'].sudo().assign_itaca_courses(groups_filename)
+
         # Invocamos la función del modelo 'maya_core.student' pasando el nombre del fichero
         student_model = env['maya_core.student'].sudo()
         student_model.process_itaca_import(filename)

@@ -29,18 +29,19 @@ def get_mail_server(self, alias: str):
     
     return mail_server
 
-def read_csv(filename: str) -> tuple[pd.DataFrame, pd.Series]:
+def read_csv(filename: str, dtype=None) -> tuple[pd.DataFrame, pd.Series]:
   """
   Lee el fichero CSV  y devuelve el DataFrame original y su versión aplanada.
 
   :param filename: Ruta completa al fichero CSV.
+  :param dtype: Tipo de las columnas (ej. str para que no se conviertan a números).
   :return: Una tupla (df, df_aplanado) donde:
             - df: DataFrame original leído del CSV
             - df_aplanado: Serie con todos los valores del DataFrame aplanados
   :raises UserError: Si el fichero no existe o no se puede leer.
   """
   try:
-    df = pd.read_csv(filename)
+    df = pd.read_csv(filename, dtype=dtype)
   except FileNotFoundError:
     raise Exception(f"¡Operación cancelada!. No se pudo encontrar el fichero de datos de alumnos de Itaca en {filename}.")
   except pd.errors.ParserError as e:
