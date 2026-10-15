@@ -12,8 +12,12 @@ class SignatureBatch(models.Model):
   Lote de documentos para firma digital
   """
   _name = 'maya_core.signature.batch'
+  _inherit = ['maya_core.audit.mixin']
   _description = 'Lote de Firma Electrónica'
   _order = 'create_date desc'
+
+  # Auditoría (maya.audit, después del commit): cambios de estado del lote
+  _maya_audit_fields = ('state', 'sign_date')
     
   name = fields.Char('Nombre', required=True, default='Nuevo lote')
   state = fields.Selection([

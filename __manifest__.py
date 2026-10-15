@@ -1,6 +1,6 @@
 {
     'name': "Maya | Core",
-    'version': '19.0.1.0',
+    'version': '19.0.1.1',
 
     'summary': "Módulo (Core) para la gestión interna del CEED",
 
@@ -20,6 +20,8 @@
          - Gestión de las aulas virtuales
          - Gestión de las tareas automatizadas (CronJobs)
          - Gestión de las notificaciones (envío  de mails) al profesorado
+         - Publicación en RabbitMQ (estándar de mensajería Maya) de errores de negocio, auditoría y
+           notificaciones, después del commit (models/messaging, support/amqp.py)
     """,
 
     'website': "https://portal.edu.gva.es/ceedcv/",
@@ -40,7 +42,7 @@
     # external dependencies that have to be installed. Can be python or bin dependencies
     # Only checks whether the dependency is installed. Not install the dependency!!
     'external_dependencies': {
-       'python': ['toolz'],
+       'python': ['toolz', 'pika'],
     },
 
     # always loaded
