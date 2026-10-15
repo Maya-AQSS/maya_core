@@ -53,11 +53,21 @@ class IrCron(models.Model):
   def method_direct_trigger(self):
     self.check_access_rights('write')
     for cron in self:
+      # Leídos antes de ejecutar: si la tarea falla, la transacción puede quedar inservible
+      info = {'cron_id': cron.id, 'name': cron.name, 'key': cron.key or None,
+              'group_label': cron.group_label or None, 'context': cron.context or None}
       try:
         cron.with_user(cron.user_id).with_context({'lastcall': cron.lastcall}).ir_actions_server_id.run()
         cron.lastcall = fields.Datetime.now()
       except Exception as e:
-        _logger.error(f'Se ha producido una excepción el cron_id {cron.id}, name {cron.name}: {str(e)}')
+        _logger.error(f'Se ha producido una excepción el cron_id {info["cron_id"]}, name {info["name"]}: {str(e)}')
+        # maya.logs (solo errores de negocio); sale al acabar la transacción, aunque se deshaga
+        self.env['maya_core.messaging']._publish_log(
+          'high',
+          f'Fallo en la tarea programada «{info["name"]}»',
+          error_code=type(e).__name__,
+          metadata=dict(info, error=str(e)[:2000]),
+        )
     
     return True 
   
