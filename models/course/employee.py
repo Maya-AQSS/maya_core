@@ -10,9 +10,19 @@ class Employee(models.Model):
   """
 
   _name = 'maya_core.employee'
+  _inherit = ['maya_core.audit.mixin']
   _description = 'Empleado del centro (profesor o PAS)'
   _order = 'surname'
   _rec_name = 'employee_info' 
+
+  # Auditoría (maya.audit, después del commit): cambios en estos campos. El IBAN se audita sin valor.
+  _maya_audit_fields = (
+    'user_id', 'phone_extension', 'personal_email', 'employee_type', 'position_type',
+    'car_registration_number_1', 'car_registration_number_2', 'car_registration_number_3',
+    'sick_leave', 'replaces_id', 'team_ids', 'lang', 'mentor_id', 'supervisor_id', 'iban',
+    'keys', 'date_keys_handover', 'date_keys_return',
+  )
+  _maya_audit_redacted = ('iban',)
 
   # simulación de un One2one
   # en user hay un many2one y aqui un one2many
