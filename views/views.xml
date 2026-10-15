@@ -120,6 +120,53 @@
         </list>
       </field>
     </record>
+
+    <record model="ir.ui.view" id="maya_core.student_form">
+      <field name="name">Gestión de estudiantes</field>
+      <field name="model">maya_core.student</field>
+      <field name="arch" type="xml">
+        <form>
+          <group col="3">
+            <group>
+              <field name="nia"/>
+              <field name="surname"/>
+              <field name="name"/>
+              <field name="moodle_id"/>
+            </group>
+            <group>
+              <field name="email_coorp" widget="email"/>
+              <field name="email" widget="email"/>
+              <field name="email_support" widget="email"/>
+            </group>
+            <group>
+              <field name="telephone1"/>
+              <field name="telephone2"/>
+            </group>
+          </group>
+          <notebook>
+            <page string="Estudios">
+              <field name="studies_ids">
+                <list>
+                  <field name="study_id"/>
+                  <field name="group"/>
+                  <field name="school_year_id"/>
+                  <field name="enrollment_date"/>
+                  <field name="unenrollment_date"/>
+                </list>
+              </field>
+            </page>
+            <page string="Asignaturas">
+              <field name="subjects_ids">
+                <list>
+                  <field name="subject_name"/>
+                  <field name="subject_code"/>
+                </list>
+              </field>
+            </page>
+          </notebook>
+        </form>
+      </field>
+    </record>
    
     <!-- Views de session_Schedule -->
     <record model="ir.ui.view" id="maya_core.session_schedule_list">

@@ -89,7 +89,16 @@ class StudentController(ApiBaseController):
     enrolments_filename = filenames['enrolments_filename']
     groups_filename = filenames['groups_filename']
 
-    # 5. Lanzar la importación en un hilo secundario en segundo plano
+    # 5. Comprobar que hay un curso escolar activo, sin él no se puede matricular
+    if not request.env['maya_core.school_year'].sudo().search_count([('state', '=', '1')], limit=1):
+      _logger.error("No hay ningún curso escolar activo. Se cancela la importación de Ítaca (%s).", filename)
+      return error_response(
+          'No hay ningún curso escolar activo. No se realiza la importación.',
+          'NO_ACTIVE_SCHOOL_YEAR',
+          409
+      )
+
+    # 6. Lanzar la importación en un hilo secundario en segundo plano
     db_name = request.db
     thread = threading.Thread(
         target=self._run_import_in_thread,
@@ -131,7 +140,10 @@ class StudentController(ApiBaseController):
         # Invocamos la función del modelo 'maya_core.student' pasando el nombre del fichero
         student_model = env['maya_core.student'].sudo()
         student_model.process_itaca_import(filename)
-        
+
+        # Matriculamos a los alumnos en sus asignaturas (requiere los alumnos ya importados)
+        env['maya_core.subject_student_rel'].sudo().process_itaca_enrolments(enrolments_filename)
+
         cr.commit()
         _logger.info("Procesamiento del fichero %s completado con éxito.", filename)
       except IOError as e: # falla la creacion del informe.. pero mantenemos la matricula

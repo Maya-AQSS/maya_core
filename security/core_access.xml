@@ -114,6 +114,17 @@
       <field name="perm_unlink">1</field>
     </record>
 
+    <!-- SUBJECT STUDENT -->
+    <record id="maya_core.subject_student_rel_user_access" model="ir.model.access">
+      <field name="name">Acceso usuario general a las relaciones entre asignaturas y alumnos</field>
+      <field name="model_id" ref="model_maya_core_subject_student_rel"/>
+      <field name="group_id" ref="base.group_user"></field>  <!-- TOCHANGE! permiso temporal -->
+      <field name="perm_read">1</field>
+      <field name="perm_create">1</field>
+      <field name="perm_write">1</field>
+      <field name="perm_unlink">1</field>
+    </record>
+
     <!-- SUBJECT CLASSROOM -->
     <record id="maya_core.subject_classroom_rel_user_access" model="ir.model.access">
       <field name="name">Acceso usuario general a las relaciones entre asignaturas y aulas</field>
