@@ -145,7 +145,7 @@ class EmployeeController(ApiBaseController):
 
       # Aplicar cambios
       try:
-          employee.sudo().write(update_vals)
+          employee.sudo().with_context(maya_audit_user_id=user.id).write(update_vals)
           _logger.info(
               'API v1: empleado id=%s actualizado por user_id=%s. Campos: %s',
               employee.id, user.id, list(update_vals.keys()),
