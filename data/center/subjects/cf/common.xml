@@ -3,7 +3,7 @@
     <!-- Módulos comunes a todos los ciclos -->
      <record model="maya_core.subject" id="maya_core.subject_MIX_TUT1">
       <field name="abbr">TUT1</field>
-      <field name="code">TUCF01</field>
+      <field name="code">TU01CF</field>
       <field name="name">Tutoría 1º</field>
       <field name="year">1</field>
       <field name="group_tutoring_hours">0</field>
@@ -14,7 +14,7 @@
 
     <record model="maya_core.subject" id="maya_core.subject_MIX_TUT2">
       <field name="abbr">TUT2</field>
-      <field name="code">TUCF02</field>
+      <field name="code">TU02CF</field>
       <field name="name">Tutoría 2º</field>
       <field name="year">2</field>
       <field name="group_tutoring_hours">0</field>

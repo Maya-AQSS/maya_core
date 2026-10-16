@@ -4,18 +4,18 @@ maya_core.BCH_artes_musicales,bachillerato_company,BAM,Bachillerato Artes Musica
 maya_core.BCH_ciencias,bachillerato_company,BCT,Bachillerato Ciencias y Tecnología,BAC,NG,NF,LOMLOE,1
 maya_core.BCH_general,bachillerato_company,BGN,Bachillerato General,BAG,NG,NF,LOMLOE,1
 maya_core.BCH_humanidades,bachillerato_company,BHC,Bachillerato Humanidades y Ciencias Sociales,BAH,NG,NF,LOMLOE,1
-maya_core.CF_DAM,fp_company,DAM,Desarrollo de Aplicaciones Multiplataforma,836104,GS,IC,LFP,1
-maya_core.CF_DAW,fp_company,DAW,Desarrollo de Aplicaciones Web,845104,GS,IC,LFP,1
-maya_core.CF_ASIR,fp_company,ASIR,Administración de Sistemas Informáticos y Redes,829104,GS,IC,LFP,1
-maya_core.CF_ADI,fp_company,ADI,Asistencia a Dirección,906104,GS,AD,LFP,1
-maya_core.CF_AFI,fp_company,AFI,Administración y Finanzas,441104,GS,AD,LFP,1
-maya_core.CF_GAT,fp_company,GAT,Gestión de Alojamientos Turísticos,714104,GS,HT,LFP,1
-maya_core.CF_GIAT,fp_company,GIAT,Guía Información y Asistencias Turísticas,828104,GS,HT,LFP,1
-maya_core.CF_AVGE,fp_company,AVGE,Agencias de Viajes y Gestión de Eventos,827104,GS,HT,LFP,1
-maya_core.CF_CI,fp_company,CI,Comercio Internacional,449104,GS,CM,LFP,1
-maya_core.CF_TIL,fp_company,TIL,Transporte y Logística,898104,GS,CM,LFP,1
-maya_core.CF_GVEC,fp_company,GVEC,Gestión y Ventas de Espacios Comerciales,899104,GS,CM,LFP,1
-maya_core.CF_MIP,fp_company,MIP,Marketing y Publicidad,222104,GS,CM,LFP,1
+maya_core.CF_DAM,fp_company,DAM,Desarrollo de Aplicaciones Multiplataforma,836144,GS,IC,LFP,1
+maya_core.CF_DAW,fp_company,DAW,Desarrollo de Aplicaciones Web,845144,GS,IC,LFP,1
+maya_core.CF_ASIR,fp_company,ASIR,Administración de Sistemas Informáticos y Redes,829144,GS,IC,LFP,1
+maya_core.CF_ADI,fp_company,ADI,Asistencia a Dirección,906144,GS,AD,LFP,1
+maya_core.CF_AFI,fp_company,AFI,Administración y Finanzas,441144,GS,AD,LFP,1
+maya_core.CF_GAT,fp_company,GAT,Gestión de Alojamientos Turísticos,714144,GS,HT,LFP,1
+maya_core.CF_GIAT,fp_company,GIAT,Guía Información y Asistencias Turísticas,828144,GS,HT,LFP,1
+maya_core.CF_AVGE,fp_company,AVGE,Agencias de Viajes y Gestión de Eventos,827144,GS,HT,LFP,1
+maya_core.CF_CI,fp_company,CI,Comercio Internacional,449144,GS,CM,LFP,1
+maya_core.CF_TIL,fp_company,TIL,Transporte y Logística,898144,GS,CM,LFP,1
+maya_core.CF_GVEC,fp_company,GVEC,Gestión y Ventas de Espacios Comerciales,899144,GS,CM,LFP,1
+maya_core.CF_MIP,fp_company,MIP,Marketing y Publicidad,222144,GS,CM,LFP,1
 maya_core.FPA_ESPAI_P1,fpa_company,ESPAI,ESPA Módulo I,ES011,NG,NF,LOMLOE,1
 maya_core.FPA_ESPAII_P1,fpa_company,ESPAII,ESPA Módulo II,ES012,NG,NF,LOMLOE,1
 maya_core.FPA_ESPAIII_P1,fpa_company,ESPAIII,ESPA Módulo III,ES021,NG,NF,LOMLOE,1

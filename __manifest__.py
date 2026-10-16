@@ -40,7 +40,6 @@
     # external dependencies that have to be installed. Can be python or bin dependencies
     # Only checks whether the dependency is installed. Not install the dependency!!
     'external_dependencies': {
-       'python': ['toolz'],
     },
 
     # always loaded

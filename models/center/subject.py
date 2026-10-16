@@ -25,16 +25,4 @@ class Subject(models.Model):
 
   studies_ids = fields.Many2many('maya_core.study', string='Estudios', help='Estudios en los que se imparte')
 
-  employees_ids = fields.One2many('maya_core.subject_employee_rel', 'subject_id', string = 'Profesorado') 
-
-  # Aulas virtuales asigndas a este módulo
-  classrooms_ids = fields.One2many('maya_core.subject_classroom_rel', 'subject_id', string = 'Aulas virtuales')
-
-
-  def get_classroom_by_study_id(self, study):
-    """
-    Devuelve el aula virtual asociada a este módulo para un ciclo determinado
-    """
-    self.ensure_one()
-     
-    return self.classrooms_ids.filtered(lambda t: t.study_id.id == study.id)['classroom_id']
+  employees_ids = fields.One2many('maya_core.subject_employee_rel', 'subject_id', string = 'Profesorado')
