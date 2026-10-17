@@ -7,5 +7,47 @@
     <record id="maya_core.group_itaca_integration" model="res.groups">
       <field name="name">Integración Ítaca</field>
     </record>
+
+    <record id="maya_core.group_maya_user" model="res.groups">
+      <field name="name">Usuario Maya</field>
+    </record>
+
+    <record id="maya_core.category_group" model="ir.module.category">
+      <field name="name">Maya</field>
+    </record>
+
+    <!-- Odoo 19: los grupos ya no tienen categoría; pertenecen a un privilegio y es el
+         privilegio el que tiene la categoría -->
+    <record id="maya_core.privilege_maya" model="res.groups.privilege">
+      <field name="name">Maya</field>
+      <field name="category_id" ref="maya_core.category_group"/>
+    </record>
+
+    <record id="maya_core.group_TEACH" model="res.groups">
+      <field name="name">Profesorado</field>
+      <field name="privilege_id" ref="maya_core.privilege_maya"/>
+    </record>
+
+    <record id="maya_core.group_ADMIN" model="res.groups">
+      <field name="name">Administración (secretaria)</field>
+      <field name="privilege_id" ref="maya_core.privilege_maya"/>
+    </record>
+
+    <record id="maya_core.group_MNGT" model="res.groups">
+      <field name="name">Equipo Directivo</field>
+      <field name="privilege_id" ref="maya_core.privilege_maya"/>
+      <field name="implied_ids" eval="[(4,ref('maya_core.group_ADMIN'))]"/>
+    </record>
+
+    <record id="maya_core.group_MNGT_FP" model="res.groups">
+      <field name="name">Coordinación ciclos</field>
+      <field name="privilege_id" ref="maya_core.privilege_maya"/>
+    </record>
+
+    <record id="maya_core.group_ROOT" model="res.groups">
+      <field name="name">Administración Maya</field>
+      <field name="privilege_id" ref="maya_core.privilege_maya"/>
+    </record>
+    
   </data>
 </odoo>

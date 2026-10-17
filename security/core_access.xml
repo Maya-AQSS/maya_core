@@ -180,6 +180,27 @@
       <field name="perm_unlink">1</field>
     </record>
 
+     <!-- ROL -->
+    <record id="maya_core.rol_general_user_access" model="ir.model.access">
+      <field name="name">Acceso usuario general a los Cargos (rol)</field>
+      <field name="model_id" ref="model_maya_core_rol"/>
+      <field name="group_id" ref="base.group_user"></field>
+      <field name="perm_read">1</field>
+      <field name="perm_create">0</field>
+      <field name="perm_write">0</field>
+      <field name="perm_unlink">0</field>
+    </record>
+
+    <record id="maya_core.rol_admin_user_access" model="ir.model.access">
+      <field name="name">Acceso Administrador a los Cargos (rol)</field>
+      <field name="model_id" ref="model_maya_core_rol"/>
+      <field name="group_id" ref="maya_core.group_ROOT"/>
+      <field name="perm_read">1</field>
+      <field name="perm_create">1</field>
+      <field name="perm_write">1</field>
+      <field name="perm_unlink">1</field>
+    </record>
+
     <!-- ************************************************************************* -->
     <!-- Reglas de registro. Condiciones que se deben dar para que algo ocurra. 
          Se ejecutan registro por registro                                         -->
