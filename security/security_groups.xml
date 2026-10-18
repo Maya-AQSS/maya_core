@@ -1,17 +1,5 @@
 <odoo>
   <data>
-    <record id="maya_core.external_apps_category" model="ir.module.category">
-      <field name="name">External Apps</field>
-    </record>
-
-    <record id="maya_core.group_itaca_integration" model="res.groups">
-      <field name="name">Integración Ítaca</field>
-    </record>
-
-    <record id="maya_core.group_maya_user" model="res.groups">
-      <field name="name">Usuario Maya</field>
-    </record>
-
     <record id="maya_core.category_group" model="ir.module.category">
       <field name="name">Maya</field>
     </record>
@@ -23,6 +11,39 @@
       <field name="category_id" ref="maya_core.category_group"/>
     </record>
 
+    <record id="maya_core.external_apps_privilege" model="res.groups.privilege">
+      <field name="name">Apps Externas</field>
+      <field name="category_id" ref="maya_core.category_group"/>
+    </record>
+
+    <!-- grupos técnicos -->
+    <record id="maya_core.group_itaca_integration" model="res.groups">
+      <field name="name">Integración Ítaca</field>
+      <field name="privilege_id" ref="maya_core.external_apps_privilege"/>
+    </record>
+
+    <record id="maya_core.group_dashboard_integration" model="res.groups">
+      <field name="name">Integración Dashboard</field>
+      <field name="privilege_id" ref="maya_core.external_apps_privilege"/>
+    </record>
+
+    <record id="maya_core.group_n8n_integration" model="res.groups">
+      <field name="name">Integración n8n</field>
+      <field name="privilege_id" ref="maya_core.external_apps_privilege"/>
+    </record>
+
+    <record id="maya_core.group_rabbit_integration" model="res.groups">
+      <field name="name">Integración RabbitMQ</field>
+      <field name="privilege_id" ref="maya_core.external_apps_privilege"/>
+    </record>
+
+
+    <record id="maya_core.group_maya_user" model="res.groups">
+      <field name="name">Usuario Maya</field>
+       <field name="privilege_id" ref="maya_core.external_apps_privilege"/>
+    </record>
+
+    <!-- grupos  -->
     <record id="maya_core.group_TEACH" model="res.groups">
       <field name="name">Profesorado</field>
       <field name="privilege_id" ref="maya_core.privilege_maya"/>
@@ -36,6 +57,7 @@
     <record id="maya_core.group_MNGT" model="res.groups">
       <field name="name">Equipo Directivo</field>
       <field name="privilege_id" ref="maya_core.privilege_maya"/>
+      <!--  el equipo directivo tiene automáticamente todo lo de secretaría -->
       <field name="implied_ids" eval="[(4,ref('maya_core.group_ADMIN'))]"/>
     </record>
 
