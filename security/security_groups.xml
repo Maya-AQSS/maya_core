@@ -39,7 +39,7 @@
 
 
     <record id="maya_core.group_maya_user" model="res.groups">
-      <field name="name">Usuario Maya</field>
+      <field name="name">Usuario Técnico Maya</field>
        <field name="privilege_id" ref="maya_core.external_apps_privilege"/>
     </record>
 

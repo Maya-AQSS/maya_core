@@ -3,17 +3,22 @@ meta {
 }
 
 script:pre-request {
-  // Si no se ha puesto a mano, la API key de n8n se lee del fichero que se genera al
-  // levantar el sistema: <maya-aqss>/.server-info/odoo/secrets/.api_key_itaca
-  // (primera línea: la key; segunda: su fecha de caducidad)
+  // Si no se ha puesto a mano, la API key de ITACA se lee del fichero que se genera al levantar
+  // el sistema (primera línea: la key; segunda: su fecha de caducidad). Según dónde se
+  // ejecute Bruno, el mismo fichero está en un sitio distinto:
+  //   - máquina o contenedor bruno-tests: <maya-aqss>/.server-info/odoo/secrets/.api_key_itaca
+  //   - contenedor de Odoo (extensión de VS Code): /var/lib/odoo/secrets/.api_key_itaca
   if (!bru.getEnvVar("apiKey")) {
     const fs = require("fs");
     const path = require("path");
-    const keyFile = path.join(bru.cwd(), "..", "..", "..", "..", ".server-info", "odoo", "secrets", ".api_key_itaca");
-    if (fs.existsSync(keyFile)) {
-      bru.setEnvVar("apiKey", fs.readFileSync(keyFile, "utf8").split(/\r?\n/)[0].trim());
-    } else {
-      console.warn("No se encuentra " + keyFile + ": pon la API key a mano en el entorno (apiKey)");
+    const candidates = [
+      path.join(bru.cwd(), "..", "..", "..", "..", ".server-info", "odoo", "secrets", ".api_key_itaca"),
+      "/var/lib/odoo/secrets/.api_key_itaca",
+    ];
+    const keyFile = candidates.find((f) => fs.existsSync(f));
+    if (!keyFile) {
+      throw new Error("No se encuentra la API key en " + candidates.join(" ni en ") + ": ponla a mano en el entorno (apiKey)");
     }
+    bru.setEnvVar("apiKey", fs.readFileSync(keyFile, "utf8").split(/\r?\n/)[0].trim());
   }
 }
