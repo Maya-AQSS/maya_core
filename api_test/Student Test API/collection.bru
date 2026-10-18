@@ -1,3 +1,19 @@
 meta {
   name: Student Test API
 }
+
+script:pre-request {
+  // Si no se ha puesto a mano, la API key de n8n se lee del fichero que se genera al
+  // levantar el sistema: <maya-aqss>/.server-info/odoo/secrets/.api_key_itaca
+  // (primera línea: la key; segunda: su fecha de caducidad)
+  if (!bru.getEnvVar("apiKey")) {
+    const fs = require("fs");
+    const path = require("path");
+    const keyFile = path.join(bru.cwd(), "..", "..", "..", "..", ".server-info", "odoo", "secrets", ".api_key_itaca");
+    if (fs.existsSync(keyFile)) {
+      bru.setEnvVar("apiKey", fs.readFileSync(keyFile, "utf8").split(/\r?\n/)[0].trim());
+    } else {
+      console.warn("No se encuentra " + keyFile + ": pon la API key a mano en el entorno (apiKey)");
+    }
+  }
+}
