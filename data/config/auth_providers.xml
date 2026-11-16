@@ -1,5 +1,7 @@
 <odoo>
-  <data>
+  <!-- noupdate: estos son los valores de partida al instalar. Cada entorno pone después sus direcciones y
+       su secreto (en el K3s, sso-ceedcv.sh), y actualizar el módulo no debe devolverlos a estos. -->
+  <data noupdate="1">
     <record id="auth_provider_keycloak" model="auth.oauth.provider">
       <field name="name">Keycloak</field>
       <field name="flow">id_token_code</field>
