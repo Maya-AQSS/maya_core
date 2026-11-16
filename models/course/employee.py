@@ -211,21 +211,6 @@ class Employee(models.Model):
         if plate and not re.match(self._CAR_REGEX, plate):
           raise ValidationError(self._CAR_ERROR)
         
-  @api.constrains('iban')
-  def _check_iban(self):
-    for record in self:
-      if record.iban:
-        # Limpia espacios y pasa a mayúsculas
-        iban_clean = record.iban.replace(' ', '').upper()
-        
-        try:
-          # Usa la validación oficial de Odoo
-          self.env['res.partner.bank']._validate_iban(iban_clean)
-          # Opcional: guardar siempre formateado
-          record.iban = ' '.join([iban_clean[i:i+4] for i in range(0, len(iban_clean), 4)])
-        except Exception:
-          raise ValidationError(_("El IBAN introducido no es válido."))
-        
   @api.constrains('personal_email')
   def _check_email_format(self):
     email_regex = r'^[\w\.-]+@[\w\.-]+\.\w+$'
@@ -298,10 +283,34 @@ class Employee(models.Model):
       if not self.date_keys_handover:
         self.date_keys_handover = today
 
+  @api.model
+  def _normalize_iban(self, iban):
+    """
+    IBAN sin espacios ni guiones, en mayúsculas y en bloques de 4 si cabe en el campo (34 caracteres;
+    si no cabe, sin espacios para no cortarlo). Se aplica al crear y al escribir: _check_iban solo
+    valida, porque reescribir el campo dentro de la restricción la volvía a lanzar sin fin.
+    """
+    if not iban or not isinstance(iban, str):
+      return iban
+    compact = iban.replace(' ', '').replace('-', '').upper()
+    grouped = ' '.join(compact[i:i + 4] for i in range(0, len(compact), 4))
+    return grouped if len(grouped) <= self._fields['iban'].size else compact
+
+  @api.model_create_multi
+  def create(self, vals_list):
+    vals_list = [dict(vals, iban=self._normalize_iban(vals['iban'])) if vals.get('iban') else vals
+                 for vals in vals_list]
+    return super().create(vals_list)
+
+  def write(self, vals):
+    if vals.get('iban'):
+      vals = dict(vals, iban=self._normalize_iban(vals['iban']))
+    return super().write(vals)
+
   @api.constrains('iban')
   def _check_iban(self):
     """
-    Verifica el formato y la validez del IBAN.
+    Verifica el formato y la validez del IBAN (sin modificarlo: lo normalizan create y write).
     Generado por Gemini 3.5 Flash
     """
     for record in self:
@@ -332,9 +341,6 @@ class Employee(models.Model):
       # Validar matemáticamente aplicando la operación por 97
       if int(numeric_iban) % 97 != 1:
           raise ValidationError(_("El código IBAN introducido no es válido (Fallo de checksum)."))
-      
-      # 4. Formatear automáticamente en bloques de 4 caracteres para mejorar la UX
-      record.iban = ' '.join([iban_clean[i:i+4] for i in range(0, len(iban_clean), 4)])
 
   @api.onchange('iban')
   def _onchange_iban_upper(self):
