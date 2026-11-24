@@ -1,0 +1,45 @@
+meta {
+  name: 01 Get Keycloak Token
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{keycloak_url}}/auth/realms/{{keycloak_realm}}/protocol/openid-connect/token
+  body: formUrlEncoded
+  auth: none
+}
+
+headers {
+  Content-Type: application/x-www-form-urlencoded
+}
+
+body:form-urlencoded {
+  grant_type: password
+  client_id: {{keycloak_client_id}}
+  client_secret: {{keycloak_client_secret}}
+  username: {{user01}}
+  password: {{pass01}}
+}
+
+script:post-response {
+  // Extraer el access_token de la respuesta
+  // y guardarlo como variable de entorno para la siguiente petición
+  const data = res.getBody();
+
+  if (res.getStatus() === 200 && data.access_token) {
+    bru.setVar("keycloak_token", data.access_token);
+    console.log("Token obtenido, expira en: " + data.expires_in + "s");
+  } else {
+    console.error("Error obteniendo token:", JSON.stringify(data));
+  }
+}
+
+tests {
+  test("Status 200", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+  test("Contiene access_token", function() {
+    expect(res.getBody()).to.have.property("access_token");
+  });
+}

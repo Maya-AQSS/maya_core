@@ -1,0 +1,35 @@
+meta {
+  name: Error - Invalid Token
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{odooURLInternal}}/api/v1/student/notify-itaca-datafile-ready
+  body: json
+  auth: bearer
+}
+
+headers {
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: token_invalido_12345
+}
+
+body:json {
+  {
+    "filename": "{{filename}}"
+  }
+}
+
+assert {
+  res.status: in [401, 403]
+}
+
+tests {
+  test("Debe rechazar la petición si el API Key es inválido", function() {
+    expect([401, 403]).to.include(res.getStatus());
+  });
+}

@@ -1,0 +1,53 @@
+meta {
+  name: 02 Update Employee
+  type: http
+  seq: 2
+}
+
+patch {
+  url: {{odoo_url}}/api/v1/employee/me
+  body: none
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Authorization: Bearer {{api_key}}
+}
+
+script:pre-request {
+  // Leer el token de Keycloak de la petición anterior
+  const keycloak_token = bru.getVar("keycloak_token");
+  
+  if (!keycloak_token) {
+    console.error("❌ keycloak_token no encontrado. Ejecuta primero '01 Get Keycloak Token'");
+    // Detener la ejecución si no hay token
+    throw new Error("keycloak_token no encontrado. Ejecuta primero la petición 01.");
+  }
+  
+  // Construir el body JSON completo
+  const body = {
+    keycloak_token,
+    phone_extension: "1042",
+    lang: "es_ES"
+  };
+  
+  const bodyJson = JSON.stringify(body);
+
+  console.log("Token (primeros 50 chars):", keycloak_token.substring(0, 50) + "...");
+  
+  // Establecer el body de la petición
+  req.setBody(bodyJson);
+}
+
+tests {
+  test("Status 200", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+  test("Success true", function() {
+    expect(res.getBody()).to.have.property("success", true);
+  });
+  test("Contiene updated_fields", function() {
+    expect(res.getBody()).to.have.property("updated_fields");
+  });
+}

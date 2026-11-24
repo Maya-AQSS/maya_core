@@ -1,6 +1,6 @@
 {
     'name': "Maya | Core",
-    'version': '19.0.1.0',
+    'version': '19.0.1.1',
 
     'summary': "Módulo (Core) para la gestión interna del CEED",
 
@@ -20,6 +20,8 @@
          - Gestión de las aulas virtuales
          - Gestión de las tareas automatizadas (CronJobs)
          - Gestión de las notificaciones (envío  de mails) al profesorado
+         - Publicación en RabbitMQ (estándar de mensajería Maya) de errores de negocio, auditoría y
+           notificaciones, después del commit (models/messaging, support/amqp.py)
     """,
 
     'website': "https://portal.edu.gva.es/ceedcv/",
@@ -35,17 +37,39 @@
     'price': 0,
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'web'],
+    'depends': ['base', 'web', 'auth_oidc'],
+
+    # external dependencies that have to be installed. Can be python or bin dependencies
+    # Only checks whether the dependency is installed. Not install the dependency!!
+    'external_dependencies': {
+       'python': ['pika'],
+    },
 
     # always loaded
     'data': [
         # seguridad
+        'security/security_groups.xml',
         'security/core_access.xml',
+        # configuraciones
+        'data/config/auth_providers.xml',
         # 'security/ir.model.access.csv',
         'views/views.xml',
+        'views/config_settings_view.xml',
         'views/templates.xml',
         # datos de modelos
         'data/companies.xml', # Los tipos de estudios impartidos en el centro
+        'data/center/maya_core.location.csv',
+        'data/center/maya_core.session_schedule.csv',
+        'data/center/maya_core.place.csv',
+        'data/center/maya_core.team.csv',
+        'data/center/maya_core.study.csv',
+        'data/center/maya_core.school_group.csv',
+        'data/center/subjects/cf/tic.xml',
+        'data/center/subjects/cf/aif.xml',
+        'data/center/subjects/cf/cim.xml',
+        'data/center/subjects/cf/optional.xml',
+        'data/center/subjects/cf/common.xml',
+        
     ],
     # only loaded in demonstration mode
     'demo': [

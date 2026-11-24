@@ -1,0 +1,5 @@
+# Paquetes python que son modulos de Odoo
+# Se instalan con 
+#    pip install -r requirements-python-modules.txt
+
+odoo-addon-auth-oidc>=19.0,<19.1

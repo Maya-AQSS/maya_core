@@ -1,0 +1,56 @@
+meta {
+  name: 04 Error - Idioma no activo o inválido
+  type: http
+  seq: 4
+}
+
+patch {
+  url: {{odoo_url}}/api/v1/employee/me
+  body: none
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Authorization: Bearer {{api_key}}
+}
+
+script:pre-request {
+  // Leer el token de Keycloak de la petición anterior
+  const keycloak_token = bru.getVar("keycloak_token");
+  
+  if (!keycloak_token) {
+    console.error("❌ keycloak_token no encontrado. Ejecuta primero '01 Get Keycloak Token'");
+    // Detener la ejecución si no hay token
+    throw new Error("keycloak_token no encontrado. Ejecuta primero la petición 01.");
+  }
+  
+  // Construir el body JSON completo
+  const body = {
+    keycloak_token,
+    lang: "xx_ES"
+  };
+  
+  const bodyJson = JSON.stringify(body);
+
+  console.log("Token (primeros 50 chars):", keycloak_token.substring(0, 50) + "...");
+  
+  // Establecer el body de la petición
+  req.setBody(bodyJson);
+}
+
+tests {
+  test("Estado HTTP es 400 Bad Request", function() {
+    expect(res.getStatus()).to.equal(400);
+  });
+
+  test("Respuesta devuelve success false", function() {
+    var data = res.getBody();
+    expect(data.success).to.equal(false);
+  });
+
+  test("Código de error es LANG_NOT_ACTIVE", function() {
+    var data = res.getBody();
+    expect(data.code).to.equal("LANG_NOT_ACTIVE");
+  });
+}

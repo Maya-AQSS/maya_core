@@ -1,1 +1,7 @@
 from . import employee
+from . import subject_employee_rel
+from . import student
+from . import student_study_rel
+from . import subject_student_rel
+from . import school_year
+from . import holiday
